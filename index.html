@@ -285,14 +285,74 @@
   .cta-band h2 em{ font-style:italic; font-weight:400; }
   .cta-band h2 .q{ color:var(--red); font-style:normal; }
   .cta-sub{ color:var(--soft); font-size:clamp(15px,1.3vw,18px); line-height:1.7; margin-top:clamp(16px,2vw,24px); }
-  .cta-btns{ display:flex; justify-content:center; flex-wrap:wrap; gap:14px 16px; margin-top:clamp(26px,3.4vw,40px); }
-  .cta-btn{ display:inline-flex; align-items:center; justify-content:center; min-width:clamp(200px,17vw,236px); padding:17px 30px; border:1px solid var(--red); border-radius:2px;
-    font:600 12.5px 'Inter',sans-serif; letter-spacing:0.18em; text-transform:uppercase; transition:background 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
-  .cta-btn.solid{ background:var(--red); color:var(--white); }
-  .cta-btn.solid:hover, .cta-btn.solid:focus-visible{ background:var(--white); border-color:var(--white); color:#000; }
-  .cta-btn.line{ background:transparent; border-color:rgba(255,255,255,0.4); color:var(--white); }
-  .cta-btn.line:hover, .cta-btn.line:focus-visible{ background:var(--white); border-color:var(--white); color:#000; }
-  @media(max-width:520px){ .cta-btn{ width:100%; } }
+  /* ---- THE CLAPPERBOARD: red, black and white; it claps in when you arrive and again every few seconds ---- */
+  .sl-stage{ margin-top:clamp(22px,3vw,34px); }
+  .sl{ --sw:clamp(260px,26vw,340px); --sk:clamp(30px,3.2vw,42px); position:relative; display:inline-block; width:var(--sw); margin-top:calc(var(--sw) * 0.4 + 40px); text-align:left; }
+  .sl-glow{ position:absolute; left:50%; top:46%; width:150%; aspect-ratio:1; transform:translate(-50%,-50%); z-index:-1; pointer-events:none; border-radius:50%;
+    background:radial-gradient(circle, rgba(224,31,38,0.28) 0%, rgba(224,31,38,0.08) 38%, rgba(224,31,38,0) 68%); animation:slGlow 6.5s ease-out 2s infinite; }
+  .sl-3d{ display:block; transition:transform 0.7s cubic-bezier(.2,.7,.2,1); transform-origin:50% 100%; }
+  .sl:hover .sl-3d, .sl:focus-visible .sl-3d{ transform:perspective(900px) rotateX(7deg) translateY(-5px) scale(1.02); }
+  .sl-sticks{ position:relative; display:block; height:var(--sk); margin-bottom:4px; }
+  .sl-stick{ position:absolute; inset:0; display:block; border:1px solid rgba(255,255,255,0.24); overflow:hidden; }
+  .sl-stick::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 46%, rgba(0,0,0,0.3) 100%); }
+  .sl-base{ background:repeating-linear-gradient(45deg, #e01f26 0 18px, #f4f1ea 18px 20px, #070707 20px 38px, #f4f1ea 38px 40px); animation:slShake 6.5s linear 2s infinite; }
+  .sl-arm{ bottom:calc(100% + 4px); top:auto; height:100%; transform-origin:left bottom; transform:rotate(-6deg);
+    background:repeating-linear-gradient(135deg, #e01f26 0 18px, #f4f1ea 18px 20px, #070707 20px 38px, #f4f1ea 38px 40px); }
+  .sl-arm::before{ content:""; position:absolute; z-index:2; left:7px; bottom:7px; width:9px; height:9px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #fff, #8f8d86 55%, #3a3a3a); }
+  .sl-body{ position:relative; display:block; overflow:hidden; border:1px solid rgba(255,255,255,0.2);
+    background:linear-gradient(180deg, #121212 0%, #070707 100%); box-shadow:inset 0 1px 0 rgba(255,255,255,0.07), 0 30px 60px rgba(0,0,0,0.6); }
+  .sl-row{ display:grid; border-bottom:1px solid rgba(255,255,255,0.13); }
+  .sl-row.c1{ grid-template-columns:1fr; } .sl-row.c2{ grid-template-columns:1fr 1fr; } .sl-row.c3{ grid-template-columns:1fr 1fr 1fr; }
+  .sl-cell{ display:block; padding:11px 14px; border-right:1px solid rgba(255,255,255,0.13); } .sl-cell:last-child{ border-right:0; }
+  .sl-cell small{ display:block; font-size:9px; font-weight:600; letter-spacing:0.24em; text-transform:uppercase; color:var(--dim); margin-bottom:5px; }
+  .sl-cell b{ display:block; font-weight:600; font-size:clamp(13px,1.2vw,15px); color:var(--white); letter-spacing:0.02em; font-variant-numeric:tabular-nums; }
+  .sl-cell b.tick{ animation:slTick 0.4s ease-out; }
+  .sl-go{ position:relative; display:grid; place-items:center; overflow:hidden; padding:clamp(16px,1.8vw,22px) 10px; color:var(--white);
+    background:linear-gradient(180deg, #f0262d 0%, #c8171d 100%); font-weight:700; font-size:clamp(13px,1.3vw,16px); letter-spacing:0.28em; text-transform:uppercase; }
+  .sl-go::after{ content:""; position:absolute; top:0; bottom:0; width:40%; left:0; background:linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.35) 50%, rgba(255,255,255,0) 100%); transform:translateX(-130%); animation:slShine 6.5s ease-in-out 2s infinite; }
+  .sl-go span{ grid-area:1/1; transition:opacity 0.3s ease, transform 0.4s ease; }
+  .sl-go .b{ opacity:0; transform:translateY(8px); }
+  .sl:hover .sl-go .a, .sl:focus-visible .sl-go .a{ opacity:0; transform:translateY(-8px); }
+  .sl:hover .sl-go .b, .sl:focus-visible .sl-go .b{ opacity:1; transform:none; }
+  .sl-flash{ position:absolute; inset:0; opacity:0; pointer-events:none; background:radial-gradient(ellipse at 50% 20%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.3) 55%, rgba(255,255,255,0) 100%); animation:slFlash 6.5s linear 2s infinite; }
+  .cta-more{ display:inline-flex; align-items:center; gap:8px; margin-top:clamp(22px,3vw,32px); color:var(--soft); font-size:14px; letter-spacing:0.04em; transition:color 0.25s ease; }
+  .cta-more span{ color:var(--red); display:inline-block; transition:transform 0.3s ease; }
+  .cta-more:hover, .cta-more:focus-visible{ color:var(--white); }
+  .cta-more:hover span{ transform:translate(3px,-3px); }
+
+  /* before it scrolls into view the arm waits open; the first clap comes as it arrives, then it repeats */
+  .js-rv .sl-stage:not(.in) .sl-arm{ animation:none; transform:rotate(-26deg); }
+  .sl-stage.in .sl-arm{ animation:slArmIntro 1.4s linear 0.6s both, slArmLoop 6.5s linear 2s infinite; }
+  .sl-stage:not(.rv) .sl-arm{ animation:slArmLoop 6.5s linear 2s infinite; }
+  @keyframes slArmIntro{ 0%,52%{ transform:rotate(-26deg); animation-timing-function:cubic-bezier(.7,0,.95,.45); } 100%{ transform:rotate(0deg); } }
+  @keyframes slArmLoop{
+    0%   { transform:rotate(0deg);   animation-timing-function:ease-out; }
+    5%   { transform:rotate(-4deg);  animation-timing-function:ease-in-out; }
+    9%   { transform:rotate(0deg);   animation-timing-function:ease-in-out; }
+    18%  { transform:rotate(-6deg); }
+    80%  { transform:rotate(-6deg);  animation-timing-function:cubic-bezier(.25,.8,.35,1); }
+    93%  { transform:rotate(-21deg); animation-timing-function:cubic-bezier(.75,0,.95,.5); }
+    100% { transform:rotate(0deg); }
+  }
+  @keyframes slFlash{ 0%{ opacity:0.9; } 5%{ opacity:0; } 100%{ opacity:0; } }
+  @keyframes slShake{ 0%{ transform:translateY(2px); } 2.5%{ transform:translateY(-1px); } 5%,100%{ transform:translateY(0); } }
+  @keyframes slGlow{ 0%{ opacity:1; transform:translate(-50%,-50%) scale(1.1); } 15%{ opacity:0.5; transform:translate(-50%,-50%) scale(1); } 100%{ opacity:0.5; transform:translate(-50%,-50%) scale(1); } }
+  @keyframes slShine{ 0%,62%{ transform:translateX(-130%); } 80%,100%{ transform:translateX(330%); } }
+  @keyframes slTick{ from{ opacity:0.2; transform:translateY(-7px); } to{ opacity:1; transform:none; } }
+  /* hover: the arm lifts and snaps shut straight away */
+  .sl:hover .sl-arm, .sl:focus-visible .sl-arm{ animation:slArmHover 0.8s linear forwards !important; }
+  @keyframes slArmHover{ 0%{ transform:rotate(-6deg); animation-timing-function:ease-out; } 42%{ transform:rotate(-23deg); animation-timing-function:cubic-bezier(.7,0,.95,.45); } 100%{ transform:rotate(0deg); } }
+  .sl:hover .sl-flash, .sl:focus-visible .sl-flash{ animation:slFlashOnce 0.55s linear 0.62s both; }
+  @keyframes slFlashOnce{ 0%{ opacity:0.9; } 100%{ opacity:0; } }
+  /* the strip rests while the section is off screen */
+  .sl-stage.paused, .sl-stage.paused *, .sl-stage.paused *::before, .sl-stage.paused *::after{ animation-play-state:paused !important; }
+  @media (prefers-reduced-motion: reduce){
+    .sl-arm, .sl-base, .sl-glow, .sl-flash, .sl-go::after{ animation:none !important; }
+    .sl-arm{ transform:rotate(-5deg) !important; }
+    .sl-flash, .sl-glow{ opacity:0; }
+    .sl-3d, .sl:hover .sl-3d{ transform:none; transition:none; }
+  }
+
 
   /* ---- ABOUT SOFT: editorial two-column ---- */
   .about{ --ink:#F2F0EB; --body:#E3E0D9; --muted:#8f8d86; --hl:#f0262d; }
@@ -467,9 +527,21 @@
     <div class="cta-inner">
       <h2 class="mk"><span class="mask"><span class="ml" style="--i:0">Have a story</span></span><span class="mask"><span class="ml" style="--i:1"><em>worth telling</em><span class="q">?</span></span></span></h2>
       <p class="cta-sub rv" style="--d:.25s">Let&rsquo;s give it the visual treatment it deserves.</p>
-      <div class="cta-btns rv" style="--d:.4s">
-        <a href="#contact" class="cta-btn solid" id="ctaProject">Start a project</a>
-        <a href="#contact" class="cta-btn line" id="ctaStudio">Contact the studio</a>
+      <div class="sl-stage rv" id="slStage" style="--d:.4s">
+        <a href="#contact" class="sl" id="ctaProject" aria-label="Let&rsquo;s talk &mdash; start a project">
+          <span class="sl-glow" aria-hidden="true"></span>
+          <span class="sl-3d">
+            <span class="sl-sticks" aria-hidden="true"><span class="sl-stick sl-arm"></span><span class="sl-stick sl-base"></span></span>
+            <span class="sl-body">
+              <span class="sl-row c1"><span class="sl-cell"><small>Production</small><b>Your next story</b></span></span>
+              <span class="sl-row c2"><span class="sl-cell"><small>Director</small><b>You</b></span><span class="sl-cell"><small>Camera</small><b>SOFT</b></span></span>
+              <span class="sl-row c3"><span class="sl-cell"><small>Scene</small><b>01</b></span><span class="sl-cell"><small>Take</small><b id="slTake">01</b></span><span class="sl-cell"><small>Roll</small><b>A</b></span></span>
+              <span class="sl-go"><span class="a">Let&rsquo;s talk</span><span class="b">Action &#8599;</span></span>
+              <span class="sl-flash" aria-hidden="true"></span>
+            </span>
+          </span>
+        </a>
+        <div><a href="#contact" class="cta-more" id="ctaStudio">Contact the studio <span>&#8599;</span></a></div>
       </div>
     </div>
   </div>
@@ -914,6 +986,28 @@ window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '', email: '', phone: '
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); o.unobserve(e.target); } });
   }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
   els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+
+
+<script>
+/* clapperboard */
+(function () {
+  var stage = document.getElementById('slStage'), take = document.getElementById('slTake');
+  if (!stage || !take) return;
+  var arm = stage.querySelector('.sl-arm'), board = stage.querySelector('.sl');
+  var n = 1, last = 0;
+  function bump() {
+    var now = Date.now(); if (now - last < 1100) return; last = now;
+    n = n >= 99 ? 1 : n + 1;
+    take.textContent = (n < 10 ? '0' : '') + n;
+    take.classList.remove('tick'); void take.offsetWidth; take.classList.add('tick');
+  }
+  arm.addEventListener('animationiteration', function (e) { if (e.animationName === 'slArmLoop') bump(); });   // every automatic clap
+  board.addEventListener('mouseenter', function () { setTimeout(bump, 620); });                                   // and when you hover it
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) {
+    stage.classList.toggle('paused', !es[0].isIntersecting);
+  }).observe(stage);
 })();
 </script>
 
