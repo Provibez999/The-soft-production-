@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>THE SOFT. — Home (single-file preview)</title>
+<title>THE SOFT. — Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
   .hero{
     position:relative; height:100vh; height:100svh; min-height:560px; padding:0;
     display:flex; align-items:flex-end; overflow:hidden; isolation:isolate;
-    background:#000 url('assets/image-01.jpg') center/cover no-repeat;
+    background:#000 url('public/hero-poster.jpg') center/cover no-repeat;
   }
   .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
   .hero.video-failed .hero-video{ display:none; }
@@ -356,7 +356,7 @@
 <body>
 
 <nav id="nav" class="nav-in">
-  <img src="assets/image-01.png" class="nav-logo" alt="SOFT International Studios">
+  <img src="public/soft-logo.png" class="nav-logo" alt="SOFT International Studios">
   <div class="nav-links">
     <a href="#work">Our Portfolio</a>
     <a href="#courses">Work With Us</a>
@@ -367,15 +367,15 @@
 </nav>
 
 <section class="hero" id="top">
-  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/image-01.jpg" aria-hidden="true">
-    <source src="assets/video-01.mp4" type="video/mp4">
+  <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="public/hero-poster.jpg" aria-hidden="true">
+    <source src="public/2b8eb6453f0ce64b8d10cbda4c4792e7_t1.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
 
   <div class="intro" aria-hidden="true">
     <div class="intro-the">The</div>
     <div class="intro-brand">
-      <img class="intro-logo" src="assets/image-01.png" alt="SOFT">
+      <img class="intro-logo" src="public/soft-logo.png" alt="SOFT">
     </div>
   </div>
 
@@ -399,9 +399,9 @@
     </div>
     <div class="feature rv" id="commercial">
       <div class="feature-stage">
-        <div class="feature-ambient" style="background-image:url('assets/image-02.jpg')"></div>
-        <video id="featureVideo" class="feature-video" muted loop playsinline preload="metadata" poster="assets/image-02.jpg" aria-label="Preview of Cornerstone, Kabusa Oriental Choir">
-          <source src="assets/video-02.mp4" type="video/mp4">
+        <div class="feature-ambient" style="background-image:url('public/commercial-poster.jpg')"></div>
+        <video id="featureVideo" class="feature-video" muted loop playsinline preload="metadata" poster="public/commercial-poster.jpg" aria-label="Preview of Cornerstone, Kabusa Oriental Choir">
+          <source src="public/commercial-preview.mp4" type="video/mp4">
         </video>
         <button id="featurePlay" class="feature-play" type="button" aria-label="Play the full film with sound"><span>&#9654; Watch the full film</span></button>
       </div>
@@ -421,37 +421,37 @@
       </div>
       <div class="strip-viewport" id="stripViewport" role="group" aria-label="Portfolio videos. Drag, scroll sideways, or use the buttons to browse.">
         <div class="strip-track" id="stripTrack">
-      <article class="reel" data-src="assets/video-03.mp4" data-cat="Music Video" data-title="On a Bando">
+      <article class="reel" data-src="public/reels/music-video.mp4" data-cat="Music Video" data-title="On a Bando">
         <button class="reel-open" type="button" aria-label="Play On a Bando, Music Video">
-          <video class="reel-video" muted loop playsinline preload="none" poster="assets/image-03.jpg" aria-hidden="true"><source src="assets/video-04.mp4" type="video/mp4"></video>
+          <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/music-video.jpg" aria-hidden="true"><source src="public/reels/music-video-preview.mp4" type="video/mp4"></video>
           <span class="reel-play" aria-hidden="true">&#9654;</span>
           <span class="reel-info"><span class="cat">Music Video &middot; 1:00</span><span class="title">On a Bando</span></span>
         </button>
       </article>
-      <article class="reel" data-src="assets/video-05.mp4" data-cat="Drone" data-title="Good Morning Abuja">
+      <article class="reel" data-src="public/reels/drone.mp4" data-cat="Drone" data-title="Good Morning Abuja">
         <button class="reel-open" type="button" aria-label="Play Good Morning Abuja, Drone">
-          <video class="reel-video" muted loop playsinline preload="none" poster="assets/image-04.jpg" aria-hidden="true"><source src="assets/video-06.mp4" type="video/mp4"></video>
+          <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/drone.jpg" aria-hidden="true"><source src="public/reels/drone-preview.mp4" type="video/mp4"></video>
           <span class="reel-play" aria-hidden="true">&#9654;</span>
           <span class="reel-info"><span class="cat">Drone &middot; 0:58</span><span class="title">Good Morning Abuja</span></span>
         </button>
       </article>
-      <article class="reel" data-src="assets/video-07.mp4" data-cat="Behind The Scenes" data-title="Kabusa Oriental Choir">
+      <article class="reel" data-src="public/reels/behind-the-scenes.mp4" data-cat="Behind The Scenes" data-title="Kabusa Oriental Choir">
         <button class="reel-open" type="button" aria-label="Play Kabusa Oriental Choir, Behind The Scenes">
-          <video class="reel-video" muted loop playsinline preload="none" poster="assets/image-05.jpg" aria-hidden="true"><source src="assets/video-08.mp4" type="video/mp4"></video>
+          <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/behind-the-scenes.jpg" aria-hidden="true"><source src="public/reels/behind-the-scenes-preview.mp4" type="video/mp4"></video>
           <span class="reel-play" aria-hidden="true">&#9654;</span>
           <span class="reel-info"><span class="cat">Behind The Scenes &middot; 0:40</span><span class="title">Kabusa Oriental Choir</span></span>
         </button>
       </article>
-      <article class="reel" data-src="assets/video-09.mp4" data-cat="Short Film" data-title="The Inside Scoop">
+      <article class="reel" data-src="public/reels/short-film.mp4" data-cat="Short Film" data-title="The Inside Scoop">
         <button class="reel-open" type="button" aria-label="Play The Inside Scoop, Short Film">
-          <video class="reel-video" muted loop playsinline preload="none" poster="assets/image-06.jpg" aria-hidden="true"><source src="assets/video-10.mp4" type="video/mp4"></video>
+          <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/short-film.jpg" aria-hidden="true"><source src="public/reels/short-film-preview.mp4" type="video/mp4"></video>
           <span class="reel-play" aria-hidden="true">&#9654;</span>
           <span class="reel-info"><span class="cat">Short Film &middot; 1:35</span><span class="title">The Inside Scoop</span></span>
         </button>
       </article>
-      <article class="reel" data-src="assets/video-11.mp4" data-cat="Event" data-title="May 2025 Highlights">
+      <article class="reel" data-src="public/reels/event.mp4" data-cat="Event" data-title="May 2025 Highlights">
         <button class="reel-open" type="button" aria-label="Play May 2025 Highlights, Event">
-          <video class="reel-video" muted loop playsinline preload="none" poster="assets/image-07.jpg" aria-hidden="true"><source src="assets/video-12.mp4" type="video/mp4"></video>
+          <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/event.jpg" aria-hidden="true"><source src="public/reels/event-preview.mp4" type="video/mp4"></video>
           <span class="reel-play" aria-hidden="true">&#9654;</span>
           <span class="reel-info"><span class="cat">Event &middot; 0:30</span><span class="title">May 2025 Highlights</span></span>
         </button>
@@ -477,7 +477,7 @@
 
 <section id="about" class="about">
   <div class="wrap about-grid">
-    <figure class="about-photo rv-fade"><img src="assets/image-08.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="Portrait in the studio, seated beside a camera gimbal on a bench with red velvet on the floor"></figure>
+    <figure class="about-photo rv-fade"><img src="public/about-soft.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="Portrait in the studio, seated beside a camera gimbal on a bench with red velvet on the floor"></figure>
     <div class="about-text">
       <h2 class="about-title mk"><span class="mask"><span class="ml ab-1" style="--i:0">About SOFT</span></span><span class="mask"><span class="ml ab-2" style="--i:1">International Studios</span></span></h2>
       <p class="ab-tag wr" data-w="45" data-c="22">Every frame tells a story. <br>Every story <span class="hl">deserves to be seen.</span></p>
@@ -507,7 +507,7 @@
 <footer id="contact">
   <div class="wrap">
     <div class="footer-top">
-      <img src="assets/image-01.png" class="footer-logo" alt="SOFT International Studios">
+      <img src="public/soft-logo.png" class="footer-logo" alt="SOFT International Studios">
       <div class="footer-contact" id="footerContact">
         <a href="https://www.instagram.com/deemrsoft" rel="noopener">Instagram</a>
       </div>
@@ -563,18 +563,8 @@
     console.warn('[hero video] ' + msg);
   }
   // capture=true so errors raised by the <source> child are caught as well
-  var triedBlob = false;
   v.addEventListener('error', function () {
     var s = v.querySelector('source');
-    if (!triedBlob && s && s.src.indexOf('data:') === 0) {
-      triedBlob = true;
-      try {
-        var raw = atob(s.src.split(',')[1]), bytes = new Uint8Array(raw.length);
-        for (var i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
-        v.src = URL.createObjectURL(new Blob([bytes], { type: s.type })); v.load(); v.play().catch(function () {});
-        return;
-      } catch (e) {}
-    }
     failed(v.error ? 'media error code ' + v.error.code : 'source missing or unsupported: ' + (s && s.getAttribute('src')));
   }, true);
 
@@ -625,7 +615,7 @@
     full = true;
     v.removeAttribute('aria-label');
     v.muted = false; v.loop = false; v.controls = true;
-    v.src = 'assets/video-13.mp4';
+    v.src = 'public/commercial.mp4';
     v.load();
     box.classList.add('is-playing');
     v.play().catch(function (err) { console.warn('[commercial] play() rejected: ' + (err && err.name)); });
