@@ -64,6 +64,20 @@
   .nav-cta .arrow{ display:inline-block; transition:transform 0.2s ease; }
   .nav-cta:hover .arrow{ transform:translate(2px,-2px); }
 
+  /* phone menu button (three lines: red, white, red) and its dropdown; both are hidden on desktop */
+  .nav-toggle, .nav-menu{ display:none; }
+  .nav-toggle{ position:relative; width:44px; height:44px; margin:-8px -10px -8px 0; padding:0; background:none; border:0; cursor:pointer; flex-direction:column; align-items:center; justify-content:center; gap:5px; -webkit-tap-highlight-color:transparent; }
+  .nav-toggle span{ display:block; width:24px; height:2px; border-radius:1px; transition:transform 0.3s ease, opacity 0.2s ease, background 0.2s ease; }
+  .nav-toggle span:nth-child(1), .nav-toggle span:nth-child(3){ background:var(--red); }
+  .nav-toggle span:nth-child(2){ background:var(--white); }
+  .nav-toggle:focus-visible{ outline:2px solid var(--white); outline-offset:2px; }
+  nav.open .nav-toggle span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  nav.open .nav-toggle span:nth-child(2){ opacity:0; }
+  nav.open .nav-toggle span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .nav-menu a{ display:block; padding:17px 22px; color:var(--white); font-size:18px; font-weight:600; letter-spacing:-0.01em; border-top:1px solid var(--line); }
+  .nav-menu a:first-child{ border-top:0; }
+  .nav-menu a:hover, .nav-menu a:focus-visible{ color:var(--red); }
+
   /* ---- HERO (cinematic) ---- */
   .hero{
     position:relative; height:100vh; height:100svh; min-height:560px; padding:0;
@@ -159,7 +173,16 @@
     letter-spacing:0.26em; text-transform:uppercase; color:var(--dim);
   }
   .motion-toggle:hover{ color:var(--white); }
-  @media(max-width:860px){ .nav-links{ display:none; } }
+  @media(max-width:860px){
+    .nav-links{ display:none; }
+    nav{ gap:14px; }
+    .nav-cta{ margin-left:auto; }
+    .nav-toggle{ display:flex; }
+    .nav-menu{ display:block; position:absolute; top:100%; left:0; right:0; background:rgba(5,5,5,0.97); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+      visibility:hidden; opacity:0; transform:translateY(-8px); transition:opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s; }
+    nav.open{ background:rgba(5,5,5,0.97); }
+    nav.open .nav-menu{ visibility:visible; opacity:1; transform:none; transition:opacity 0.25s ease, transform 0.25s ease; }
+  }
   @media(max-width:640px){ .scroll-ind{ display:none; } .hero h1{ max-width:none; } .hero-eyebrow{ font-size:12px; letter-spacing:0.16em; text-wrap:balance; } }
 
   @media (prefers-reduced-motion: reduce){
@@ -433,11 +456,18 @@
   <img src="public/soft-logo.png" class="nav-logo" alt="SOFT International Studios">
   <div class="nav-links">
     <a href="#work">Our Portfolio</a>
-    <a href="#courses">Work With Us</a>
-    <a href="#book">Events</a>
+    <a href="#about">About</a>
+    <a href="#book">Work With Us</a>
     <a href="#contact">Contacts</a>
   </div>
   <a href="#book" class="nav-cta">Let's Work Together <span class="arrow">↗</span></a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+  <div class="nav-menu" id="navMenu">
+    <a href="#work">Our Portfolio</a>
+    <a href="#about">About</a>
+    <a href="#book">Work With Us</a>
+    <a href="#contact">Contacts</a>
+  </div>
 </nav>
 
 <section class="hero" id="top">
@@ -1029,6 +1059,24 @@ window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '', email: '', phone: '
   if ('IntersectionObserver' in window) new IntersectionObserver(function (es) {
     stage.classList.toggle('paused', !es[0].isIntersecting);
   }).observe(stage);
+})();
+</script>
+
+<script>
+/* phone menu */
+(function () {
+  var nav = document.getElementById('nav'), btn = document.getElementById('navToggle'), menu = document.getElementById('navMenu');
+  if (!nav || !btn || !menu) return;
+  function set(open) {
+    nav.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  btn.addEventListener('click', function () { set(!nav.classList.contains('open')); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) set(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
+  document.addEventListener('click', function (e) { if (!nav.contains(e.target)) set(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 860) set(false); });
 })();
 </script>
 
