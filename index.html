@@ -375,6 +375,11 @@
   .about-text .ab-close{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500; color:var(--ink); font-size:clamp(24px,2.5vw,34px); line-height:1.1;
     margin:clamp(12px,1.6vw,20px) 0 0; padding-top:clamp(16px,2vw,24px); border-top:1px solid var(--line); max-width:none; }
   .about-text .ab-close .hl{ color:var(--red); font-weight:500; }
+  .about-text .ab-social{ display:flex; flex-wrap:wrap; gap:6px 20px; margin-top:clamp(12px,1.4vw,16px); font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); }
+  .about-text .ab-social a{ display:inline-flex; align-items:baseline; gap:7px; color:inherit; transition:color 0.25s ease; }
+  .about-text .ab-social b{ font-weight:700; letter-spacing:0.06em; color:var(--body); }
+  .about-text .ab-social a:hover, .about-text .ab-social a:focus-visible{ color:var(--red); }
+  .about-text .ab-social a:hover b, .about-text .ab-social a:focus-visible b{ color:var(--red); }
 
   /* writing effect (only when the script has prepared the text): red phrases are typed, other words fade in */
   .sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
@@ -564,6 +569,10 @@
       </div>
       <p class="ab-sec wr" data-w="11" data-c="16">From commercials and music videos to documentaries, fashion films and creative campaigns, SOFT International Studios brings creative ideas to life with a commitment to <span class="hl">visual excellence and purposeful storytelling.</span></p>
       <p class="ab-close wr" data-w="38" data-c="20">We don&rsquo;t just make films. We create <span class="hl">visual experiences that stay with you.</span></p>
+      <div class="ab-social" aria-label="Social followers">
+        <a href="https://www.tiktok.com/@deemrsoft" rel="noopener"><b>1.7K</b> TikTok</a>
+        <a href="https://www.instagram.com/deemrsoft" rel="noopener"><b>1.3K</b> Instagram</a>
+      </div>
     </div>
   </div>
 </section>
