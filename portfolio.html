@@ -221,7 +221,9 @@
   .pf-row--flip .pf-media{ order:2; }
   .pf-media{ display:flex; justify-content:center; min-width:0; }
   .pf-media .feature{ width:100%; }
-  .pf-row--reel .pf-frame{ width:min(100%,340px); }
+  .pf-row--reel .pf-frame{ width:min(100%,230px); }
+  .pf-frame--wide{ width:min(100%,380px); aspect-ratio:960/766; }
+  .lightbox-video.wide{ aspect-ratio:960/766; height:auto; width:min(92vw,1100px); max-height:80vh; }
   button.pf-frame{ padding:0; cursor:pointer; font:inherit; color:inherit; }
   button.pf-frame:focus-visible{ outline:2px solid var(--red); outline-offset:4px; }
   .pf-row--reel .pf-frame:hover{ transform:translateY(-6px); border-color:var(--red); box-shadow:0 24px 56px rgba(0,0,0,0.3); }
@@ -296,22 +298,17 @@
     <div class="pf-list" id="pfList">
       <article class="pf-row rv">
         <div class="pf-media">
-          <div class="feature" id="commercial">
-            <div class="feature-stage">
-              <div class="feature-ambient" style="background-image:url('public/commercial-poster.jpg')"></div>
-              <video id="featureVideo" class="feature-video" muted loop playsinline preload="metadata" poster="public/commercial-poster.jpg" aria-label="Preview of Cornerstone, Kabusa Oriental Choir">
-                <source src="public/commercial-preview.mp4" type="video/mp4">
-              </video>
-              <button id="featurePlay" class="feature-play" type="button" aria-label="Play the full film with sound"><span>&#9654; Watch the full film</span></button>
-            </div>
-          </div>
+          <button class="pf-open pf-frame pf-frame--wide" type="button" data-src="public/commercial.mp4" data-cat="Commercial" data-title="Cornerstone" data-wide="1" aria-label="Play Cornerstone, Commercial">
+            <video muted loop playsinline preload="none" poster="public/commercial-poster.jpg" aria-hidden="true"><source src="public/commercial-preview.mp4" type="video/mp4"></video>
+            <span class="pf-play" aria-hidden="true">&#9654;</span>
+          </button>
         </div>
         <div class="pf-text">
           <span class="cat">Commercial</span>
           <h2>Cornerstone</h2>
           <p class="meta">Kabusa Oriental Choir &middot; 1:35</p>
           <p class="desc">A cinematic commercial for the Kabusa Oriental Choir, shot and directed by SOFT International Studios. Strong lighting and deliberate movement, so the music and the message land together.</p>
-          <button class="pf-btn" id="featurePlay2" type="button">Watch the film <span aria-hidden="true">&#9654;</span></button>
+          <button class="pf-btn pf-open" type="button" data-src="public/commercial.mp4" data-cat="Commercial" data-title="Cornerstone" data-wide="1">Watch the film <span aria-hidden="true">&#9654;</span></button>
         </div>
       </article>
       <article class="pf-row pf-row--reel pf-row--flip rv">
@@ -507,24 +504,6 @@ document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40)
   els.forEach(function (e) { io.observe(e); });
 })();
 
-/* featured commercial: silent loop while on screen; button plays the full film with sound */
-(function () {
-  var box = document.getElementById('commercial'), v = document.getElementById('featureVideo'), btn = document.getElementById('featurePlay');
-  if (!box || !v || !btn) return;
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches, full = false;
-  if (!reduce && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      if (full) return;
-      entries.forEach(function (e) { if (e.isIntersecting) v.play().catch(function () {}); else v.pause(); });
-    }, { threshold: 0.35 }).observe(v);
-  }
-  btn.addEventListener('click', function () {
-    full = true; v.removeAttribute('aria-label'); v.muted = false; v.loop = false; v.controls = true;
-    v.src = 'public/commercial.mp4'; v.load(); box.classList.add('is-playing');
-    v.play().catch(function (err) { console.warn('[commercial] play() rejected: ' + (err && err.name)); });
-  });
-})();
-
 /* films: small silent previews (hover on desktop, in view on touch screens) and the full-screen player */
 (function () {
   var list = document.getElementById('pfList'), lb = document.getElementById('lightbox'), lv = document.getElementById('lightboxVideo'), closeBtn = document.getElementById('lightboxClose');
@@ -552,7 +531,7 @@ document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40)
     document.getElementById('lbCat').textContent = c.dataset.cat;
     document.getElementById('lbTitle').textContent = c.dataset.title;
     lb.setAttribute('aria-label', c.dataset.title + ' \u2014 ' + c.dataset.cat);
-    lv.src = c.dataset.src; lv.muted = false; lb.hidden = false;
+    lv.classList.toggle('wide', !!c.dataset.wide); lv.src = c.dataset.src; lv.muted = false; lb.hidden = false;
     document.documentElement.style.overflow = 'hidden'; closeBtn.focus();
     lv.play().catch(function (err) { console.warn('[reel] play() rejected: ' + (err && err.name)); });
   }
@@ -563,8 +542,6 @@ document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40)
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
   list.addEventListener('click', function (e) { var c = e.target.closest('.pf-open'); if (c) openReel(c); });
-  var p2 = document.getElementById('featurePlay2'), p1 = document.getElementById('featurePlay');
-  if (p2 && p1) p2.addEventListener('click', function () { document.getElementById('commercial').scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); p1.click(); });
   closeBtn.addEventListener('click', closeReel);
   lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lightbox-inner')) closeReel(); });
   document.addEventListener('keydown', function (e) {
