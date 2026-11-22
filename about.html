@@ -150,6 +150,19 @@
     .ab-copy{ grid-column:1; }
     .ab-btn{ width:100%; justify-content:center; }
   }
+
+  /* slow writing effect: red phrases are typed letter by letter, other words fade in one by one */
+  .sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  .w{ display:inline-block; white-space:nowrap; }
+  .c{ position:relative; }
+  .ab-copy.writing .rw{ display:inline-block; opacity:0; transform:translateY(8px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .ab-copy.writing .rw.on{ opacity:1; transform:none; }
+  .ab-copy.writing .c{ opacity:0; }
+  .ab-copy.writing .c.on{ opacity:1; }
+  .ab-copy .c.cur::after{ content:""; position:absolute; left:100%; top:8%; bottom:6%; width:0.07em; min-width:2px; margin-left:0.03em; background:#fff; }
+  .ab-copy.done .c.cur::after{ animation:caretBlink 0.7s steps(1) 3; }
+  @keyframes caretBlink{ 50%{ opacity:0; } }
+  @media (prefers-reduced-motion: reduce){ .ab-copy.writing .rw{ transform:none; transition:none; } }
 </style>
 <script>document.documentElement.classList.add('js-rv');</script>
 </head>
@@ -179,18 +192,18 @@
     <div class="ab-copy">
       <div class="ab-kick rv">SOFT International Studios</div>
       <h1 class="ab-h1 rv">About SOFT<small>International Studios</small></h1>
-      <p class="ab-tag rv">Every frame tells a story. <br>Every story <span class="hl">deserves to be seen.</span></p>
+      <p class="ab-tag wr" data-w="140" data-c="75">Every frame tells a story. <br>Every story <span class="hl">deserves to be seen.</span></p>
       <div class="ab-block rv">
         <div class="ab-label">The Studio</div>
-        <p>SOFT International Studios is a Nigerian creative production company dedicated to <span class="hl">cinematic visual storytelling</span> and exceptional video production. Built around the power of visual expression, the studio transforms ideas into compelling visual experiences through creative direction, professional production and intentional cinematography.</p>
+        <p class="wr" data-w="55" data-c="65">SOFT International Studios is a Nigerian creative production company dedicated to <span class="hl">cinematic visual storytelling</span> and exceptional video production. Built around the power of visual expression, the studio transforms ideas into compelling visual experiences through creative direction, professional production and intentional cinematography.</p>
       </div>
       <div class="ab-block rv">
         <div class="ab-label">The Founder</div>
-        <p>At the heart of its creative vision is <span class="hl">Babalola &ldquo;Soft&rdquo; Oluwakeremomi</span>, a Nigerian cinematographer, Director of Photography and visual storyteller based in Abuja. Since beginning his journey in cinematography in 2021, he has built experience across music videos, fashion, commercials, documentaries, events and branded productions.</p>
-        <p>Driven by a keen eye for composition, lighting, movement and storytelling, Soft believes that great visuals should do more than capture attention; they should communicate, evoke emotion and <span class="hl">leave a lasting impression.</span></p>
+        <p class="wr" data-w="55" data-c="65">At the heart of its creative vision is <span class="hl">Babalola &ldquo;Soft&rdquo; Oluwakeremomi</span>, a Nigerian cinematographer, Director of Photography and visual storyteller based in Abuja. Since beginning his journey in cinematography in 2021, he has built experience across music videos, fashion, commercials, documentaries, events and branded productions.</p>
+        <p class="wr" data-w="55" data-c="65">Driven by a keen eye for composition, lighting, movement and storytelling, Soft believes that great visuals should do more than capture attention; they should communicate, evoke emotion and <span class="hl">leave a lasting impression.</span></p>
       </div>
-      <p class="rv">From commercials and music videos to documentaries, fashion films and creative campaigns, SOFT International Studios brings creative ideas to life with a commitment to <span class="hl">visual excellence and purposeful storytelling.</span></p>
-      <p class="ab-close rv">We don&rsquo;t just make films. We create <span class="hl">visual experiences that stay with you.</span></p>
+      <p class="wr" data-w="55" data-c="65">From commercials and music videos to documentaries, fashion films and creative campaigns, SOFT International Studios brings creative ideas to life with a commitment to <span class="hl">visual excellence and purposeful storytelling.</span></p>
+      <p class="ab-close wr" data-w="130" data-c="75">We don&rsquo;t just make films. We create <span class="hl">visual experiences that stay with you.</span></p>
       <div class="ab-social rv" aria-label="Social followers">
         <a href="https://www.tiktok.com/@deemrsoft" rel="noopener"><b>1.7K</b> TikTok</a>
         <a href="https://www.instagram.com/deemrsoft" rel="noopener"><b>1.3K</b> Instagram</a>
@@ -247,6 +260,77 @@ document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40)
   els.forEach(function (e) { io.observe(e); });
 })();
 
+</script>
+<script>
+/* about-write */
+(function () {
+  var sec = document.querySelector('.ab-copy');
+  if (!sec) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;            // the text is simply shown
+
+  var blocks = [].slice.call(sec.querySelectorAll('.wr'));
+  var items = [], t = 700, wordMs = 60, charMs = 70;                    // starts just after the heading begins to rise
+
+  function walk(node, inHl) {
+    [].slice.call(node.childNodes).forEach(function (n) {
+      if (n.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        n.nodeValue.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); if (inHl) t += charMs; return; }
+          var w = document.createElement('span');
+          if (inHl) {                                                     // red phrases: typed letter by letter
+            w.className = 'w';
+            for (var i = 0; i < part.length; i++) {
+              var c = document.createElement('span'); c.className = 'c'; c.textContent = part.charAt(i);
+              w.appendChild(c); items.push({ el: c, t: t, typed: true }); t += charMs;
+            }
+          } else {                                                        // everything else: word by word
+            w.className = 'rw'; w.textContent = part; items.push({ el: w, t: t, typed: false }); t += wordMs;
+          }
+          frag.appendChild(w);
+        });
+        node.replaceChild(frag, n);
+      } else if (n.nodeType === 1) { walk(n, inHl || n.classList.contains('hl')); }
+    });
+  }
+  blocks.forEach(function (el) {
+    wordMs = parseFloat(el.getAttribute('data-w')) || 60; charMs = parseFloat(el.getAttribute('data-c')) || 70;
+    var html = el.innerHTML;
+    // screen readers get the real text; sighted visitors get the animated copy
+    el.innerHTML = '<span class="sr">' + html + '</span><span class="vis" aria-hidden="true">' + html + '</span>';
+    walk(el.querySelector('.vis'), false);
+    t += 180;                                                             // a small stagger between blocks
+  });
+  sec.classList.add('writing');
+
+  var idx = 0, t0 = 0, prev = null, started = false;
+  function show(i) {
+    var it = items[i]; it.el.classList.add('on');
+    if (prev) { prev.classList.remove('cur'); prev = null; }
+    if (it.typed) { it.el.classList.add('cur'); prev = it.el; }
+  }
+  function finish(skipped) {
+    for (var i = 0; i < items.length; i++) items[i].el.classList.add('on');
+    idx = items.length; sec.classList.add('done');
+    if (skipped) { if (prev) prev.classList.remove('cur'); prev = null; return; }
+    setTimeout(function () { if (prev) prev.classList.remove('cur'); }, 2300);
+  }
+  function tick(now) {
+    var elapsed = now - t0;
+    while (idx < items.length && items[idx].t <= elapsed) { show(idx); idx++; }
+    if (idx < items.length) requestAnimationFrame(tick); else finish(false);
+  }
+  function start() { if (started) return; started = true; t0 = performance.now(); requestAnimationFrame(tick); }
+  new IntersectionObserver(function (entries, obs) {
+    if (entries[0].isIntersecting) { start(); obs.disconnect(); }
+  }, { rootMargin: '0px 0px -25% 0px', threshold: 0.2 }).observe(sec.querySelector('.ab-h1'));
+
+  sec.addEventListener('click', function () { if (started && idx < items.length) finish(true); });   // tap to skip
+  window.__abDone = function () { return started && idx >= items.length; };
+  window.__abTotal = function () { return t; };
+})();
 </script>
 </body>
 </html>
