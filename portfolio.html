@@ -210,7 +210,7 @@
   .pf-back{ color:#2a2a28; font-size:14px; letter-spacing:0.04em; transition:color 0.25s ease; }
   .pf-back:hover, .pf-back:focus-visible{ color:var(--red); }
   @media(max-width:1000px){ .pf-grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
-  @media(max-width:640px){ .pf-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; } .pf-play{ width:34px; height:34px; right:8px; bottom:8px; } .pf-cover > img{ object-position:50% 50%; } .pf-cover-inner{ padding-top:32svh; } .pf-title{ font-size:15.5vw; } .pf-btn{ width:100%; justify-content:center; } }
+  @media(max-width:640px){ .pf-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; } .pf-play{ width:34px; height:34px; right:8px; bottom:8px; } .pf-cover > img{ object-position:50% 50%; } .pf-cover-inner{ padding-top:32svh; } .pf-title{ font-size:15.5vw; } .pf-end .pf-btn{ width:100%; justify-content:center; } }
   @media (hover:none){ .pf-card:hover .pf-frame{ transform:none; } }
 
 
@@ -235,9 +235,16 @@
   .pf-text .desc{ margin-top:clamp(14px,1.6vw,22px); max-width:46ch; font-size:clamp(15px,1.25vw,18px); line-height:1.65; color:#2f2f2c; }
   .pf-text .pf-btn{ margin-top:clamp(20px,2.4vw,32px); border:0; cursor:pointer; font-family:inherit; }
   @media(max-width:860px){
-    .pf-row{ grid-template-columns:1fr; gap:22px; }
-    .pf-row--flip .pf-media{ order:0; }
-    .pf-text .pf-btn{ width:100%; justify-content:center; }
+    .pf-row{ grid-template-columns:minmax(0,42%) minmax(0,1fr); gap:clamp(14px,4vw,28px); align-items:center; }
+    .pf-row--flip{ grid-template-columns:minmax(0,1fr) minmax(0,42%); }
+    .pf-row--flip .pf-media{ order:2; }
+    .pf-text h2{ font-size:clamp(22px,6.4vw,38px); }
+    .pf-text .cat{ font-size:10px; margin-bottom:8px; }
+    .pf-text .meta{ font-size:11px; margin-top:8px; }
+    .pf-text .desc{ font-size:13px; line-height:1.55; margin-top:10px; }
+    .pf-text .pf-btn{ margin-top:14px; padding:10px 13px; font-size:10px; letter-spacing:0.08em; gap:8px; width:auto; white-space:nowrap; }
+    .pf-row--reel .pf-frame, .pf-frame--wide{ width:100%; }
+    .pf-play{ width:30px; height:30px; right:6px; bottom:6px; font-size:10px; }
   }
 
   /* SOFT Gallery */
