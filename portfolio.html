@@ -213,6 +213,30 @@
   @media(max-width:640px){ .pf-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; } .pf-play{ width:34px; height:34px; right:8px; bottom:8px; } .pf-cover > img{ object-position:50% 50%; } .pf-cover-inner{ padding-top:32svh; } .pf-title{ font-size:15.5vw; } .pf-btn{ width:100%; justify-content:center; } }
   @media (hover:none){ .pf-card:hover .pf-frame{ transform:none; } }
 
+
+  /* ---- ZIGZAG FILM ROWS ---- */
+  .pf-list-sec{ padding-top:clamp(48px,6vw,80px); padding-bottom:0; }
+  .pf-list{ display:flex; flex-direction:column; gap:clamp(56px,8vw,120px); }
+  .pf-row{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(28px,6vw,96px); align-items:center; }
+  .pf-row--flip .pf-media{ order:2; }
+  .pf-media{ display:flex; justify-content:center; min-width:0; }
+  .pf-media .feature{ width:100%; }
+  .pf-row--reel .pf-frame{ width:min(100%,340px); }
+  button.pf-frame{ padding:0; cursor:pointer; font:inherit; color:inherit; }
+  button.pf-frame:focus-visible{ outline:2px solid var(--red); outline-offset:4px; }
+  .pf-row--reel .pf-frame:hover{ transform:translateY(-6px); border-color:var(--red); box-shadow:0 24px 56px rgba(0,0,0,0.3); }
+  .pf-row--reel .pf-frame:hover .pf-play{ transform:scale(1.12); }
+  .pf-text{ min-width:0; }
+  .pf-text .cat{ display:block; color:var(--red); font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:clamp(10px,1.2vw,16px); }
+  .pf-text h2{ font-size:clamp(34px,4.6vw,66px); font-weight:800; line-height:0.95; letter-spacing:-0.04em; text-transform:uppercase; color:#0a0a0a; }
+  .pf-text .meta{ margin-top:clamp(10px,1.2vw,16px); font-size:13px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#55554f; }
+  .pf-text .desc{ margin-top:clamp(14px,1.6vw,22px); max-width:46ch; font-size:clamp(15px,1.25vw,18px); line-height:1.65; color:#2f2f2c; }
+  .pf-text .pf-btn{ margin-top:clamp(20px,2.4vw,32px); border:0; cursor:pointer; font-family:inherit; }
+  @media(max-width:860px){
+    .pf-row{ grid-template-columns:1fr; gap:22px; }
+    .pf-row--flip .pf-media{ order:0; }
+    .pf-text .pf-btn{ width:100%; justify-content:center; }
+  }
 </style>
 <script>document.documentElement.classList.add('js-rv');</script>
 </head>
@@ -248,73 +272,104 @@
 </header>
 
 <main class="pf-sheet">
-<section class="pf-films" id="films">
+<section class="pf-list-sec" id="films">
   <div class="wrap">
-    <div class="pf-head rv"><h2>Featured film</h2><span>Commercial</span></div>
-    <div class="feature rv" id="commercial">
-      <div class="feature-stage">
-        <div class="feature-ambient" style="background-image:url('public/commercial-poster.jpg')"></div>
-        <video id="featureVideo" class="feature-video" muted loop playsinline preload="metadata" poster="public/commercial-poster.jpg" aria-label="Preview of Cornerstone, Kabusa Oriental Choir">
-          <source src="public/commercial-preview.mp4" type="video/mp4">
-        </video>
-        <button id="featurePlay" class="feature-play" type="button" aria-label="Play the full film with sound"><span>&#9654; Watch the full film</span></button>
-      </div>
-      <div class="feature-meta">
-        <div><span class="cat">Commercial</span><h3>Cornerstone &mdash; Kabusa Oriental Choir</h3></div>
-        <p>A SOFT International Studios production &middot; 1:35</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="pf-reels" id="reels">
-  <div class="wrap">
-    <div class="pf-head rv"><h2>The reels</h2><span>Tap a film to watch</span></div>
-    <div class="pf-grid" id="pfGrid">
-      <article class="pf-item rv">
-        <button class="pf-card" type="button" data-src="public/reels/music-video.mp4" data-cat="Music Video" data-title="On a Bando" aria-label="Play On a Bando, Music Video">
-          <span class="pf-frame">
+    <div class="pf-head rv"><h2>The films</h2><span>6 films</span></div>
+    <div class="pf-list" id="pfList">
+      <article class="pf-row rv">
+        <div class="pf-media">
+          <div class="feature" id="commercial">
+            <div class="feature-stage">
+              <div class="feature-ambient" style="background-image:url('public/commercial-poster.jpg')"></div>
+              <video id="featureVideo" class="feature-video" muted loop playsinline preload="metadata" poster="public/commercial-poster.jpg" aria-label="Preview of Cornerstone, Kabusa Oriental Choir">
+                <source src="public/commercial-preview.mp4" type="video/mp4">
+              </video>
+              <button id="featurePlay" class="feature-play" type="button" aria-label="Play the full film with sound"><span>&#9654; Watch the full film</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="pf-text">
+          <span class="cat">Commercial</span>
+          <h2>Cornerstone</h2>
+          <p class="meta">Kabusa Oriental Choir &middot; 1:35</p>
+          <p class="desc">A cinematic commercial for the Kabusa Oriental Choir, shot and directed by SOFT International Studios. Strong lighting and deliberate movement, so the music and the message land together.</p>
+          <button class="pf-btn" id="featurePlay2" type="button">Watch the film <span aria-hidden="true">&#9654;</span></button>
+        </div>
+      </article>
+      <article class="pf-row pf-row--reel pf-row--flip rv">
+        <div class="pf-media">
+          <button class="pf-open pf-frame" type="button" data-src="public/reels/music-video.mp4" data-cat="Music Video" data-title="On a Bando" aria-label="Play On a Bando, Music Video">
             <video muted loop playsinline preload="none" poster="public/reels/music-video.jpg" aria-hidden="true"><source src="public/reels/music-video-preview.mp4" type="video/mp4"></video>
             <span class="pf-play" aria-hidden="true">&#9654;</span>
-          </span>
-          <span class="pf-info"><span class="cat">Music Video</span><span class="title">On a Bando</span><span class="dur">1:00</span></span>
-        </button>
+          </button>
+        </div>
+        <div class="pf-text">
+          <span class="cat">Music Video</span>
+          <h2>On a Bando</h2>
+          <p class="meta">1:00</p>
+          <p class="desc">A music video cut for “On a Bando”. Close, quick and full of energy, shot and edited to move with the track.</p>
+          <button class="pf-btn pf-open" type="button" data-src="public/reels/music-video.mp4" data-cat="Music Video" data-title="On a Bando">Watch the film <span aria-hidden="true">&#9654;</span></button>
+        </div>
       </article>
-      <article class="pf-item rv">
-        <button class="pf-card" type="button" data-src="public/reels/drone.mp4" data-cat="Drone" data-title="Good Morning Abuja" aria-label="Play Good Morning Abuja, Drone">
-          <span class="pf-frame">
+      <article class="pf-row pf-row--reel rv">
+        <div class="pf-media">
+          <button class="pf-open pf-frame" type="button" data-src="public/reels/drone.mp4" data-cat="Drone" data-title="Good Morning Abuja" aria-label="Play Good Morning Abuja, Drone">
             <video muted loop playsinline preload="none" poster="public/reels/drone.jpg" aria-hidden="true"><source src="public/reels/drone-preview.mp4" type="video/mp4"></video>
             <span class="pf-play" aria-hidden="true">&#9654;</span>
-          </span>
-          <span class="pf-info"><span class="cat">Drone</span><span class="title">Good Morning Abuja</span><span class="dur">0:58</span></span>
-        </button>
+          </button>
+        </div>
+        <div class="pf-text">
+          <span class="cat">Drone</span>
+          <h2>Good Morning Abuja</h2>
+          <p class="meta">0:58</p>
+          <p class="desc">Abuja seen from above. Smooth aerial shots that open the day over the city.</p>
+          <button class="pf-btn pf-open" type="button" data-src="public/reels/drone.mp4" data-cat="Drone" data-title="Good Morning Abuja">Watch the film <span aria-hidden="true">&#9654;</span></button>
+        </div>
       </article>
-      <article class="pf-item rv">
-        <button class="pf-card" type="button" data-src="public/reels/behind-the-scenes.mp4" data-cat="Behind The Scenes" data-title="Kabusa Oriental Choir" aria-label="Play Kabusa Oriental Choir, Behind The Scenes">
-          <span class="pf-frame">
+      <article class="pf-row pf-row--reel pf-row--flip rv">
+        <div class="pf-media">
+          <button class="pf-open pf-frame" type="button" data-src="public/reels/behind-the-scenes.mp4" data-cat="Behind The Scenes" data-title="Kabusa Oriental Choir" aria-label="Play Kabusa Oriental Choir, Behind The Scenes">
             <video muted loop playsinline preload="none" poster="public/reels/behind-the-scenes.jpg" aria-hidden="true"><source src="public/reels/behind-the-scenes-preview.mp4" type="video/mp4"></video>
             <span class="pf-play" aria-hidden="true">&#9654;</span>
-          </span>
-          <span class="pf-info"><span class="cat">Behind The Scenes</span><span class="title">Kabusa Oriental Choir</span><span class="dur">0:40</span></span>
-        </button>
+          </button>
+        </div>
+        <div class="pf-text">
+          <span class="cat">Behind The Scenes</span>
+          <h2>Kabusa Oriental Choir</h2>
+          <p class="meta">0:40</p>
+          <p class="desc">A look behind the camera on the Kabusa Oriental Choir shoot: the crew, the set and the work that goes into the final film.</p>
+          <button class="pf-btn pf-open" type="button" data-src="public/reels/behind-the-scenes.mp4" data-cat="Behind The Scenes" data-title="Kabusa Oriental Choir">Watch the film <span aria-hidden="true">&#9654;</span></button>
+        </div>
       </article>
-      <article class="pf-item rv">
-        <button class="pf-card" type="button" data-src="public/reels/short-film.mp4" data-cat="Short Film" data-title="The Inside Scoop" aria-label="Play The Inside Scoop, Short Film">
-          <span class="pf-frame">
+      <article class="pf-row pf-row--reel rv">
+        <div class="pf-media">
+          <button class="pf-open pf-frame" type="button" data-src="public/reels/short-film.mp4" data-cat="Short Film" data-title="The Inside Scoop" aria-label="Play The Inside Scoop, Short Film">
             <video muted loop playsinline preload="none" poster="public/reels/short-film.jpg" aria-hidden="true"><source src="public/reels/short-film-preview.mp4" type="video/mp4"></video>
             <span class="pf-play" aria-hidden="true">&#9654;</span>
-          </span>
-          <span class="pf-info"><span class="cat">Short Film</span><span class="title">The Inside Scoop</span><span class="dur">1:35</span></span>
-        </button>
+          </button>
+        </div>
+        <div class="pf-text">
+          <span class="cat">Short Film</span>
+          <h2>The Inside Scoop</h2>
+          <p class="meta">1:35</p>
+          <p class="desc">A short film built around one person speaking straight to camera, with warm colour and a clean, simple frame.</p>
+          <button class="pf-btn pf-open" type="button" data-src="public/reels/short-film.mp4" data-cat="Short Film" data-title="The Inside Scoop">Watch the film <span aria-hidden="true">&#9654;</span></button>
+        </div>
       </article>
-      <article class="pf-item rv">
-        <button class="pf-card" type="button" data-src="public/reels/event.mp4" data-cat="Event" data-title="May 2025 Highlights" aria-label="Play May 2025 Highlights, Event">
-          <span class="pf-frame">
+      <article class="pf-row pf-row--reel pf-row--flip rv">
+        <div class="pf-media">
+          <button class="pf-open pf-frame" type="button" data-src="public/reels/event.mp4" data-cat="Event" data-title="May 2025 Highlights" aria-label="Play May 2025 Highlights, Event">
             <video muted loop playsinline preload="none" poster="public/reels/event.jpg" aria-hidden="true"><source src="public/reels/event-preview.mp4" type="video/mp4"></video>
             <span class="pf-play" aria-hidden="true">&#9654;</span>
-          </span>
-          <span class="pf-info"><span class="cat">Event</span><span class="title">May 2025 Highlights</span><span class="dur">0:30</span></span>
-        </button>
+          </button>
+        </div>
+        <div class="pf-text">
+          <span class="cat">Event</span>
+          <h2>May 2025 Highlights</h2>
+          <p class="meta">0:30</p>
+          <p class="desc">Highlights from a May 2025 event. Fast cuts and low light, edited to keep the energy of the night.</p>
+          <button class="pf-btn pf-open" type="button" data-src="public/reels/event.mp4" data-cat="Event" data-title="May 2025 Highlights">Watch the film <span aria-hidden="true">&#9654;</span></button>
+        </div>
       </article>
     </div>
   </div>
@@ -401,27 +456,25 @@ document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40)
   });
 })();
 
-/* reels: small silent previews (hover on desktop, in view on touch screens) and the full-screen player */
+/* films: small silent previews (hover on desktop, in view on touch screens) and the full-screen player */
 (function () {
-  var grid = document.getElementById('pfGrid'), lb = document.getElementById('lightbox'), lv = document.getElementById('lightboxVideo'), closeBtn = document.getElementById('lightboxClose');
+  var list = document.getElementById('pfList'), lb = document.getElementById('lightbox'), lv = document.getElementById('lightboxVideo'), closeBtn = document.getElementById('lightboxClose');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var touch = window.matchMedia('(hover: none)').matches;
-  var cards = [].slice.call(grid.querySelectorAll('.pf-card'));
-  function vid(c) { return c.querySelector('video'); }
-  function play(c) { var v = vid(c); v.preload = 'auto'; v.play().catch(function () {}); }
-  function stop(c) { vid(c).pause(); }
+  var frames = [].slice.call(list.querySelectorAll('button.pf-frame'));
+  function play(f) { var v = f.querySelector('video'); v.preload = 'auto'; v.play().catch(function () {}); }
+  function stop(f) { f.querySelector('video').pause(); }
   if (!reduce) {
-    cards.forEach(function (c) {
-      if (!touch) {
-        c.addEventListener('pointerenter', function () { play(c); });
-        c.addEventListener('pointerleave', function () { stop(c); });
-        c.addEventListener('focus', function () { play(c); });
-        c.addEventListener('blur', function () { stop(c); });
-      }
-    });
-    if (touch && 'IntersectionObserver' in window) {
+    if (!touch) {
+      frames.forEach(function (f) {
+        f.addEventListener('pointerenter', function () { play(f); });
+        f.addEventListener('pointerleave', function () { stop(f); });
+        f.addEventListener('focus', function () { play(f); });
+        f.addEventListener('blur', function () { stop(f); });
+      });
+    } else if ('IntersectionObserver' in window) {
       var touchIO = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) play(e.target); else stop(e.target); }); }, { threshold: 0.6 });
-      cards.forEach(function (c) { touchIO.observe(c); });
+      frames.forEach(function (f) { touchIO.observe(f); });
     }
   }
   var lastFocus = null;
@@ -440,7 +493,9 @@ document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40)
     document.documentElement.style.overflow = '';
     if (lastFocus && lastFocus.focus) lastFocus.focus();
   }
-  grid.addEventListener('click', function (e) { var c = e.target.closest('.pf-card'); if (c) openReel(c); });
+  list.addEventListener('click', function (e) { var c = e.target.closest('.pf-open'); if (c) openReel(c); });
+  var p2 = document.getElementById('featurePlay2'), p1 = document.getElementById('featurePlay');
+  if (p2 && p1) p2.addEventListener('click', function () { document.getElementById('commercial').scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' }); p1.click(); });
   closeBtn.addEventListener('click', closeReel);
   lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lightbox-inner')) closeReel(); });
   document.addEventListener('keydown', function (e) {
