@@ -163,6 +163,33 @@
   .ab-copy.done .c.cur::after{ animation:caretBlink 0.7s steps(1) 3; }
   @keyframes caretBlink{ 50%{ opacity:0; } }
   @media (prefers-reduced-motion: reduce){ .ab-copy.writing .rw{ transform:none; transition:none; } }
+  /* ---- MEET THE TEAM ---- */
+  .tm-sec{ background:rgba(8,8,8,0.82); padding:clamp(48px,6vw,88px) 0 clamp(56px,7vw,96px); }
+  .tm-head{ display:flex; justify-content:center; margin-bottom:clamp(36px,5vw,64px); }
+  .tm-head img{ width:min(100%,520px); height:auto; display:block; border-radius:2px; box-shadow:0 20px 60px rgba(0,0,0,0.5); }
+  .tm-row{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(24px,5vw,80px); align-items:center; padding:clamp(18px,2.4vw,32px) 0; }
+  .tm-row--flip .tm-media{ order:2; }
+  .tm-media{ display:flex; justify-content:flex-end; }
+  .tm-row--flip .tm-media{ justify-content:flex-start; }
+  .tm-open{ display:block; width:min(100%,300px); padding:0; border:0; background:#111; cursor:zoom-in; overflow:hidden; }
+  .tm-open img{ display:block; width:100%; height:auto; transition:transform .5s ease; }
+  .tm-open:hover img{ transform:scale(1.04); }
+  .tm-open:focus-visible{ outline:2px solid #fff; outline-offset:3px; }
+  .tm-role{ display:flex; align-items:center; gap:12px; font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#ff4a50; margin-bottom:12px; }
+  .tm-role::before{ content:""; width:24px; height:2px; background:var(--red); flex:none; }
+  .tm-text h2{ font-size:clamp(34px,5vw,72px); font-weight:800; letter-spacing:-0.04em; line-height:0.95; text-transform:uppercase; color:#fff; }
+  .tmv{ position:fixed; inset:0; z-index:200; background:rgba(0,0,0,0.94); display:flex; align-items:center; justify-content:center; }
+  .tmv[hidden]{ display:none; }
+  .tmv img{ max-width:94vw; max-height:88vh; object-fit:contain; }
+  .tmv-x{ position:absolute; top:6px; right:6px; background:none; border:0; color:#fff; font:inherit; font-size:15px; letter-spacing:0.08em; text-transform:uppercase; padding:14px; cursor:pointer; }
+  @media(max-width:860px){
+    .tm-row{ grid-template-columns:minmax(0,42%) minmax(0,1fr); gap:clamp(14px,4vw,28px); }
+    .tm-row--flip{ grid-template-columns:minmax(0,1fr) minmax(0,42%); }
+    .tm-media, .tm-row--flip .tm-media{ justify-content:stretch; }
+    .tm-open{ width:100%; }
+    .tm-role{ font-size:10px; gap:8px; margin-bottom:8px; } .tm-role::before{ width:14px; }
+    .tm-text h2{ font-size:clamp(26px,8vw,44px); }
+  }
 </style>
 <script>document.documentElement.classList.add('js-rv');</script>
 </head>
@@ -214,7 +241,68 @@
       </div>
     </div>
   </div>
+
+<section class="tm-sec" id="team">
+  <div class="wrap">
+    <header class="tm-head rv"><img src="public/team/meet-the-team.jpg" width="720" height="814" alt="Meet the team, SOFT International Studios" decoding="async"></header>
+    <div class="tm-list">
+      <article class="tm-row rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/soft.jpg" data-alt="Soft, Director" aria-label="View Soft large"><img src="public/team/soft.jpg" width="716" height="723" alt="Soft, Director" loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">Director</span><h2>Soft</h2></div>
+      </article>
+      <article class="tm-row tm-row--flip rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/wise.jpg" data-alt="Wise, Ass. Cam Op &amp; Gaffer" aria-label="View Wise large"><img src="public/team/wise.jpg" width="714" height="806" alt="Wise, Ass. Cam Op &amp; Gaffer" loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">Ass. Cam Op &amp; Gaffer</span><h2>Wise</h2></div>
+      </article>
+      <article class="tm-row rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/samuel.jpg" data-alt="Samuel, BTS Videographer" aria-label="View Samuel large"><img src="public/team/samuel.jpg" width="719" height="815" alt="Samuel, BTS Videographer" loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">BTS Videographer</span><h2>Samuel</h2></div>
+      </article>
+      <article class="tm-row tm-row--flip rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/trulyf.jpg" data-alt="Trulyf, Ass. &amp; Runner" aria-label="View Trulyf large"><img src="public/team/trulyf.jpg" width="720" height="802" alt="Trulyf, Ass. &amp; Runner" loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">Ass. &amp; Runner</span><h2>Trulyf</h2></div>
+      </article>
+      <article class="tm-row rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/lucia.jpg" data-alt="Lucia, Set Ass. + Runner" aria-label="View Lucia large"><img src="public/team/lucia.jpg" width="709" height="812" alt="Lucia, Set Ass. + Runner" loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">Set Ass. + Runner</span><h2>Lucia</h2></div>
+      </article>
+      <article class="tm-row tm-row--flip rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/tolulope.jpg" data-alt="Tolulope, Location &amp; Set Manager" aria-label="View Tolulope large"><img src="public/team/tolulope.jpg" width="720" height="804" alt="Tolulope, Location &amp; Set Manager" loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">Location &amp; Set Manager</span><h2>Tolulope</h2></div>
+      </article>
+      <article class="tm-row rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/daniel.jpg" data-alt="Daniel, Set &amp; Gaffer Ass." aria-label="View Daniel large"><img src="public/team/daniel.jpg" width="720" height="800" alt="Daniel, Set &amp; Gaffer Ass." loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">Set &amp; Gaffer Ass.</span><h2>Daniel</h2></div>
+      </article>
+      <article class="tm-row tm-row--flip rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/martins.jpg" data-alt="Martins (EM Studios), BTS Photographer" aria-label="View Martins (EM Studios) large"><img src="public/team/martins.jpg" width="720" height="798" alt="Martins (EM Studios), BTS Photographer" loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">BTS Photographer</span><h2>Martins (EM Studios)</h2></div>
+      </article>
+      <article class="tm-row rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/austin.jpg" data-alt="Austin, Creative &amp; Choir Director" aria-label="View Austin large"><img src="public/team/austin.jpg" width="720" height="785" alt="Austin, Creative &amp; Choir Director" loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">Creative &amp; Choir Director</span><h2>Austin</h2></div>
+      </article>
+      <article class="tm-row tm-row--flip rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/seth.jpg" data-alt="Seth, Logistics Manager &amp; Content Creator" aria-label="View Seth large"><img src="public/team/seth.jpg" width="718" height="810" alt="Seth, Logistics Manager &amp; Content Creator" loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">Logistics Manager &amp; Content Creator</span><h2>Seth</h2></div>
+      </article>
+      <article class="tm-row rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/jeddy.jpg" data-alt="Jeddy, Set &amp; Gear Ass." aria-label="View Jeddy large"><img src="public/team/jeddy.jpg" width="720" height="787" alt="Jeddy, Set &amp; Gear Ass." loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">Set &amp; Gear Ass.</span><h2>Jeddy</h2></div>
+      </article>
+      <article class="tm-row tm-row--flip rv">
+        <div class="tm-media"><button class="tm-open" type="button" data-src="public/team/mekai.jpg" data-alt="Mekai, Gaffer II" aria-label="View Mekai large"><img src="public/team/mekai.jpg" width="719" height="796" alt="Mekai, Gaffer II" loading="lazy" decoding="async"></button></div>
+        <div class="tm-text"><span class="tm-role">Gaffer II</span><h2>Mekai</h2></div>
+      </article>
+    </div>
+  </div>
+</section>
 </main>
+
+<div id="tmv" class="tmv" role="dialog" aria-modal="true" aria-label="Team photo" hidden>
+  <button class="tmv-x" type="button" aria-label="Close">Close &times;</button>
+  <img id="tmvImg" alt="">
+</div>
 
 <footer id="contact">
   <div class="wrap">
@@ -330,6 +418,15 @@ document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40)
   sec.addEventListener('click', function () { if (started && idx < items.length) finish(true); });   // tap to skip
   window.__abDone = function () { return started && idx >= items.length; };
   window.__abTotal = function () { return t; };
+})();
+</script>
+<script>
+(function(){
+  var v=document.getElementById('tmv'),img=document.getElementById('tmvImg'),x=v.querySelector('.tmv-x'),last=null;
+  function close(){v.hidden=true;img.removeAttribute('src');document.body.style.overflow='';if(last)last.focus();}
+  [].forEach.call(document.querySelectorAll('.tm-open'),function(b){b.addEventListener('click',function(){last=b;img.src=b.dataset.src;img.alt=b.dataset.alt;v.hidden=false;document.body.style.overflow='hidden';x.focus();});});
+  x.onclick=close;v.addEventListener('click',function(e){if(e.target===v)close();});
+  document.addEventListener('keydown',function(e){if(!v.hidden&&e.key==='Escape')close();});
 })();
 </script>
 </body>
