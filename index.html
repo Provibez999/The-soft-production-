@@ -259,6 +259,7 @@
             mask-image:linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
   }
   .strip-viewport.dragging{ cursor:grabbing; }
+  .strip-viewport .reel{ -webkit-touch-callout:none; -webkit-tap-highlight-color:transparent; }
   .strip-track{ display:flex; gap:var(--gap); width:max-content; will-change:transform; }
   .strip-viewport.scroll{ overflow-x:auto; overflow-y:hidden; padding:0 0 12px; margin:0; cursor:auto; user-select:auto; -webkit-user-select:auto;
     scroll-snap-type:x proximity; -webkit-mask-image:none; mask-image:none; scrollbar-width:thin; scrollbar-color:#333 transparent; }
@@ -518,12 +519,10 @@
       <div class="strip-bar">
         <span class="strip-label">More work</span>
         <div class="strip-ctrls">
-          <button class="sbtn" id="stripPrev" type="button" aria-label="Previous videos">&larr; Prev</button>
-          <button class="sbtn" id="stripNext" type="button" aria-label="Next videos">Next &rarr;</button>
           <button class="sbtn" id="stripPause" type="button" aria-pressed="false" aria-label="Pause the moving gallery">Pause</button>
         </div>
       </div>
-      <div class="strip-viewport" id="stripViewport" role="group" aria-label="Portfolio videos. Drag, scroll sideways, or use the buttons to browse.">
+      <div class="strip-viewport" id="stripViewport" role="group" aria-label="Portfolio videos, moving by themselves. Swipe or drag to move them, press and hold a video to play it, tap to open it.">
         <div class="strip-track" id="stripTrack">
       <article class="reel" data-src="public/reels/music-video.mp4" data-cat="Music Video" data-title="On a Bando">
         <button class="reel-open" type="button" aria-label="Play On a Bando, Music Video">
@@ -795,15 +794,13 @@ window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '', email: '', phone: '
 
   var originals = [].slice.call(track.querySelectorAll('.reel'));
   var SPEED = 24;                                            // px per second, right to left (slow and calm)
-  var marqueeQuery = window.matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
+  var marqueeQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');          // moves by itself on every screen; swiping works everywhere
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var st = { marquee: false, offset: 0, vel: 0, inertia: 0, paused: false, hover: false, focus: false, drag: false, tween: false, inView: true, unit: 0, setW: 0, raf: 0, last: 0 };
   var pauseBtn = document.getElementById('stripPause');
 
   /* ---- small silent previews: only the cards on screen play, and nothing downloads until a card is visible ---- */
-  var vio = ('IntersectionObserver' in window && !reduce) ? new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { if (e.isIntersecting) e.target.play().catch(function () {}); else e.target.pause(); });
-  }, { threshold: 0.4 }) : null;
+  var vio = null;                                            // cards stay still (poster) until you hold or hover one
   function watchVideos() { if (vio) [].forEach.call(track.querySelectorAll('.reel-video'), function (v) { vio.observe(v); }); }
 
   /* ---- layout helpers ---- */
@@ -860,8 +857,6 @@ window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '', email: '', phone: '
   }
 
   /* ---- controls ---- */
-  document.getElementById('stripPrev').addEventListener('click', function () { if (st.marquee) tweenBy(st.unit); else vp.scrollBy({ left: -st.unit, behavior: reduce ? 'auto' : 'smooth' }); });
-  document.getElementById('stripNext').addEventListener('click', function () { if (st.marquee) tweenBy(-st.unit); else vp.scrollBy({ left: st.unit, behavior: reduce ? 'auto' : 'smooth' }); });
   pauseBtn.addEventListener('click', function () {
     st.paused = !st.paused;
     pauseBtn.textContent = st.paused ? 'Play' : 'Pause'; pauseBtn.setAttribute('aria-pressed', st.paused ? 'true' : 'false');
@@ -870,13 +865,19 @@ window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '', email: '', phone: '
 
   /* ---- hover pauses; keyboard focus pauses and brings the card into view ---- */
   var hoverTimer;
+  var canHover = window.matchMedia('(hover: hover) and (pointer: fine)');
+  var playing = null, holdTimer = 0, held = false;
+  function playCard(card) { stopCard(); var v = card.querySelector('.reel-video'); if (!v) return; playing = card; v.play().catch(function () {}); }
+  function stopCard() { if (playing) { var v = playing.querySelector('.reel-video'); if (v) v.pause(); playing = null; } }
+  vp.addEventListener('contextmenu', function (e) { e.preventDefault(); });      // a long press must not open the phone's save-video menu
   vp.addEventListener('mouseover', function (e) {
-    if (!st.marquee) return;
+    if (!st.marquee || !canHover.matches) return;
     clearTimeout(hoverTimer);
-    if (e.target.closest('.reel')) st.hover = true;
-    else hoverTimer = setTimeout(function () { st.hover = false; }, 260);      // crossing the gap between cards does not make it stutter
+    var card = e.target.closest('.reel');
+    if (card) { st.hover = true; if (card !== playing) playCard(card); }
+    else hoverTimer = setTimeout(function () { st.hover = false; stopCard(); }, 260);      // crossing the gap between cards does not make it stutter
   });
-  vp.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); st.hover = false; });
+  vp.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); st.hover = false; stopCard(); });
   vp.addEventListener('focusin', function (e) {
     st.focus = true;
     if (!st.marquee) return;
@@ -896,11 +897,14 @@ window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '', email: '', phone: '
   var sx = 0, so = 0, lx = 0, lt = 0, vx = 0, moved = 0, captured = false;
   vp.addEventListener('pointerdown', function (e) {
     if (!st.marquee || e.button !== 0) return;
-    st.drag = true; st.inertia = 0; moved = 0; captured = false; sx = lx = e.clientX; so = st.offset; lt = e.timeStamp; vx = 0;
+    st.drag = true; st.inertia = 0; moved = 0; captured = false; sx = lx = e.clientX; so = st.offset; lt = e.timeStamp; vx = 0; held = false;
+    var card = e.target.closest('.reel'); clearTimeout(holdTimer);
+    if (card) holdTimer = setTimeout(function () { if (st.drag && moved < 6) { held = true; playCard(card); } }, 320);     // press and hold: that video plays
   });
   vp.addEventListener('pointermove', function (e) {
     if (!st.drag) return;
     var dx = e.clientX - sx; moved = Math.max(moved, Math.abs(dx));
+    if (moved > 6) clearTimeout(holdTimer);
     if (!captured && moved > 6) { captured = true; try { vp.setPointerCapture(e.pointerId); } catch (x) {} vp.classList.add('dragging'); }
     if (!captured) return;
     st.offset = norm(so + dx); apply();
@@ -908,7 +912,8 @@ window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '', email: '', phone: '
   });
   function endDrag() {
     if (!st.drag) return;
-    st.drag = false; vp.classList.remove('dragging');
+    st.drag = false; vp.classList.remove('dragging'); clearTimeout(holdTimer);
+    if (held && !canHover.matches) stopCard();
     st.inertia = captured ? Math.max(-1000, Math.min(1000, vx)) : 0;
   }
   vp.addEventListener('pointerup', endDrag); vp.addEventListener('pointercancel', endDrag);
@@ -943,6 +948,7 @@ window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '', email: '', phone: '
   }
   track.addEventListener('click', function (e) {
     if (moved > 6) { moved = 0; return; }                       // that was a drag, not a click
+    if (held) { held = false; return; }                         // that was a press and hold, not a tap
     var btn = e.target.closest('.reel-open'); if (btn) openReel(btn.closest('.reel'));
   });
   closeBtn.addEventListener('click', closeReel);
