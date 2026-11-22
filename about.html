@@ -190,6 +190,14 @@
     .tm-role{ font-size:10px; gap:8px; margin-bottom:8px; } .tm-role::before{ width:14px; }
     .tm-text h2{ font-size:clamp(26px,8vw,44px); }
   }
+  /* names: letters pop in, then drift like a wave; hover or tap makes them shake */
+  .js-rv .tm-text .l{ display:inline-block; opacity:0; }
+  .js-rv .tm-row.in .tm-text .l{ opacity:1; animation:lpop 0.8s cubic-bezier(.2,1.5,.4,1) backwards, lidle 4.5s ease-in-out infinite; animation-delay:calc(var(--i) * 75ms + 250ms), calc(var(--i) * 140ms + 1.6s); }
+  .js-rv .tm-row.in .tm-text h2:hover .l{ animation:lshake 0.45s ease-in-out infinite; animation-delay:calc(var(--i) * 25ms); }
+  @keyframes lpop{ 0%{ opacity:0; transform:translateY(60%) rotate(-14deg) scale(.6); } 60%{ transform:translateY(-8%) rotate(5deg) scale(1.08); } 100%{ opacity:1; transform:none; } }
+  @keyframes lidle{ 0%,100%{ transform:translateY(0) rotate(0); } 50%{ transform:translateY(-5%) rotate(-1.6deg); } }
+  @keyframes lshake{ 0%,100%{ transform:translate(0,0) rotate(0); } 20%{ transform:translate(-3%,-4%) rotate(-5deg); } 40%{ transform:translate(3%,3%) rotate(5deg); } 60%{ transform:translate(-2%,2%) rotate(-3deg); } 80%{ transform:translate(2%,-3%) rotate(3deg); } }
+  @media (prefers-reduced-motion: reduce){ .js-rv .tm-text .l{ opacity:1; } .js-rv .tm-row.in .tm-text .l, .js-rv .tm-row.in .tm-text h2:hover .l{ animation:none; } }
 </style>
 <script>document.documentElement.classList.add('js-rv');</script>
 </head>
@@ -236,7 +244,6 @@
         <a href="https://www.instagram.com/deemrsoft" rel="noopener"><b>1.3K</b> Instagram</a>
       </div>
       <div class="ab-btns rv">
-        <a class="ab-btn" href="index.html#book">Book your shoot <span aria-hidden="true">&#8599;</span></a>
         <a class="ab-back" href="portfolio.html">See our portfolio &rarr;</a>
       </div>
     </div>
@@ -427,6 +434,14 @@ document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40)
   [].forEach.call(document.querySelectorAll('.tm-open'),function(b){b.addEventListener('click',function(){last=b;img.src=b.dataset.src;img.alt=b.dataset.alt;v.hidden=false;document.body.style.overflow='hidden';x.focus();});});
   x.onclick=close;v.addEventListener('click',function(e){if(e.target===v)close();});
   document.addEventListener('keydown',function(e){if(!v.hidden&&e.key==='Escape')close();});
+})();
+</script>
+<script>
+(function(){
+  [].forEach.call(document.querySelectorAll('.tm-text h2'),function(h){
+    var t=h.textContent; h.setAttribute('aria-label',t); h.textContent='';
+    [].forEach.call(t,function(ch,i){var s=document.createElement('span');s.className='l';s.setAttribute('aria-hidden','true');s.style.setProperty('--i',i);s.textContent=ch===' '?'\u00a0':ch;h.appendChild(s);});
+  });
 })();
 </script>
 </body>
