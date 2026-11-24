@@ -7,7 +7,7 @@
 <meta name="description" content="Events and film classes hosted by SOFT International Studios, Abuja.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700;800&family=Bodoni+Moda:ital,opsz,wght@0,6..96,500..900;1,6..96,500..900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --black: #000000;
@@ -181,6 +181,28 @@
   .ev-ftext h3{ font-size:clamp(34px,4.6vw,66px); font-weight:800; line-height:0.95; letter-spacing:-0.04em; text-transform:uppercase; color:#fff; text-shadow:0 2px 24px rgba(0,0,0,0.5); }
   .ev-ftext .desc{ margin-top:clamp(14px,1.6vw,22px); font-size:clamp(15px,1.25vw,18px); line-height:1.7; color:#d9d6ce; text-shadow:0 1px 14px rgba(0,0,0,0.7); }
   @media(max-width:860px){ .ev-fbtn{ aspect-ratio:1/1; } .ev-fbtn .ev-play{ width:34px; height:34px; right:8px; bottom:8px; font-size:11px; } .ev-ftext .cat{ font-size:10px; margin-bottom:8px; } .ev-ftext h3{ font-size:clamp(28px,8vw,44px); } .ev-ftext .desc{ font-size:14px; line-height:1.6; } }
+  /* fonts taken from the NOCTICS poster: a tall high-contrast serif for titles, Poppins for the rest */
+  main{ font-family:'Poppins',sans-serif; }
+  .ev-h1, .ev-sec-head h2, .ev-text h3, .ev-ftext h3, .ev-intro h3, .ev-next strong, .ev-lb-cap{ font-family:'Bodoni Moda','Didot',serif; }
+  .ev-h1, .ev-sec-head h2, .ev-text h3, .ev-ftext h3, .ev-intro h3{ font-weight:800; letter-spacing:-0.015em; line-height:0.98; }
+  .ev-h1{ font-size:clamp(46px,8.4vw,124px); }
+  .ev-next strong{ font-style:italic; font-weight:600; letter-spacing:0; }
+  .ev-kick, .ev-sec-head span, .ev-text .cat, .ev-ftext .cat, .ev-rec{ font-weight:600; }
+  /* the NOCTICS block */
+  .ev-intro{ display:grid; gap:clamp(14px,1.8vw,24px); padding:clamp(24px,3vw,44px) 0 clamp(8px,1vw,16px); max-width:70ch; }
+  .ev-intro .cat{ color:#ff4a50; font-size:12px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; }
+  .ev-intro h3{ font-size:clamp(56px,11vw,160px); text-transform:uppercase; color:#fff; text-shadow:0 2px 24px rgba(0,0,0,0.5); }
+  .ev-intro h3 em{ font-style:normal; color:#e10b17; }
+  .ev-intro .sub{ margin-top:-0.4em; font-size:clamp(13px,1.5vw,20px); font-weight:300; letter-spacing:0.5em; text-transform:uppercase; color:#fff; }
+  .ev-intro .desc{ font-size:clamp(15px,1.25vw,18px); line-height:1.75; color:#e6e3dc; text-shadow:0 1px 14px rgba(0,0,0,0.7); }
+  .ev-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .ev-chips span{ padding:7px 12px; border:1px solid rgba(255,255,255,0.4); font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#fff; }
+  .ev-partners{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#c9c6bd; }
+  .ev-partners b{ color:#fff; font-weight:600; }
+  .ev-frame--fit{ background:#000; }
+  .ev-frame--fit .ev-fbg{ position:absolute; inset:-30px; background-size:cover; background-position:center; filter:blur(24px) brightness(0.55); }
+  .ev-frame--fit video{ object-fit:contain; z-index:1; }
+  .ev-frame--fit .ev-play{ z-index:2; }
   /* the "next one" teaser, drawn like a camera viewfinder */
   .ev-next{ position:relative; margin-top:clamp(20px,3vw,40px); padding:clamp(30px,4.4vw,64px) clamp(22px,4vw,64px); text-align:center; background:rgba(255,255,255,0.03); }
   .ev-next i{ position:absolute; width:26px; height:26px; border:0 solid #fff; opacity:.9; }
@@ -239,7 +261,7 @@
   <div class="wrap ev-page">
     <div class="ev-kick rv">SOFT International Studios</div>
     <h1 class="ev-h1 rv">Events <em>&amp;</em><br>Classes</h1>
-    <p class="ev-lede rv">Where creators learn the craft and the community comes together. Here are the classes we have run so far, and what is coming next.</p>
+    <p class="ev-lede rv">Where creators learn the craft and the community comes together. Here are our classes, our first event, and what is coming next.</p>
 
     <section class="ev-sec" id="classes" aria-labelledby="clH">
       <div class="ev-sec-head rv"><h2 id="clH">Classes</h2><span>Past classes</span></div>
@@ -273,12 +295,41 @@
     </section>
 
     <section class="ev-sec" id="events" aria-labelledby="evH">
-      <div class="ev-sec-head rv"><h2 id="evH">Events</h2><span>On the way</span></div>
+      <div class="ev-sec-head rv"><h2 id="evH">Events</h2><span>Past event</span></div>
+      <div class="ev-intro rv">
+        <span class="cat">Event &middot; 5 August 2026</span>
+        <h3>Noc<em>tic</em>s</h3>
+        <span class="sub">...of the night</span>
+        <p class="desc">NOCTICS is a free night get-together by SOFT International Studios. Creatives, CEOs and more come together in one room to meet, connect and share ideas, with games and breakout moments to keep the night moving. It is a relaxed evening built around good people and real conversations, and it is open to everyone who gets a slot.</p>
+        <div class="ev-chips"><span>Free</span><span>Creatives &amp; CEOs</span><span>Games &amp; breakouts</span><span>Limited slots</span></div>
+        <p class="ev-partners">Partners: <b>Frates Apartment</b> &middot; <b>Sign8Studio</b> &middot; <b>Lamar the Creator</b></p>
+      </div>
+      <article class="ev-row rv">
+        <div class="ev-media"><button class="ev-frame ev-frame--wide ev-frame--fit ev-open" type="button" data-src="public/events/noctics-invite.mp4" data-cat="NOCTICS &middot; 0:45" data-title="The Invitation" aria-label="Play The Invitation">
+          <span class="ev-fbg" style="background-image:url('public/events/noctics-invite.jpg')" aria-hidden="true"></span>
+          <video muted loop playsinline preload="none" poster="public/events/noctics-invite.jpg" aria-hidden="true"><source src="public/events/noctics-invite-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+        <div class="ev-text"><span class="cat">NOCTICS &middot; 0:45</span><h3>The Invitation</h3><p class="desc">Soft opens the doors with a look around the venue and the plan for the night: games, breakout moments and a room full of creatives. Slots were limited, and everyone was asked to DM to RSVP.</p>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/noctics-invite.mp4" data-cat="NOCTICS &middot; 0:45" data-title="The Invitation">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+      </article>
+      <article class="ev-row ev-row--flip rv">
+        <div class="ev-media"><button class="ev-frame ev-frame--wide ev-frame--fit ev-open" type="button" data-src="public/events/noctics-here.mp4" data-cat="NOCTICS &middot; 0:39" data-title="We&rsquo;re Here" data-wide="1" aria-label="Play We&rsquo;re Here">
+          <span class="ev-fbg" style="background-image:url('public/events/noctics-here.jpg')" aria-hidden="true"></span>
+          <video muted loop playsinline preload="none" poster="public/events/noctics-here.jpg" aria-hidden="true"><source src="public/events/noctics-here-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+        <div class="ev-text"><span class="cat">NOCTICS &middot; 0:39</span><h3>We&rsquo;re Here</h3><p class="desc">Let&rsquo;s get it. The night begins: guests walk in, the room fills up, and the dancing and the energy take over. This is NOCTICS the way it was meant to feel.</p>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/noctics-here.mp4" data-cat="NOCTICS &middot; 0:39" data-title="We&rsquo;re Here" data-wide="1">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+      </article>
+      <article class="ev-row rv">
+        <div class="ev-media"><button class="ev-frame ev-frame--wide ev-frame--fit ev-open" type="button" data-src="public/events/noctics-thanks.mp4" data-cat="NOCTICS &middot; 0:44" data-title="Thank You, 1.0" aria-label="Play Thank You, 1.0">
+          <span class="ev-fbg" style="background-image:url('public/events/noctics-thanks.jpg')" aria-hidden="true"></span>
+          <video muted loop playsinline preload="none" poster="public/events/noctics-thanks.jpg" aria-hidden="true"><source src="public/events/noctics-thanks-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+        <div class="ev-text"><span class="cat">NOCTICS &middot; 0:44</span><h3>Thank You, 1.0</h3><p class="desc">Soft sits down to thank the sponsors and everyone who showed up, and shares moments from the night. The first NOCTICS was a success, and 2.0 is coming very soon.</p>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/noctics-thanks.mp4" data-cat="NOCTICS &middot; 0:44" data-title="Thank You, 1.0">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+      </article>
       <div class="ev-next rv"><i></i><i></i><i></i><i></i>
-        <span class="ev-rec">Event loading</span>
-        <strong>Something big is being planned. You will want to be there.</strong>
-        <p>Our events are coming soon. Follow us and be the first to hear when and where.</p>
-        <a class="ev-btn" href="https://www.instagram.com/deemrsoft" rel="noopener">Tell me first <span aria-hidden="true">&#8599;</span></a>
+        <span class="ev-rec">NOCTICS 2.0 loading</span>
+        <strong>NOCTICS 1.0 was great. Now we get ready for 2.0.</strong>
+        <p>It is free to attend and slots are limited. Follow us and be the first to hear when the date drops.</p>
+        <a class="ev-btn" href="https://www.instagram.com/deemrsoft" rel="noopener">RSVP first <span aria-hidden="true">&#8599;</span></a>
       </div>
     </section>
   </div>
