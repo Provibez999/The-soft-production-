@@ -146,29 +146,56 @@
   .ev-btn:hover{ background:#f0262d; transform:translateY(-2px); }
   .ev-back{ color:#fff; font-size:13px; font-weight:600; letter-spacing:0.1em; border-bottom:1px solid var(--red); padding-bottom:4px; }
   @media(max-width:860px){ .ev-grid{ grid-template-columns:1fr; } .ev-btn{ width:100%; justify-content:center; } }
-  /* upcoming list and plain sign-up form */
-  .ev-section{ margin-top:clamp(48px,6vw,88px); }
-  .ev-section > h2{ font-size:clamp(28px,3.6vw,48px); font-weight:800; letter-spacing:-0.04em; text-transform:uppercase; color:#fff; margin-bottom:18px; }
-  .ev-list{ display:grid; gap:12px; }
-  .ev-item{ display:grid; grid-template-columns:minmax(120px,170px) 1fr; gap:6px clamp(16px,3vw,40px); padding:20px 22px; border:1px solid rgba(255,255,255,0.16); background:rgba(255,255,255,0.04); }
-  .ev-item .when{ font-weight:700; color:#fff; font-size:15px; line-height:1.4; }
-  .ev-item .when small{ display:block; margin-top:4px; color:#c9c6bd; font-weight:500; font-size:13px; }
-  .ev-item .what b{ display:block; color:#fff; font-size:18px; line-height:1.3; }
-  .ev-item .what .tag{ display:inline-block; margin-right:10px; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#ff4a50; }
-  .ev-item .what p{ margin-top:6px; color:#d9d6ce; font-size:14.5px; line-height:1.6; }
-  .ev-item .what .meta{ margin-top:8px; color:#c9c6bd; font-size:13px; }
-  .ev-item .what .full{ color:#ff4a50; font-weight:700; }
-  .ev-empty{ color:#c9c6bd; font-size:15px; }
-  .ev-form{ display:grid; gap:14px; max-width:560px; }
-  .ev-form label{ display:grid; gap:6px; color:#ecE9e2; font-size:14px; font-weight:600; }
-  .ev-form input, .ev-form select, .ev-form textarea{ width:100%; padding:12px 14px; font:inherit; font-size:16px; color:#111; background:#fff; border:1px solid #bbb; border-radius:2px; }
-  .ev-form textarea{ min-height:96px; resize:vertical; }
-  .ev-form .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
-  .ev-form button{ justify-self:start; padding:14px 26px; font:inherit; font-size:14px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:var(--red); border:0; cursor:pointer; }
-  .ev-form button:disabled{ opacity:0.6; cursor:wait; }
-  .ev-note{ color:#c9c6bd; font-size:13px; line-height:1.5; }
-  .ev-msg{ padding:12px 14px; font-size:15px; border-left:3px solid var(--red); background:rgba(255,255,255,0.06); color:#fff; }
-  @media(max-width:700px){ .ev-item{ grid-template-columns:1fr; } }
+  /* ---- past classes and events ---- */
+  .ev-sec{ margin-top:clamp(56px,7vw,104px); }
+  .ev-sec-head{ display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:clamp(10px,1.6vw,22px); padding-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.16); }
+  .ev-sec-head h2{ font-size:clamp(40px,7vw,104px); font-weight:800; line-height:0.9; letter-spacing:-0.045em; text-transform:uppercase; color:#fff; }
+  .ev-sec-head span{ font-size:12px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#ff4a50; }
+  .ev-row{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(28px,6vw,96px); align-items:center; padding:clamp(24px,3vw,44px) 0; }
+  .ev-row--flip .ev-media{ order:2; }
+  .ev-media{ display:flex; justify-content:center; min-width:0; }
+  .ev-frame{ position:relative; display:block; padding:0; border:1px solid rgba(255,255,255,0.2); background:#111; cursor:pointer; overflow:hidden; font:inherit; color:inherit; transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease; }
+  .ev-frame--tall{ width:min(100%,260px); aspect-ratio:9/16; }
+  .ev-frame--wide{ width:min(100%,420px); aspect-ratio:4/3; }
+  .ev-frame video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .ev-frame:hover, .ev-frame:focus-visible{ transform:translateY(-6px); border-color:var(--red); box-shadow:0 24px 56px rgba(0,0,0,0.6); outline:none; }
+  .ev-play{ position:absolute; z-index:2; right:12px; bottom:12px; width:40px; height:40px; display:grid; place-items:center; border-radius:50%; background:var(--red); color:#fff; font-size:13px; padding-left:3px; }
+  .ev-text{ min-width:0; }
+  .ev-text .cat{ display:block; color:#ff4a50; font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:14px; }
+  .ev-text h3{ font-size:clamp(32px,4.4vw,64px); font-weight:800; line-height:0.95; letter-spacing:-0.04em; text-transform:uppercase; color:#fff; }
+  .ev-text .desc{ margin-top:clamp(14px,1.6vw,22px); max-width:46ch; font-size:clamp(15px,1.25vw,18px); line-height:1.7; color:#d9d6ce; }
+  .ev-watch{ display:inline-flex; align-items:center; gap:10px; margin-top:clamp(18px,2.2vw,28px); padding:14px 22px; font:inherit; font-size:12px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#fff; background:var(--red); border:0; cursor:pointer; transition:background .25s ease, transform .25s ease; }
+  .ev-watch:hover{ background:#f0262d; transform:translateY(-2px); }
+  /* the "next one" teaser, drawn like a camera viewfinder */
+  .ev-next{ position:relative; margin-top:clamp(20px,3vw,40px); padding:clamp(30px,4.4vw,64px) clamp(22px,4vw,64px); text-align:center; background:rgba(255,255,255,0.03); }
+  .ev-next i{ position:absolute; width:26px; height:26px; border:0 solid #fff; opacity:.9; }
+  .ev-next i:nth-of-type(1){ top:0; left:0; border-width:2px 0 0 2px; } .ev-next i:nth-of-type(2){ top:0; right:0; border-width:2px 2px 0 0; }
+  .ev-next i:nth-of-type(3){ bottom:0; left:0; border-width:0 0 2px 2px; } .ev-next i:nth-of-type(4){ bottom:0; right:0; border-width:0 2px 2px 0; }
+  .ev-rec{ display:inline-flex; align-items:center; gap:10px; font-size:12px; font-weight:700; letter-spacing:0.28em; text-transform:uppercase; color:#fff; }
+  .ev-rec::before{ content:""; width:10px; height:10px; border-radius:50%; background:var(--red); animation:recBlink 1.2s steps(1) infinite; }
+  @keyframes recBlink{ 50%{ opacity:0.15; } }
+  .ev-next strong{ display:block; max-width:22ch; margin:clamp(14px,2vw,22px) auto 0; font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:500; font-size:clamp(30px,4.4vw,60px); line-height:1.05; color:#fff; text-wrap:balance; }
+  .ev-next p{ max-width:44ch; margin:14px auto 0; color:#d9d6ce; font-size:clamp(14px,1.2vw,17px); line-height:1.6; }
+  .ev-next .ev-btn{ margin-top:clamp(20px,2.6vw,32px); }
+  .ev-lb{ position:fixed; inset:0; z-index:300; background:rgba(0,0,0,0.95); display:flex; align-items:center; justify-content:center; }
+  .ev-lb[hidden]{ display:none; }
+  .ev-lb-in{ display:flex; flex-direction:column; align-items:center; gap:14px; }
+  .ev-lb video{ height:min(80vh,900px); aspect-ratio:9/16; max-width:92vw; object-fit:contain; background:#000; }
+  .ev-lb video.wide{ aspect-ratio:4/3; height:auto; width:min(92vw,1000px); max-height:78vh; }
+  .ev-lb-cap{ text-align:center; color:#fff; font-family:'Cormorant Garamond',serif; font-size:clamp(20px,2.4vw,30px); }
+  .ev-lb-cap b{ display:block; margin-bottom:4px; color:#ff4a50; font:700 11px 'Inter',sans-serif; letter-spacing:0.2em; text-transform:uppercase; }
+  .ev-lb-x{ position:absolute; top:6px; right:6px; background:none; border:0; color:#fff; font:inherit; font-size:15px; letter-spacing:0.08em; text-transform:uppercase; padding:14px; cursor:pointer; }
+  @media(max-width:860px){
+    .ev-row{ grid-template-columns:minmax(0,42%) minmax(0,1fr); gap:clamp(14px,4vw,28px); padding:20px 0; }
+    .ev-row--flip{ grid-template-columns:minmax(0,1fr) minmax(0,42%); }
+    .ev-frame--tall, .ev-frame--wide{ width:100%; }
+    .ev-play{ width:30px; height:30px; right:6px; bottom:6px; font-size:10px; }
+    .ev-text .cat{ font-size:10px; margin-bottom:8px; }
+    .ev-text h3{ font-size:clamp(22px,6.6vw,38px); }
+    .ev-text .desc{ font-size:13px; line-height:1.55; margin-top:10px; }
+    .ev-watch{ margin-top:14px; padding:10px 13px; font-size:10px; letter-spacing:0.08em; }
+    .ev-btn{ width:auto; }
+  }
 </style>
 <script>document.documentElement.classList.add('js-rv');</script>
 </head>
@@ -197,60 +224,52 @@
   <div class="wrap ev-page">
     <div class="ev-kick rv">SOFT International Studios</div>
     <h1 class="ev-h1 rv">Events <em>&amp;</em><br>Classes</h1>
-    <p class="ev-lede rv">Beyond the camera, SOFT brings people together. Come to our events, or learn the craft of cinematic filmmaking from the people who do it every day.</p>
+    <p class="ev-lede rv">Where creators learn the craft and the community comes together. Here is what we have done so far, and the next one is already being planned.</p>
 
-    <div class="ev-grid">
-      <article class="ev-card rv" id="events">
-        <span class="num">01 &middot; Events</span>
-        <h2>Events</h2>
-        <p>Film nights, behind-the-scenes days and creative meetups hosted by SOFT International Studios, for filmmakers, creatives and anyone who loves a good story.</p>
-        <ul>
-          <li>Film screenings and premieres</li>
-          <li>Behind-the-scenes set days</li>
-          <li>Creative meetups and networking</li>
-        </ul>
-        <a class="ev-soon" href="#upcoming">See upcoming dates &darr;</a>
+    <section class="ev-sec" id="classes" aria-labelledby="clH">
+      <div class="ev-sec-head rv"><h2 id="clH">Classes</h2><span>Past classes</span></div>
+      <article class="ev-row rv">
+        <div class="ev-media"><button class="ev-frame ev-frame--tall ev-open" type="button" data-src="public/events/flow-and-frame.mp4" data-cat="Class &middot; 0:31" data-title="Flow &amp; Frame" aria-label="Play Flow &amp; Frame">
+          <video muted loop playsinline preload="none" poster="public/events/flow-and-frame.jpg" aria-hidden="true"><source src="public/events/flow-and-frame-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+        <div class="ev-text"><span class="cat">Class &middot; 0:31</span><h3>Flow &amp; Frame</h3><p class="desc">Same phone. Same camera. Different results. Flow &amp; Frame is for creators who shoot every day but have not yet started to create. The best camera is not what matters. How you shoot is, and there is no more trial and error.</p>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/flow-and-frame.mp4" data-cat="Class &middot; 0:31" data-title="Flow &amp; Frame">Watch it <span aria-hidden="true">&#9654;</span></button></div>
       </article>
-      <article class="ev-card rv" id="classes">
-        <span class="num">02 &middot; Classes</span>
-        <h2>Classes</h2>
-        <p>Hands-on classes where you learn to shoot like a cinematographer: how to see light, move the camera and tell a story in every frame.</p>
-        <ul>
-          <li>Cinematography and camera basics</li>
-          <li>Lighting, gimbals and drone work</li>
-          <li>Directing and storytelling on set</li>
-        </ul>
-        <a class="ev-soon" href="#upcoming">See upcoming dates &darr;</a>
-      </article>
-    </div>
-
-    <section class="ev-section" id="upcoming" aria-labelledby="upH">
-      <h2 id="upH">Upcoming</h2>
-      <div class="ev-list" id="evList" aria-live="polite"><p class="ev-empty">Loading&hellip;</p></div>
+      <div class="ev-next rv"><i></i><i></i><i></i><i></i>
+        <span class="ev-rec">Next class</span>
+        <strong>The next class is already in the making. Be in the room.</strong>
+        <p>More classes are coming soon. Follow us and be the first to know when seats open.</p>
+        <a class="ev-btn" href="https://www.instagram.com/deemrsoft" rel="noopener">Tell me first <span aria-hidden="true">&#8599;</span></a>
+      </div>
     </section>
 
-    <section class="ev-section" id="signup" aria-labelledby="suH">
-      <h2 id="suH">Sign up</h2>
-      <p class="ev-note" style="margin-bottom:16px">Tell us which event or class you want to join and we will contact you. We only use your details to reach you about SOFT events and classes.</p>
-      <form class="ev-form" id="evForm" novalidate>
-        <label>Your name<input name="name" type="text" autocomplete="name" maxlength="120" required></label>
-        <label>Phone / WhatsApp number<input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
-        <label>Email (optional if you gave a number)<input name="email" type="email" autocomplete="email" maxlength="120"></label>
-        <label>I am interested in<select name="interest" id="evInterest"><option value="General interest">Not sure yet / general</option></select></label>
-        <label>Message (optional)<textarea name="message" maxlength="600"></textarea></label>
-        <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
-        <button type="submit" id="evSend">Send my details</button>
-        <div id="evStatus" role="status" aria-live="polite"></div>
-      </form>
+    <section class="ev-sec" id="events" aria-labelledby="evH">
+      <div class="ev-sec-head rv"><h2 id="evH">Events</h2><span>Past events</span></div>
+      <article class="ev-row rv">
+        <div class="ev-media"><button class="ev-frame ev-frame--wide ev-open" type="button" data-src="public/events/sessions-welcome.mp4" data-cat="Event &middot; 0:24" data-title="Welcome to Sessions" data-wide="1" aria-label="Play Welcome to Sessions">
+          <video muted loop playsinline preload="none" poster="public/events/sessions-welcome.jpg" aria-hidden="true"><source src="public/events/sessions-welcome-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+        <div class="ev-text"><span class="cat">Event &middot; 0:24</span><h3>Welcome to Sessions</h3><p class="desc">Create. Fanit. Earn. A session where creators and their fans connect and earn, set against a row of red fire trucks and shot with the full SOFT eye.</p>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/sessions-welcome.mp4" data-cat="Event &middot; 0:24" data-title="Welcome to Sessions" data-wide="1">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+      </article>
+      <article class="ev-row ev-row--flip rv">
+        <div class="ev-media"><button class="ev-frame ev-frame--wide ev-open" type="button" data-src="public/events/sessions-reached-out.mp4" data-cat="Event &middot; 0:28" data-title="Sessions Reached Out" data-wide="1" aria-label="Play Sessions Reached Out">
+          <video muted loop playsinline preload="none" poster="public/events/sessions-reached-out.jpg" aria-hidden="true"><source src="public/events/sessions-reached-out-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+        <div class="ev-text"><span class="cat">Event &middot; 0:28</span><h3>Sessions Reached Out</h3><p class="desc">The story of how Sessions got in touch, told straight to camera with a blue box in hand. A creator moment with a welcome to the family.</p>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/sessions-reached-out.mp4" data-cat="Event &middot; 0:28" data-title="Sessions Reached Out" data-wide="1">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+      </article>
+      <div class="ev-next rv"><i></i><i></i><i></i><i></i>
+        <span class="ev-rec">Next event</span>
+        <strong>This was only the warm-up. The next one is bigger.</strong>
+        <p>More events are coming soon. Be the first to hear when and where.</p>
+        <a class="ev-btn" href="https://www.instagram.com/deemrsoft" rel="noopener">Tell me first <span aria-hidden="true">&#8599;</span></a>
+      </div>
     </section>
-
-    <div class="ev-cta rv">
-      <strong>Want to know when the next one is?</strong>
-      <a class="ev-btn" href="https://www.instagram.com/deemrsoft" rel="noopener">Message us on Instagram <span aria-hidden="true">&#8599;</span></a>
-      <a class="ev-back" href="index.html">&larr; Back to home</a>
-    </div>
   </div>
 </main>
+
+<div id="evLb" class="ev-lb" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+  <button class="ev-lb-x" id="evLbX" type="button">Close &times;</button>
+  <div class="ev-lb-in"><video id="evLbV" controls playsinline preload="none"></video><div class="ev-lb-cap"><b id="evLbC"></b><span id="evLbT"></span></div></div>
+</div>
 
 <footer id="contact">
   <div class="wrap">
@@ -298,53 +317,28 @@ document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40)
 
 </script>
 <script>
-/* Events & Classes: the list and sign-ups come from the Google Sheet back end (see backend/SETUP.md) */
-var SOFT_BACKEND = '';   // paste the Web app URL here
-
 (function () {
-  var list = document.getElementById('evList'), sel = document.getElementById('evInterest'), form = document.getElementById('evForm');
-  var status = document.getElementById('evStatus'), send = document.getElementById('evSend');
-  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; }
-  function say(t) { status.textContent = ''; if (t) status.appendChild(el('div', 'ev-msg', t)); }
-  function empty(t) { list.textContent = ''; list.appendChild(el('p', 'ev-empty', t)); }
-  function niceDate(s) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ''); if (!m) return s || ''; return new Date(+m[1], +m[2] - 1, +m[3]).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' }); }
-  function render(events) {
-    var today = new Date().toISOString().slice(0, 10);
-    events = events.filter(function (e) { return !/^\d{4}-\d{2}-\d{2}$/.test(e.date || '') || e.date >= today; })
-                   .sort(function (a, b) { return (a.date || '9999').localeCompare(b.date || '9999'); });
-    if (!events.length) { empty('No dates announced yet. Check back soon, or sign up below and we will tell you first.'); return; }
-    list.textContent = '';
-    events.forEach(function (e) {
-      var it = el('article', 'ev-item'), when = el('div', 'when', niceDate(e.date) || 'Date to be announced');
-      if (e.time) when.appendChild(el('small', '', e.time));
-      var what = el('div', 'what'), title = el('b');
-      title.appendChild(el('span', 'tag', e.type || 'Event')); title.appendChild(document.createTextNode(e.title));
-      what.appendChild(title);
-      if (e.details) what.appendChild(el('p', '', e.details));
-      var bits = [e.place, e.price].filter(Boolean).join('  \u00b7  ');
-      if (bits || /full/i.test(e.status || '')) { var m = el('div', 'meta', bits); if (/full/i.test(e.status || '')) m.appendChild(el('span', 'full', (bits ? '  \u00b7  ' : '') + 'Fully booked')); what.appendChild(m); }
-      it.appendChild(when); it.appendChild(what); list.appendChild(it);
-      if (!/full/i.test(e.status || '')) { var o = el('option', '', (e.type || 'Event') + ': ' + e.title + (e.date ? ' (' + e.date + ')' : '')); o.value = o.textContent; sel.appendChild(o); }
-    });
+  var lb = document.getElementById('evLb'), v = document.getElementById('evLbV'), x = document.getElementById('evLbX'), last = null;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function open(c) {
+    last = c; document.getElementById('evLbC').textContent = c.dataset.cat; document.getElementById('evLbT').textContent = c.dataset.title;
+    v.classList.toggle('wide', !!c.dataset.wide); v.src = c.dataset.src; v.muted = false; lb.hidden = false;
+    document.documentElement.style.overflow = 'hidden'; x.focus(); v.play().catch(function () {});
   }
-  if (!SOFT_BACKEND) {
-    empty('No dates announced yet. Check back soon.');
-    form.hidden = true; document.getElementById('signup').querySelector('.ev-note').textContent = 'Sign-ups open soon. For now, message us on Instagram (@deemrsoft) to be told first.';
-    return;
-  }
-  fetch(SOFT_BACKEND).then(function (r) { return r.json(); }).then(function (d) { render(d.events || []); })
-    .catch(function () { empty('Could not load the dates right now. Please try again later.'); });
-  form.addEventListener('submit', function (ev) {
-    ev.preventDefault();
-    var fd = new FormData(form), name = (fd.get('name') || '').trim(), phone = (fd.get('phone') || '').trim(), email = (fd.get('email') || '').trim();
-    if (!name) { say('Please type your name.'); return; }
-    if (!phone && !email) { say('Please give a phone number or an email so we can reach you.'); return; }
-    send.disabled = true; say('Sending\u2026');
-    fetch(SOFT_BACKEND, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(fd) })
-      .then(function () { form.reset(); say('Thank you, ' + name + '. We have your details and will contact you soon.'); })
-      .catch(function () { say('Sorry, that did not send. Please check your network and try again.'); })
-      .then(function () { send.disabled = false; });
+  function close() { if (lb.hidden) return; v.pause(); v.removeAttribute('src'); v.load(); lb.hidden = true; document.documentElement.style.overflow = ''; if (last) last.focus(); }
+  [].forEach.call(document.querySelectorAll('.ev-open'), function (b) { b.addEventListener('click', function () { open(b); }); });
+  x.addEventListener('click', close); lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('ev-lb-in')) close(); });
+  document.addEventListener('keydown', function (e) { if (!lb.hidden && e.key === 'Escape') close(); });
+  /* silent previews: play on hover (desktop) or while the card is mostly on screen (phones) */
+  [].forEach.call(document.querySelectorAll('.ev-frame'), function (f) {
+    var pv = f.querySelector('video'); if (reduce) return;
+    f.addEventListener('mouseenter', function () { if (window.matchMedia('(hover:hover)').matches) pv.play().catch(function () {}); });
+    f.addEventListener('mouseleave', function () { pv.pause(); });
   });
+  if ('IntersectionObserver' in window && !reduce && window.matchMedia('(hover:none)').matches) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) e.target.play().catch(function () {}); else e.target.pause(); }); }, { threshold: 0.6 });
+    [].forEach.call(document.querySelectorAll('.ev-frame video'), function (p) { io.observe(p); });
+  }
 })();
 </script>
 </body>
