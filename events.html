@@ -146,6 +146,29 @@
   .ev-btn:hover{ background:#f0262d; transform:translateY(-2px); }
   .ev-back{ color:#fff; font-size:13px; font-weight:600; letter-spacing:0.1em; border-bottom:1px solid var(--red); padding-bottom:4px; }
   @media(max-width:860px){ .ev-grid{ grid-template-columns:1fr; } .ev-btn{ width:100%; justify-content:center; } }
+  /* upcoming list and plain sign-up form */
+  .ev-section{ margin-top:clamp(48px,6vw,88px); }
+  .ev-section > h2{ font-size:clamp(28px,3.6vw,48px); font-weight:800; letter-spacing:-0.04em; text-transform:uppercase; color:#fff; margin-bottom:18px; }
+  .ev-list{ display:grid; gap:12px; }
+  .ev-item{ display:grid; grid-template-columns:minmax(120px,170px) 1fr; gap:6px clamp(16px,3vw,40px); padding:20px 22px; border:1px solid rgba(255,255,255,0.16); background:rgba(255,255,255,0.04); }
+  .ev-item .when{ font-weight:700; color:#fff; font-size:15px; line-height:1.4; }
+  .ev-item .when small{ display:block; margin-top:4px; color:#c9c6bd; font-weight:500; font-size:13px; }
+  .ev-item .what b{ display:block; color:#fff; font-size:18px; line-height:1.3; }
+  .ev-item .what .tag{ display:inline-block; margin-right:10px; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#ff4a50; }
+  .ev-item .what p{ margin-top:6px; color:#d9d6ce; font-size:14.5px; line-height:1.6; }
+  .ev-item .what .meta{ margin-top:8px; color:#c9c6bd; font-size:13px; }
+  .ev-item .what .full{ color:#ff4a50; font-weight:700; }
+  .ev-empty{ color:#c9c6bd; font-size:15px; }
+  .ev-form{ display:grid; gap:14px; max-width:560px; }
+  .ev-form label{ display:grid; gap:6px; color:#ecE9e2; font-size:14px; font-weight:600; }
+  .ev-form input, .ev-form select, .ev-form textarea{ width:100%; padding:12px 14px; font:inherit; font-size:16px; color:#111; background:#fff; border:1px solid #bbb; border-radius:2px; }
+  .ev-form textarea{ min-height:96px; resize:vertical; }
+  .ev-form .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+  .ev-form button{ justify-self:start; padding:14px 26px; font:inherit; font-size:14px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#fff; background:var(--red); border:0; cursor:pointer; }
+  .ev-form button:disabled{ opacity:0.6; cursor:wait; }
+  .ev-note{ color:#c9c6bd; font-size:13px; line-height:1.5; }
+  .ev-msg{ padding:12px 14px; font-size:15px; border-left:3px solid var(--red); background:rgba(255,255,255,0.06); color:#fff; }
+  @media(max-width:700px){ .ev-item{ grid-template-columns:1fr; } }
 </style>
 <script>document.documentElement.classList.add('js-rv');</script>
 </head>
@@ -186,7 +209,7 @@
           <li>Behind-the-scenes set days</li>
           <li>Creative meetups and networking</li>
         </ul>
-        <span class="ev-soon">Dates coming soon</span>
+        <a class="ev-soon" href="#upcoming">See upcoming dates &darr;</a>
       </article>
       <article class="ev-card rv" id="classes">
         <span class="num">02 &middot; Classes</span>
@@ -197,9 +220,29 @@
           <li>Lighting, gimbals and drone work</li>
           <li>Directing and storytelling on set</li>
         </ul>
-        <span class="ev-soon">Dates coming soon</span>
+        <a class="ev-soon" href="#upcoming">See upcoming dates &darr;</a>
       </article>
     </div>
+
+    <section class="ev-section" id="upcoming" aria-labelledby="upH">
+      <h2 id="upH">Upcoming</h2>
+      <div class="ev-list" id="evList" aria-live="polite"><p class="ev-empty">Loading&hellip;</p></div>
+    </section>
+
+    <section class="ev-section" id="signup" aria-labelledby="suH">
+      <h2 id="suH">Sign up</h2>
+      <p class="ev-note" style="margin-bottom:16px">Tell us which event or class you want to join and we will contact you. We only use your details to reach you about SOFT events and classes.</p>
+      <form class="ev-form" id="evForm" novalidate>
+        <label>Your name<input name="name" type="text" autocomplete="name" maxlength="120" required></label>
+        <label>Phone / WhatsApp number<input name="phone" type="tel" autocomplete="tel" maxlength="40"></label>
+        <label>Email (optional if you gave a number)<input name="email" type="email" autocomplete="email" maxlength="120"></label>
+        <label>I am interested in<select name="interest" id="evInterest"><option value="General interest">Not sure yet / general</option></select></label>
+        <label>Message (optional)<textarea name="message" maxlength="600"></textarea></label>
+        <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+        <button type="submit" id="evSend">Send my details</button>
+        <div id="evStatus" role="status" aria-live="polite"></div>
+      </form>
+    </section>
 
     <div class="ev-cta rv">
       <strong>Want to know when the next one is?</strong>
@@ -253,6 +296,56 @@ document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40)
   els.forEach(function (e) { io.observe(e); });
 })();
 
+</script>
+<script>
+/* Events & Classes: the list and sign-ups come from the Google Sheet back end (see backend/SETUP.md) */
+var SOFT_BACKEND = '';   // paste the Web app URL here
+
+(function () {
+  var list = document.getElementById('evList'), sel = document.getElementById('evInterest'), form = document.getElementById('evForm');
+  var status = document.getElementById('evStatus'), send = document.getElementById('evSend');
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; }
+  function say(t) { status.textContent = ''; if (t) status.appendChild(el('div', 'ev-msg', t)); }
+  function empty(t) { list.textContent = ''; list.appendChild(el('p', 'ev-empty', t)); }
+  function niceDate(s) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ''); if (!m) return s || ''; return new Date(+m[1], +m[2] - 1, +m[3]).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' }); }
+  function render(events) {
+    var today = new Date().toISOString().slice(0, 10);
+    events = events.filter(function (e) { return !/^\d{4}-\d{2}-\d{2}$/.test(e.date || '') || e.date >= today; })
+                   .sort(function (a, b) { return (a.date || '9999').localeCompare(b.date || '9999'); });
+    if (!events.length) { empty('No dates announced yet. Check back soon, or sign up below and we will tell you first.'); return; }
+    list.textContent = '';
+    events.forEach(function (e) {
+      var it = el('article', 'ev-item'), when = el('div', 'when', niceDate(e.date) || 'Date to be announced');
+      if (e.time) when.appendChild(el('small', '', e.time));
+      var what = el('div', 'what'), title = el('b');
+      title.appendChild(el('span', 'tag', e.type || 'Event')); title.appendChild(document.createTextNode(e.title));
+      what.appendChild(title);
+      if (e.details) what.appendChild(el('p', '', e.details));
+      var bits = [e.place, e.price].filter(Boolean).join('  \u00b7  ');
+      if (bits || /full/i.test(e.status || '')) { var m = el('div', 'meta', bits); if (/full/i.test(e.status || '')) m.appendChild(el('span', 'full', (bits ? '  \u00b7  ' : '') + 'Fully booked')); what.appendChild(m); }
+      it.appendChild(when); it.appendChild(what); list.appendChild(it);
+      if (!/full/i.test(e.status || '')) { var o = el('option', '', (e.type || 'Event') + ': ' + e.title + (e.date ? ' (' + e.date + ')' : '')); o.value = o.textContent; sel.appendChild(o); }
+    });
+  }
+  if (!SOFT_BACKEND) {
+    empty('No dates announced yet. Check back soon.');
+    form.hidden = true; document.getElementById('signup').querySelector('.ev-note').textContent = 'Sign-ups open soon. For now, message us on Instagram (@deemrsoft) to be told first.';
+    return;
+  }
+  fetch(SOFT_BACKEND).then(function (r) { return r.json(); }).then(function (d) { render(d.events || []); })
+    .catch(function () { empty('Could not load the dates right now. Please try again later.'); });
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var fd = new FormData(form), name = (fd.get('name') || '').trim(), phone = (fd.get('phone') || '').trim(), email = (fd.get('email') || '').trim();
+    if (!name) { say('Please type your name.'); return; }
+    if (!phone && !email) { say('Please give a phone number or an email so we can reach you.'); return; }
+    send.disabled = true; say('Sending\u2026');
+    fetch(SOFT_BACKEND, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(fd) })
+      .then(function () { form.reset(); say('Thank you, ' + name + '. We have your details and will contact you soon.'); })
+      .catch(function () { say('Sorry, that did not send. Please check your network and try again.'); })
+      .then(function () { send.disabled = false; });
+  });
+})();
 </script>
 </body>
 </html>
