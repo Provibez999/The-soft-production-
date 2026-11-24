@@ -123,7 +123,10 @@
   .nav-links a[aria-current="page"]{ color:var(--white); }
   /* ---- EVENTS & CLASSES ---- */
   body{ background:#0a0a0a; }
-  .ev-glow{ position:fixed; inset:0; z-index:-3; background:radial-gradient(60% 50% at 85% 0%, rgba(230,30,40,0.22), transparent 70%), radial-gradient(50% 40% at 0% 100%, rgba(230,30,40,0.12), transparent 70%), #0a0a0a; }
+  .ev-glow{ position:fixed; inset:0; z-index:-3; background:#0a0a0a url('public/events/bg.jpg') 50% 38%/cover no-repeat; }
+  .ev-glow::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.68) 45%, rgba(0,0,0,0.82) 100%); }
+  .ev-sec-head h2, .ev-text h3, .ev-h1{ text-shadow:0 2px 24px rgba(0,0,0,0.5); }
+  .ev-text .desc, .ev-lede{ text-shadow:0 1px 14px rgba(0,0,0,0.7); }
   .ev-page{ padding-top:clamp(120px,13vw,170px); padding-bottom:clamp(64px,8vw,110px); }
   .ev-kick{ display:flex; align-items:center; gap:12px; font-size:12px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:#fff; margin-bottom:clamp(14px,2vw,22px); }
   .ev-kick::before{ content:""; width:28px; height:2px; background:var(--red); }
@@ -224,7 +227,7 @@
   <div class="wrap ev-page">
     <div class="ev-kick rv">SOFT International Studios</div>
     <h1 class="ev-h1 rv">Events <em>&amp;</em><br>Classes</h1>
-    <p class="ev-lede rv">Where creators learn the craft and the community comes together. Here is what we have done so far, and the next one is already being planned.</p>
+    <p class="ev-lede rv">Where creators learn the craft and the community comes together. Here are the classes we have run so far, and what is coming next.</p>
 
     <section class="ev-sec" id="classes" aria-labelledby="clH">
       <div class="ev-sec-head rv"><h2 id="clH">Classes</h2><span>Past classes</span></div>
@@ -233,6 +236,18 @@
           <video muted loop playsinline preload="none" poster="public/events/flow-and-frame.jpg" aria-hidden="true"><source src="public/events/flow-and-frame-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
         <div class="ev-text"><span class="cat">Class &middot; 0:31</span><h3>Flow &amp; Frame</h3><p class="desc">Same phone. Same camera. Different results. Flow &amp; Frame is for creators who shoot every day but have not yet started to create. The best camera is not what matters. How you shoot is, and there is no more trial and error.</p>
           <button class="ev-watch ev-open" type="button" data-src="public/events/flow-and-frame.mp4" data-cat="Class &middot; 0:31" data-title="Flow &amp; Frame">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+      </article>
+      <article class="ev-row ev-row--flip rv">
+        <div class="ev-media"><button class="ev-frame ev-frame--wide ev-open" type="button" data-src="public/events/sessions-welcome.mp4" data-cat="Class &middot; 0:24" data-title="Create. Fanit. Earn" data-wide="1" aria-label="Play Create. Fanit. Earn">
+          <video muted loop playsinline preload="none" poster="public/events/sessions-welcome.jpg" aria-hidden="true"><source src="public/events/sessions-welcome-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+        <div class="ev-text"><span class="cat">Class &middot; 0:24</span><h3>Create. Fanit. Earn</h3><p class="desc">Welcome to Sessions, where creators and fans connect and earn. A class for creators who want their content to work for them, taught on location with the full SOFT eye.</p>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/sessions-welcome.mp4" data-cat="Class &middot; 0:24" data-title="Create. Fanit. Earn" data-wide="1">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+      </article>
+      <article class="ev-row rv">
+        <div class="ev-media"><button class="ev-frame ev-frame--wide ev-open" type="button" data-src="public/events/sessions-reached-out.mp4" data-cat="Class &middot; 0:28" data-title="Sessions Reached Out" data-wide="1" aria-label="Play Sessions Reached Out">
+          <video muted loop playsinline preload="none" poster="public/events/sessions-reached-out.jpg" aria-hidden="true"><source src="public/events/sessions-reached-out-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+        <div class="ev-text"><span class="cat">Class &middot; 0:28</span><h3>Sessions Reached Out</h3><p class="desc">The story behind the class: how Sessions reached out, told straight to camera with the welcome box in hand. Real talk on how creators get noticed and rewarded.</p>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/sessions-reached-out.mp4" data-cat="Class &middot; 0:28" data-title="Sessions Reached Out" data-wide="1">Watch it <span aria-hidden="true">&#9654;</span></button></div>
       </article>
       <div class="ev-next rv"><i></i><i></i><i></i><i></i>
         <span class="ev-rec">Next class</span>
@@ -243,23 +258,11 @@
     </section>
 
     <section class="ev-sec" id="events" aria-labelledby="evH">
-      <div class="ev-sec-head rv"><h2 id="evH">Events</h2><span>Past events</span></div>
-      <article class="ev-row rv">
-        <div class="ev-media"><button class="ev-frame ev-frame--wide ev-open" type="button" data-src="public/events/sessions-welcome.mp4" data-cat="Event &middot; 0:24" data-title="Welcome to Sessions" data-wide="1" aria-label="Play Welcome to Sessions">
-          <video muted loop playsinline preload="none" poster="public/events/sessions-welcome.jpg" aria-hidden="true"><source src="public/events/sessions-welcome-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
-        <div class="ev-text"><span class="cat">Event &middot; 0:24</span><h3>Welcome to Sessions</h3><p class="desc">Create. Fanit. Earn. A session where creators and their fans connect and earn, set against a row of red fire trucks and shot with the full SOFT eye.</p>
-          <button class="ev-watch ev-open" type="button" data-src="public/events/sessions-welcome.mp4" data-cat="Event &middot; 0:24" data-title="Welcome to Sessions" data-wide="1">Watch it <span aria-hidden="true">&#9654;</span></button></div>
-      </article>
-      <article class="ev-row ev-row--flip rv">
-        <div class="ev-media"><button class="ev-frame ev-frame--wide ev-open" type="button" data-src="public/events/sessions-reached-out.mp4" data-cat="Event &middot; 0:28" data-title="Sessions Reached Out" data-wide="1" aria-label="Play Sessions Reached Out">
-          <video muted loop playsinline preload="none" poster="public/events/sessions-reached-out.jpg" aria-hidden="true"><source src="public/events/sessions-reached-out-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
-        <div class="ev-text"><span class="cat">Event &middot; 0:28</span><h3>Sessions Reached Out</h3><p class="desc">The story of how Sessions got in touch, told straight to camera with a blue box in hand. A creator moment with a welcome to the family.</p>
-          <button class="ev-watch ev-open" type="button" data-src="public/events/sessions-reached-out.mp4" data-cat="Event &middot; 0:28" data-title="Sessions Reached Out" data-wide="1">Watch it <span aria-hidden="true">&#9654;</span></button></div>
-      </article>
+      <div class="ev-sec-head rv"><h2 id="evH">Events</h2><span>On the way</span></div>
       <div class="ev-next rv"><i></i><i></i><i></i><i></i>
-        <span class="ev-rec">Next event</span>
-        <strong>This was only the warm-up. The next one is bigger.</strong>
-        <p>More events are coming soon. Be the first to hear when and where.</p>
+        <span class="ev-rec">Event loading</span>
+        <strong>Something big is being planned. You will want to be there.</strong>
+        <p>Our events are coming soon. Follow us and be the first to hear when and where.</p>
         <a class="ev-btn" href="https://www.instagram.com/deemrsoft" rel="noopener">Tell me first <span aria-hidden="true">&#8599;</span></a>
       </div>
     </section>
