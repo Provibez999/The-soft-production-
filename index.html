@@ -108,13 +108,13 @@
   }
   .intro-the{
     font-family:'Cormorant Garamond',serif; font-weight:500; text-transform:uppercase; color:var(--white);
-    font-size:clamp(14px,2vw,22px); letter-spacing:0.3em; padding-left:0.3em;
-    margin-bottom:clamp(14px,2.4vw,26px);
+    font-size:clamp(12px,1.7vw,20px); letter-spacing:0.22em; padding-left:0.22em; white-space:nowrap;
+    margin-top:clamp(14px,2.4vw,26px);
     animation:theSpace 7s ease-out both;
   }
   @keyframes theSpace{
-    0%,28.57%{ letter-spacing:0.3em; padding-left:0.3em; }
-    78.57%,100%{ letter-spacing:0.75em; padding-left:0.75em; }
+    0%,28.57%{ letter-spacing:0.22em; padding-left:0.22em; }
+    78.57%,100%{ letter-spacing:0.42em; padding-left:0.42em; }
   }
   .intro-brand{ position:relative; width:min(420px,64vw); }
   .intro-logo{ width:100%; height:auto; display:block; }
@@ -189,7 +189,7 @@
     html{ scroll-behavior:auto; }
     .motion-toggle{ display:block; }
     /* opacity fades are kept (no movement); only travel / spacing / looping motion is removed */
-    .intro-the{ animation:none; letter-spacing:0.5em; padding-left:0.5em; }
+    .intro-the{ animation:none; letter-spacing:0.42em; padding-left:0.42em; }
     .reveal{ transform:none; animation-name:fadeOnly; }
     .scroll-line::after{ animation:none; }
   }
@@ -478,10 +478,10 @@
   <div class="hero-overlay"></div>
 
   <div class="intro" aria-hidden="true">
-    <div class="intro-the">The</div>
     <div class="intro-brand">
       <img class="intro-logo" src="public/soft-logo.png" alt="SOFT">
     </div>
+    <div class="intro-the">International Studios</div>
   </div>
 
   <div class="hero-inner">
@@ -511,7 +511,7 @@
         <button id="featurePlay" class="feature-play" type="button" aria-label="Play the full film with sound"><span>&#9654; Watch the full film</span></button>
       </div>
       <div class="feature-meta">
-        <div><span class="cat">Commercial</span><h3>Cornerstone &mdash; Kabusa Oriental Choir</h3></div>
+        <div><span class="cat">BTS Music Video</span><h3>Cornerstone &mdash; Kabusa Oriental Choir</h3></div>
         <p>A SOFT International Studios production &middot; 1:35</p>
       </div>
     </div>
