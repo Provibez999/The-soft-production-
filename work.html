@@ -238,6 +238,23 @@
   .ev-credit{ margin-top:10px; font-size:11px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:#c9c6bd; }
   .ev-text .ev-btn{ margin-top:clamp(18px,2.2vw,28px); }
   @media(max-width:860px){ .ev-line{ font-size:16px; margin-top:8px; } .ev-credit{ font-size:9px; margin-top:6px; } .ev-text .ev-btn{ margin-top:14px; padding:11px 14px; font-size:10px; letter-spacing:0.08em; } }
+
+  /* ---- CONTACT US BLOCK + POPUP ---- */
+  .ct-sec{ padding:clamp(56px,8vw,110px) 0; text-align:center; border-top:1px solid rgba(255,255,255,.08); }
+  .ct-sec h2{ font-size:clamp(28px,5vw,52px); line-height:1.1; margin:0 0 12px; }
+  .ct-sec p{ color:var(--dim); margin:0 auto 28px; max-width:46ch; }
+  .ct-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .ct-btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:15px 24px; border:1px solid rgba(255,255,255,.25); color:#fff; font-size:13px; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; transition:.25s; min-width:150px; }
+  .ct-btn:hover{ border-color:var(--red); background:var(--red); transform:translateY(-2px); }
+  .ct-btn--wa{ background:var(--red); border-color:var(--red); }
+  .ct-pop{ position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px; background:rgba(0,0,0,.72); opacity:0; visibility:hidden; transition:opacity .25s, visibility .25s; }
+  .ct-pop.open{ opacity:1; visibility:visible; }
+  .ct-card{ position:relative; width:min(380px,100%); background:#0b0b0b; border:1px solid rgba(255,255,255,.14); border-top:3px solid var(--red); padding:34px 26px 26px; text-align:center; transform:translateY(14px) scale(.97); transition:transform .3s; }
+  .ct-pop.open .ct-card{ transform:none; }
+  .ct-card h3{ font-size:clamp(22px,6vw,28px); line-height:1.15; margin:0 0 8px; color:#fff; }
+  .ct-card p{ color:var(--dim); font-size:14px; margin:0 0 22px; }
+  .ct-card .ct-btn{ display:flex; width:100%; margin-top:10px; }
+  .ct-x{ position:absolute; top:8px; right:10px; background:none; border:0; color:#fff; font-size:26px; line-height:1; cursor:pointer; padding:6px 10px; }
 </style>
 <script>document.documentElement.classList.add('js-rv');</script>
 </head>
@@ -252,7 +269,7 @@
     <a href="index.html">Home</a>
     <a href="events.html">Events &amp; Classes</a>
   </div>
-  <a href="index.html#book" class="nav-cta">Let's Work Together <span class="arrow">↗</span></a>
+  <a href="#contact-us" class="nav-cta">Let's Work Together <span class="arrow">↗</span></a>
   <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
   <div class="nav-menu" id="navMenu">
     <a href="portfolio.html">Our Portfolio</a>
@@ -274,31 +291,31 @@
         <div class="ev-media"><button class="ev-frame ev-frame--wide ev-open" type="button" data-src="public/work/wedding.mp4" data-cat="Weddings &amp; Celebrations" data-title="Love, in motion" data-wide="1" aria-label="Play Love, in motion">
           <video muted loop playsinline preload="none" poster="public/work/wedding.jpg" aria-hidden="true"><source src="public/work/wedding-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
         <div class="ev-text"><span class="cat">Weddings &amp; Celebrations</span><h3>Love, in motion</h3><p class="ev-line">Some nights only happen once. We make sure they never end.</p><p class="ev-credit">Dami + Nenzar</p><p class="desc">The first dance, the laughter, the aso-oke in full colour and a room that will not stop cheering. We follow the whole celebration so you can live it again, frame by frame, long after the music fades.</p>
-          <a class="ev-btn" href="https://www.instagram.com/deemrsoft" rel="noopener">Film my celebration <span aria-hidden="true">&#8599;</span></a></div>
+          <a class="ev-btn" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20you%20to%20film%20a%20wedding%20or%20celebration." target="_blank" rel="noopener">Film my celebration <span aria-hidden="true">&#8599;</span></a></div>
       </article>
       <article class="ev-row ev-row--flip rv">
         <div class="ev-media"><button class="ev-frame ev-frame--tall ev-open" type="button" data-src="public/work/showreel.mp4" data-cat="Events &amp; Nightlife" data-title="The night, remembered" aria-label="Play The night, remembered">
           <video muted loop playsinline preload="none" poster="public/work/showreel.jpg" aria-hidden="true"><source src="public/work/showreel-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
         <div class="ev-text"><span class="cat">Events &amp; Nightlife</span><h3>The night, remembered</h3><p class="ev-line">Music, lights and the faces in between.</p><p class="desc">Concerts, launch parties, city mornings and nights that run into sunrise, cut into a pulse you can feel. Wherever a crowd gathers, we keep the energy alive on screen.</p>
-          <a class="ev-btn" href="https://www.instagram.com/deemrsoft" rel="noopener">Capture my event <span aria-hidden="true">&#8599;</span></a></div>
+          <a class="ev-btn" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20you%20to%20film%20an%20event." target="_blank" rel="noopener">Capture my event <span aria-hidden="true">&#8599;</span></a></div>
       </article>
       <article class="ev-row rv">
         <div class="ev-media"><button class="ev-frame ev-frame--tall ev-open" type="button" data-src="public/work/real-estate.mp4" data-cat="Real Estate &amp; Property" data-title="Where a home begins" aria-label="Play Where a home begins">
           <video muted loop playsinline preload="none" poster="public/work/real-estate.jpg" aria-hidden="true"><source src="public/work/real-estate-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
         <div class="ev-text"><span class="cat">Real Estate &amp; Property</span><h3>Where a home begins</h3><p class="ev-line">From the sky, land becomes a promise.</p><p class="desc">Sweeping aerials, steady motion and a story that lets buyers see the future before the first brick is laid. Your property, shown the way it deserves to be seen.</p>
-          <a class="ev-btn" href="https://www.instagram.com/deemrsoft" rel="noopener">Show my property <span aria-hidden="true">&#8599;</span></a></div>
+          <a class="ev-btn" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20you%20to%20film%20a%20real%20estate%20or%20property%20video." target="_blank" rel="noopener">Show my property <span aria-hidden="true">&#8599;</span></a></div>
       </article>
       <article class="ev-row ev-row--flip rv">
         <div class="ev-media"><button class="ev-frame ev-frame--tall ev-open" type="button" data-src="public/work/fashion.mp4" data-cat="Fashion &amp; Editorial" data-title="Style, set in motion" aria-label="Play Style, set in motion">
           <video muted loop playsinline preload="none" poster="public/work/fashion.jpg" aria-hidden="true"><source src="public/work/fashion-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
         <div class="ev-text"><span class="cat">Fashion &amp; Editorial</span><h3>Style, set in motion</h3><p class="ev-line">Every outfit is a character. Every frame, a page.</p><p class="desc">Black fabric, a flash of orange and a basketball against the green. Fashion films that carry the mood of your collection and make people stop scrolling.</p>
-          <a class="ev-btn" href="https://www.instagram.com/deemrsoft" rel="noopener">Film my collection <span aria-hidden="true">&#8599;</span></a></div>
+          <a class="ev-btn" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20you%20to%20film%20a%20fashion%20or%20collection%20video." target="_blank" rel="noopener">Film my collection <span aria-hidden="true">&#8599;</span></a></div>
       </article>
       <div class="ev-next rv"><i></i><i></i><i></i><i></i>
         <span class="ev-rec">Your story</span>
         <strong>Your story is next. Let&rsquo;s give it light.</strong>
         <p>Tell us the idea, the date and the mood. We will take it from there and make it look like cinema.</p>
-        <a class="ev-btn" href="https://www.instagram.com/deemrsoft" rel="noopener">Begin your story <span aria-hidden="true">&#8599;</span></a>
+        <a class="ev-btn" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20you%20to%20film%20a%20project." target="_blank" rel="noopener">Begin your story <span aria-hidden="true">&#8599;</span></a>
       </div>
     </section>
   </div>
@@ -308,6 +325,18 @@
   <button class="ev-lb-x" id="evLbX" type="button">Close &times;</button>
   <div class="ev-lb-in"><video id="evLbV" controls playsinline preload="none"></video><div class="ev-lb-cap"><b id="evLbC"></b><span id="evLbT"></span></div></div>
 </div>
+
+<section class="ct-sec" id="contact-us" aria-labelledby="ctH">
+  <div class="wrap">
+    <h2 id="ctH">Contact us</h2>
+    <p>Have a story in mind? Message the studio and let&rsquo;s give it light.</p>
+    <div class="ct-row">
+      <a class="ct-btn ct-btn--wa" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20to%20start%20a%20project." target="_blank" rel="noopener">WhatsApp</a>
+      <a class="ct-btn" href="https://www.instagram.com/deemrsoft" target="_blank" rel="noopener">Instagram</a>
+      <a class="ct-btn" href="https://vm.tiktok.com/ZS9PCDyRSWQwY-Nuoye/" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+</section>
 
 <footer id="contact">
   <div class="wrap">
@@ -321,7 +350,7 @@
       <span>© 2026 SOFT International Studios</span>
       <div class="footer-socials">
         <a href="https://www.instagram.com/deemrsoft" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@deemrsoft" rel="noopener">TikTok</a>
+        <a href="https://vm.tiktok.com/ZS9PCDyRSWQwY-Nuoye/" rel="noopener">TikTok</a>
       </div>
     </div>
   </div>
@@ -377,6 +406,27 @@ document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40)
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) e.target.play().catch(function () {}); else e.target.pause(); }); }, { threshold: 0.6 });
     [].forEach.call(document.querySelectorAll('.ev-frame video'), function (p) { io.observe(p); });
   }
+})();
+</script>
+<div id="ctPop" class="ct-pop" role="dialog" aria-modal="true" aria-labelledby="ctPopH" aria-hidden="true">
+  <div class="ct-card">
+    <button class="ct-x" type="button" id="ctPopX" aria-label="Close">&times;</button>
+    <h3 id="ctPopH">Your story deserves a screen.</h3>
+    <p>Tell us the idea. We&rsquo;ll bring the light.</p>
+    <a class="ct-btn ct-btn--wa" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20to%20start%20a%20project." target="_blank" rel="noopener">Message us on WhatsApp</a>
+    <a class="ct-btn" href="https://www.instagram.com/deemrsoft" target="_blank" rel="noopener">Message us on Instagram</a>
+    <a class="ct-btn" href="https://vm.tiktok.com/ZS9PCDyRSWQwY-Nuoye/" target="_blank" rel="noopener">Message us on TikTok</a>
+  </div>
+</div>
+<script>
+(function(){
+  var pop=document.getElementById('ctPop'); if(!pop) return; var last=null;
+  function open(e){ if(e) e.preventDefault(); last=document.activeElement; pop.classList.add('open'); pop.setAttribute('aria-hidden','false'); document.getElementById('ctPopX').focus(); }
+  function close(){ pop.classList.remove('open'); pop.setAttribute('aria-hidden','true'); if(last&&last.focus) last.focus(); }
+  [].forEach.call(document.querySelectorAll('.nav-cta,#ctaStudio,#ctaProject,[data-contact]'),function(a){ a.addEventListener('click',open); });
+  document.getElementById('ctPopX').addEventListener('click',close);
+  pop.addEventListener('click',function(e){ if(e.target===pop) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&pop.classList.contains('open')) close(); });
 })();
 </script>
 </body>

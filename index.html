@@ -448,6 +448,23 @@
     nav{ padding:18px 22px; }
     section{ padding:56px 0; }
   }
+
+  /* ---- CONTACT US BLOCK + POPUP ---- */
+  .ct-sec{ padding:clamp(56px,8vw,110px) 0; text-align:center; border-top:1px solid rgba(255,255,255,.08); }
+  .ct-sec h2{ font-size:clamp(28px,5vw,52px); line-height:1.1; margin:0 0 12px; }
+  .ct-sec p{ color:var(--dim); margin:0 auto 28px; max-width:46ch; }
+  .ct-row{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .ct-btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:15px 24px; border:1px solid rgba(255,255,255,.25); color:#fff; font-size:13px; letter-spacing:.08em; text-transform:uppercase; text-decoration:none; transition:.25s; min-width:150px; }
+  .ct-btn:hover{ border-color:var(--red); background:var(--red); transform:translateY(-2px); }
+  .ct-btn--wa{ background:var(--red); border-color:var(--red); }
+  .ct-pop{ position:fixed; inset:0; z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px; background:rgba(0,0,0,.72); opacity:0; visibility:hidden; transition:opacity .25s, visibility .25s; }
+  .ct-pop.open{ opacity:1; visibility:visible; }
+  .ct-card{ position:relative; width:min(380px,100%); background:#0b0b0b; border:1px solid rgba(255,255,255,.14); border-top:3px solid var(--red); padding:34px 26px 26px; text-align:center; transform:translateY(14px) scale(.97); transition:transform .3s; }
+  .ct-pop.open .ct-card{ transform:none; }
+  .ct-card h3{ font-size:clamp(22px,6vw,28px); line-height:1.15; margin:0 0 8px; color:#fff; }
+  .ct-card p{ color:var(--dim); font-size:14px; margin:0 0 22px; }
+  .ct-card .ct-btn{ display:flex; width:100%; margin-top:10px; }
+  .ct-x{ position:absolute; top:8px; right:10px; background:none; border:0; color:#fff; font-size:26px; line-height:1; cursor:pointer; padding:6px 10px; }
 </style>
 <script>document.documentElement.classList.add('js-rv');</script>
 </head>
@@ -461,7 +478,7 @@
     <a href="work.html">Work With Us</a>
     <a href="events.html">Events &amp; Classes</a>
   </div>
-  <a href="#book" class="nav-cta">Let's Work Together <span class="arrow">↗</span></a>
+  <a href="#contact-us" class="nav-cta">Let's Work Together <span class="arrow">↗</span></a>
   <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
   <div class="nav-menu" id="navMenu">
     <a href="portfolio.html">Our Portfolio</a>
@@ -572,10 +589,10 @@
       <div class="cta-kicker rv">Let&rsquo;s work together</div>
       <h2 class="mk"><span class="mask"><span class="ml" style="--i:0">Have a story</span></span><span class="mask"><span class="ml" style="--i:1"><em>worth telling</em><span class="q">?</span></span></span></h2>
       <p class="cta-sub rv" style="--d:.25s">Music video, commercial, fashion film or event: tell us the idea and we&rsquo;ll make it look like cinema.</p>
-      <a href="#contact" class="cta-more rv" id="ctaStudio" style="--d:.35s">Or message the studio <span>&#8599;</span></a>
+      <a href="#contact-us" class="cta-more rv" id="ctaStudio" style="--d:.35s">Or message the studio <span>&#8599;</span></a>
       </div>
       <div class="sl-stage rv" id="slStage" style="--d:.4s">
-        <a href="#contact" class="sl" id="ctaProject" aria-label="Book your shoot &mdash; start a project">
+        <a href="#contact-us" class="sl" id="ctaProject" aria-label="Book your shoot &mdash; start a project">
           <span class="sl-glow" aria-hidden="true"></span>
           <span class="sl-3d">
             <span class="sl-sticks" aria-hidden="true"><span class="sl-stick sl-arm"></span><span class="sl-stick sl-base"></span></span>
@@ -611,7 +628,7 @@
       <p class="ab-sec wr" data-w="11" data-c="16">From commercials and music videos to documentaries, fashion films and creative campaigns, SOFT International Studios brings creative ideas to life with a commitment to <span class="hl">visual excellence and purposeful storytelling.</span></p>
       <p class="ab-close wr" data-w="38" data-c="20">We don&rsquo;t just make films. We create <span class="hl">visual experiences that stay with you.</span></p>
       <div class="ab-social" aria-label="Social followers">
-        <a href="https://www.tiktok.com/@deemrsoft" rel="noopener"><b>1.7K</b> TikTok</a>
+        <a href="https://vm.tiktok.com/ZS9PCDyRSWQwY-Nuoye/" rel="noopener"><b>1.7K</b> TikTok</a>
         <a href="https://www.instagram.com/deemrsoft" rel="noopener"><b>1.3K</b> Instagram</a>
       </div>
     </div>
@@ -626,6 +643,18 @@
   </div>
 </div>
 
+<section class="ct-sec" id="contact-us" aria-labelledby="ctH">
+  <div class="wrap">
+    <h2 id="ctH">Contact us</h2>
+    <p>Have a story in mind? Message the studio and let&rsquo;s give it light.</p>
+    <div class="ct-row">
+      <a class="ct-btn ct-btn--wa" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20to%20start%20a%20project." target="_blank" rel="noopener">WhatsApp</a>
+      <a class="ct-btn" href="https://www.instagram.com/deemrsoft" target="_blank" rel="noopener">Instagram</a>
+      <a class="ct-btn" href="https://vm.tiktok.com/ZS9PCDyRSWQwY-Nuoye/" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+</section>
+
 <footer id="contact">
   <div class="wrap">
     <div class="footer-top">
@@ -638,7 +667,7 @@
       <span>© 2026 SOFT International Studios</span>
       <div class="footer-socials">
         <a href="https://www.instagram.com/deemrsoft" rel="noopener">Instagram</a>
-        <a href="https://www.tiktok.com/@deemrsoft" rel="noopener">TikTok</a>
+        <a href="https://vm.tiktok.com/ZS9PCDyRSWQwY-Nuoye/" rel="noopener">TikTok</a>
       </div>
     </div>
   </div>
@@ -760,7 +789,7 @@
 /* ===== CONTACT DETAILS =====
    Paste the studio's real details here. Leave a value as '' until it is confirmed: nothing is invented.
    whatsapp: digits only with country code (no + or spaces)   email: full address   phone: with country code, e.g. +234... */
-window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '', email: '', phone: '' };
+window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '2349047428114', email: '', phone: '+2349047428114' };
 
 (function () {
   var C = window.SOFT_CONTACT;
@@ -770,8 +799,8 @@ window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '', email: '', phone: '
 
   // the two buttons: use a real destination when one exists, otherwise scroll to the contact details in the footer
   var project = document.getElementById('ctaProject'), studio = document.getElementById('ctaStudio');
-  if (project) project.href = wa || mail || '#contact';
-  if (studio) studio.href = mail || wa || tel || '#contact';
+  
+  
 
   // footer contact list: only shows what has been provided
   var list = document.getElementById('footerContact');
@@ -1086,5 +1115,26 @@ window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '', email: '', phone: '
 })();
 </script>
 
+<div id="ctPop" class="ct-pop" role="dialog" aria-modal="true" aria-labelledby="ctPopH" aria-hidden="true">
+  <div class="ct-card">
+    <button class="ct-x" type="button" id="ctPopX" aria-label="Close">&times;</button>
+    <h3 id="ctPopH">Your story deserves a screen.</h3>
+    <p>Tell us the idea. We&rsquo;ll bring the light.</p>
+    <a class="ct-btn ct-btn--wa" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20to%20start%20a%20project." target="_blank" rel="noopener">Message us on WhatsApp</a>
+    <a class="ct-btn" href="https://www.instagram.com/deemrsoft" target="_blank" rel="noopener">Message us on Instagram</a>
+    <a class="ct-btn" href="https://vm.tiktok.com/ZS9PCDyRSWQwY-Nuoye/" target="_blank" rel="noopener">Message us on TikTok</a>
+  </div>
+</div>
+<script>
+(function(){
+  var pop=document.getElementById('ctPop'); if(!pop) return; var last=null;
+  function open(e){ if(e) e.preventDefault(); last=document.activeElement; pop.classList.add('open'); pop.setAttribute('aria-hidden','false'); document.getElementById('ctPopX').focus(); }
+  function close(){ pop.classList.remove('open'); pop.setAttribute('aria-hidden','true'); if(last&&last.focus) last.focus(); }
+  [].forEach.call(document.querySelectorAll('.nav-cta,#ctaStudio,#ctaProject,[data-contact]'),function(a){ a.addEventListener('click',open); });
+  document.getElementById('ctPopX').addEventListener('click',close);
+  pop.addEventListener('click',function(e){ if(e.target===pop) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&pop.classList.contains('open')) close(); });
+})();
+</script>
 </body>
 </html>
