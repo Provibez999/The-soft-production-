@@ -1164,7 +1164,7 @@ window.SOFT_CONTACT = window.SOFT_CONTACT || { whatsapp: '2349047428114', email:
   var pop=document.getElementById('ctPop'); if(!pop) return; var last=null;
   function open(e){ if(e) e.preventDefault(); last=document.activeElement; pop.classList.add('open'); pop.setAttribute('aria-hidden','false'); document.getElementById('ctPopX').focus(); }
   function close(){ pop.classList.remove('open'); pop.setAttribute('aria-hidden','true'); if(last&&last.focus) last.focus(); }
-  [].forEach.call(document.querySelectorAll('.nav-cta,#ctaStudio,#ctaProject,[data-contact]'),function(a){ a.addEventListener('click',open); });
+  document.addEventListener('click',function(e){ var t=e.target.closest&&e.target.closest('.nav-cta,#ctaStudio,#ctaProject,.sl-stage a,[data-contact]'); if(t){ e.stopImmediatePropagation(); open(e); } },true);
   document.getElementById('ctPopX').addEventListener('click',close);
   pop.addEventListener('click',function(e){ if(e.target===pop) close(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&pop.classList.contains('open')) close(); });
