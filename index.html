@@ -577,15 +577,15 @@
     </div>
     <div class="feature rv" id="commercial">
       <div class="feature-stage">
-        <div class="feature-ambient" style="background-image:url('public/atlas-poster.jpg')"></div>
-        <video id="featureVideo" class="feature-video" muted loop playsinline preload="metadata" poster="public/atlas-poster.jpg" aria-label="Preview of ATLAS, Fashion Behind the Scenes, Episode One">
-          <source src="public/atlas-preview.mp4" type="video/mp4">
+        <div class="feature-ambient" style="background-image:url('public/commercial-poster.jpg')"></div>
+        <video id="featureVideo" class="feature-video" muted loop playsinline preload="metadata" poster="public/commercial-poster.jpg" aria-label="Preview of Cornerstone, Kabusa Oriental Choir">
+          <source src="public/commercial-preview.mp4" type="video/mp4">
         </video>
         <button id="featurePlay" class="feature-play" type="button" aria-label="Play the full film with sound"><span>&#9654; Watch the full film</span></button>
       </div>
       <div class="feature-meta">
-        <div><span class="cat">Behind the Scenes</span><h3>ATLAS &mdash; Fashion Behind the Scenes, Episode One</h3></div>
-        <p>A SOFT International Studios production &middot; 0:55</p>
+        <div><span class="cat">BTS Music Video</span><h3>Cornerstone &mdash; Kabusa Oriental Choir</h3></div>
+        <p>A SOFT International Studios production &middot; 1:35</p>
       </div>
     </div>
     <div class="strip rv" id="strip">
@@ -611,11 +611,11 @@
           <span class="reel-info"><span class="cat">Drone &middot; 0:58</span><span class="title">Good Morning Abuja</span></span>
         </button>
       </article>
-      <article class="reel" data-src="public/reels/behind-the-scenes.mp4" data-cat="Behind The Scenes" data-title="Kabusa Oriental Choir">
-        <button class="reel-open" type="button" aria-label="Play Kabusa Oriental Choir, Behind The Scenes">
-          <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/behind-the-scenes.jpg" aria-hidden="true"><source src="public/reels/behind-the-scenes-preview.mp4" type="video/mp4"></video>
+      <article class="reel" data-src="public/reels/atlas.mp4" data-cat="Behind The Scenes" data-title="ATLAS, Episode One">
+        <button class="reel-open" type="button" aria-label="Play ATLAS Episode One, Fashion Behind The Scenes">
+          <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/atlas.jpg" aria-hidden="true"><source src="public/reels/atlas-preview.mp4" type="video/mp4"></video>
           <span class="reel-play" aria-hidden="true">&#9654;</span>
-          <span class="reel-info"><span class="cat">Behind The Scenes &middot; 0:40</span><span class="title">Kabusa Oriental Choir</span></span>
+          <span class="reel-info"><span class="cat">Behind The Scenes &middot; 0:55</span><span class="title">ATLAS &middot; Episode One</span></span>
         </button>
       </article>
       <article class="reel" data-src="public/reels/short-film.mp4" data-cat="Short Film" data-title="The Inside Scoop">
@@ -834,7 +834,7 @@
     full = true;
     v.removeAttribute('aria-label');
     v.muted = false; v.loop = false; v.controls = true;
-    v.src = 'public/atlas.mp4';
+    v.src = 'public/commercial.mp4';
     v.load();
     box.classList.add('is-playing');
     v.play().catch(function (err) { console.warn('[commercial] play() rejected: ' + (err && err.name)); });
