@@ -808,10 +808,22 @@
     } else { failed('play() rejected: ' + (err && err.name)); }
   });
 
+  // iPhones can refuse autoplay (Low Power Mode, data saver, in-app browsers). Keep trying quietly, and start
+  // the moment the visitor touches or taps anything, because iOS always allows play() after a touch.
+  var userPaused = false;
+  function kick() { if (!reduce && !userPaused && v.paused) { var q = v.play(); if (q && q.catch) q.catch(function () {}); } }
+  var tries = 0, iv = setInterval(function () { kick(); if (++tries > 20 || !v.paused) { if (!v.paused) clearInterval(iv); } }, 800);
+  ['touchstart', 'touchend', 'pointerdown', 'click', 'keydown'].forEach(function (ev) {
+    window.addEventListener(ev, function () { kick(); }, { passive: true });
+  });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) kick(); });
+  window.addEventListener('pageshow', kick);
+  v.addEventListener('stalled', function () { setTimeout(kick, 600); });
+
   var tog = document.getElementById('motionToggle');
   if (tog) tog.addEventListener('click', function () {
-    if (v.paused) { v.play(); tog.textContent = 'Pause video'; tog.setAttribute('aria-pressed', 'false'); }
-    else { v.pause(); tog.textContent = 'Play video'; tog.setAttribute('aria-pressed', 'true'); }
+    if (v.paused) { userPaused = false; v.play(); tog.textContent = 'Pause video'; tog.setAttribute('aria-pressed', 'false'); }
+    else { userPaused = true; v.pause(); tog.textContent = 'Play video'; tog.setAttribute('aria-pressed', 'true'); }
   });
 })();
 </script>
