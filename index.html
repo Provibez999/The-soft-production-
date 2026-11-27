@@ -577,15 +577,15 @@
     </div>
     <div class="feature rv" id="commercial">
       <div class="feature-stage">
-        <div class="feature-ambient" style="background-image:url('public/commercial-poster.jpg')"></div>
-        <video id="featureVideo" class="feature-video" muted loop playsinline preload="metadata" poster="public/commercial-poster.jpg" aria-label="Preview of Cornerstone, Kabusa Oriental Choir">
-          <source src="public/commercial-preview.mp4" type="video/mp4">
+        <div class="feature-ambient" style="background-image:url('public/atlas-poster.jpg')"></div>
+        <video id="featureVideo" class="feature-video" muted loop playsinline preload="metadata" poster="public/atlas-poster.jpg" aria-label="Preview of ATLAS, Fashion Behind the Scenes, Episode One">
+          <source src="public/atlas-preview.mp4" type="video/mp4">
         </video>
         <button id="featurePlay" class="feature-play" type="button" aria-label="Play the full film with sound"><span>&#9654; Watch the full film</span></button>
       </div>
       <div class="feature-meta">
-        <div><span class="cat">BTS Music Video</span><h3>Cornerstone &mdash; Kabusa Oriental Choir</h3></div>
-        <p>A SOFT International Studios production &middot; 1:35</p>
+        <div><span class="cat">Behind the Scenes</span><h3>ATLAS &mdash; Fashion Behind the Scenes, Episode One</h3></div>
+        <p>A SOFT International Studios production &middot; 0:55</p>
       </div>
     </div>
     <div class="strip rv" id="strip">
@@ -834,7 +834,7 @@
     full = true;
     v.removeAttribute('aria-label');
     v.muted = false; v.loop = false; v.controls = true;
-    v.src = 'public/commercial.mp4';
+    v.src = 'public/atlas.mp4';
     v.load();
     box.classList.add('is-playing');
     v.play().catch(function (err) { console.warn('[commercial] play() rejected: ' + (err && err.name)); });
