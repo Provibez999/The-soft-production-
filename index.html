@@ -57,7 +57,7 @@
     display:flex; align-items:center; justify-content:space-between;
     transition:background 0.3s ease, padding 0.3s ease;
   }
-  nav.scrolled{ background:rgba(5,5,5,0.92); padding:14px 40px; backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav.scrolled{ background:rgba(5,5,5,0.92); padding:14px 40px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
   .nav-logo{ height:30px; width:auto; display:block; }
   .nav-links{ display:flex; gap:40px; font-size:14px; font-weight:500; color:#D6D6D2; }
   .nav-links a{ color:#D6D6D2; text-shadow:0 1px 10px rgba(0,0,0,0.5); transition:color 0.2s ease; }
@@ -185,12 +185,12 @@
     nav{ gap:14px; }
     .nav-cta{ margin-left:auto; }
     .nav-toggle{ display:flex; }
-    .nav-menu{ display:block; position:absolute; top:100%; left:0; right:0; background:rgba(5,5,5,0.97); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+    .nav-menu{ display:block; position:absolute; top:100%; left:0; right:0; background:rgba(5,5,5,0.97); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
       visibility:hidden; opacity:0; transform:translateY(-8px); transition:opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s; }
     nav.open{ background:rgba(5,5,5,0.97); }
     nav.open .nav-menu{ visibility:visible; opacity:1; transform:none; transition:opacity 0.25s ease, transform 0.25s ease; }
   }
-  @media(max-width:640px){ .scroll-ind{ display:none; } .hero h1{ max-width:none; } .hero-eyebrow{ font-size:12px; letter-spacing:0.16em; text-wrap:balance; } }
+  @media(max-width:640px){ .scroll-ind{ display:none; } .hero h1{ max-width:none; } .hero-eyebrow{ font-size:12px; letter-spacing:0.16em; text-wrap:balance; } .hero-inner{ padding-bottom:34px; } }
 
   @media (prefers-reduced-motion: reduce){
     html{ scroll-behavior:auto; }
@@ -541,7 +541,7 @@
     <a href="work.html">Work With Us</a>
     <a href="events.html">Events &amp; Classes</a>
   </div>
-  <a href="#contact-us" class="nav-cta">Let's Work Together <span class="arrow">↗</span></a>
+  <a href="#contact-us" class="nav-cta">Let's Work Together <span class="arrow">↗&#xFE0E;</span></a>
   <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
   <div class="nav-menu" id="navMenu">
     <a href="portfolio.html">Our Portfolio</a>
@@ -568,7 +568,7 @@
     <div class="hero-eyebrow reveal r1">Cinematography. Director. D.O.P. Drone Pilot.</div>
     <h1 class="reveal r1">Stories, framed<br><em>in light</em><span class="stop">.</span></h1>
     <p class="hero-desc reveal r2">A cinematography and creative film production house, shaping ideas into cinematic stories from first concept to final frame.</p>
-    <div class="reveal r3"><a href="#work" class="cta">Explore Our Work <span class="arrow">↗</span></a></div>
+    <div class="reveal r3"><a href="#work" class="cta">Explore Our Work <span class="arrow">↗&#xFE0E;</span></a></div>
   </div>
 
   <button id="motionToggle" class="motion-toggle" type="button" aria-pressed="false">Pause video</button>
@@ -588,7 +588,7 @@
         <video id="featureVideo" class="feature-video" muted loop playsinline preload="metadata" poster="public/commercial-poster.jpg" aria-label="Preview of Cornerstone, Kabusa Oriental Choir">
           <source src="public/commercial-preview.mp4" type="video/mp4">
         </video>
-        <button id="featurePlay" class="feature-play" type="button" aria-label="Play the full film with sound"><span>&#9654; Watch the full film</span></button>
+        <button id="featurePlay" class="feature-play" type="button" aria-label="Play the full film with sound"><span>&#9654;&#xFE0E; Watch the full film</span></button>
       </div>
       <div class="feature-meta">
         <div><span class="cat">BTS Music Video</span><h3>Cornerstone &mdash; Kabusa Oriental Choir</h3></div>
@@ -607,35 +607,35 @@
       <article class="reel" data-src="public/reels/music-video.mp4" data-cat="Music Video" data-title="On a Bando">
         <button class="reel-open" type="button" aria-label="Play On a Bando, Music Video">
           <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/music-video.jpg" aria-hidden="true"><source src="public/reels/music-video-preview.mp4" type="video/mp4"></video>
-          <span class="reel-play" aria-hidden="true">&#9654;</span>
+          <span class="reel-play" aria-hidden="true">&#9654;&#xFE0E;</span>
           <span class="reel-info"><span class="cat">Music Video &middot; 1:00</span><span class="title">On a Bando</span></span>
         </button>
       </article>
       <article class="reel" data-src="public/reels/drone.mp4" data-cat="Drone" data-title="Good Morning Abuja">
         <button class="reel-open" type="button" aria-label="Play Good Morning Abuja, Drone">
           <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/drone.jpg" aria-hidden="true"><source src="public/reels/drone-preview.mp4" type="video/mp4"></video>
-          <span class="reel-play" aria-hidden="true">&#9654;</span>
+          <span class="reel-play" aria-hidden="true">&#9654;&#xFE0E;</span>
           <span class="reel-info"><span class="cat">Drone &middot; 0:58</span><span class="title">Good Morning Abuja</span></span>
         </button>
       </article>
       <article class="reel" data-src="public/reels/behind-the-scenes.mp4" data-cat="Behind The Scenes" data-title="Kabusa Oriental Choir">
         <button class="reel-open" type="button" aria-label="Play Kabusa Oriental Choir, Behind The Scenes">
           <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/behind-the-scenes.jpg" aria-hidden="true"><source src="public/reels/behind-the-scenes-preview.mp4" type="video/mp4"></video>
-          <span class="reel-play" aria-hidden="true">&#9654;</span>
+          <span class="reel-play" aria-hidden="true">&#9654;&#xFE0E;</span>
           <span class="reel-info"><span class="cat">Behind The Scenes &middot; 0:40</span><span class="title">Kabusa Oriental Choir</span></span>
         </button>
       </article>
       <article class="reel" data-src="public/reels/atlas.mp4" data-cat="Behind The Scenes" data-title="ATLAS, Episode One">
         <button class="reel-open" type="button" aria-label="Play ATLAS Episode One, Fashion Behind The Scenes">
           <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/atlas.jpg" aria-hidden="true"><source src="public/reels/atlas-preview.mp4" type="video/mp4"></video>
-          <span class="reel-play" aria-hidden="true">&#9654;</span>
+          <span class="reel-play" aria-hidden="true">&#9654;&#xFE0E;</span>
           <span class="reel-info"><span class="cat">Behind The Scenes &middot; 0:55</span><span class="title">ATLAS &middot; Episode One</span></span>
         </button>
       </article>
       <article class="reel" data-src="public/reels/event.mp4" data-cat="Event" data-title="May 2025 Highlights">
         <button class="reel-open" type="button" aria-label="Play May 2025 Highlights, Event">
           <video class="reel-video" muted loop playsinline preload="none" poster="public/reels/event.jpg" aria-hidden="true"><source src="public/reels/event-preview.mp4" type="video/mp4"></video>
-          <span class="reel-play" aria-hidden="true">&#9654;</span>
+          <span class="reel-play" aria-hidden="true">&#9654;&#xFE0E;</span>
           <span class="reel-info"><span class="cat">Event &middot; 0:30</span><span class="title">May 2025 Highlights</span></span>
         </button>
       </article>
@@ -652,7 +652,7 @@
       <div class="cta-kicker rv">Let&rsquo;s work together</div>
       <h2 class="mk"><span class="mask"><span class="ml" style="--i:0">Have a story</span></span><span class="mask"><span class="ml" style="--i:1"><em>worth telling</em><span class="q">?</span></span></span></h2>
       <p class="cta-sub rv" style="--d:.25s">Music video, commercial, fashion film or event: tell us the idea and we&rsquo;ll make it look like cinema.</p>
-      <a href="#contact-us" class="cta-more rv" id="ctaStudio" style="--d:.35s">Or message the studio <span>&#8599;</span></a>
+      <a href="#contact-us" class="cta-more rv" id="ctaStudio" style="--d:.35s">Or message the studio <span>&#8599;&#xFE0E;</span></a>
       </div>
       <div class="sl-stage rv" id="slStage" style="--d:.4s">
         <a href="#contact-us" class="sl" id="ctaProject" aria-label="Book your shoot &mdash; start a project">
@@ -663,7 +663,7 @@
               <span class="sl-row c1"><span class="sl-cell"><small>Production</small><b>Your next story</b></span></span>
               <span class="sl-row c2"><span class="sl-cell"><small>Director</small><b>You</b></span><span class="sl-cell"><small>Camera</small><b>SOFT</b></span></span>
               <span class="sl-row c3"><span class="sl-cell"><small>Scene</small><b>01</b></span><span class="sl-cell"><small>Take</small><b id="slTake">01</b></span><span class="sl-cell"><small>Roll</small><b>A</b></span></span>
-              <span class="sl-go"><span class="a">Book your shoot</span><span class="b">Action &#8599;</span></span>
+              <span class="sl-go"><span class="a">Book your shoot</span><span class="b">Action &#8599;&#xFE0E;</span></span>
               <span class="sl-flash" aria-hidden="true"></span>
             </span>
           </span>
@@ -720,7 +720,7 @@
       <div class="ft-brand">
         <img src="public/soft-logo.png" alt="SOFT International Studios">
         <p>Cinematic video production from Abuja, Nigeria. Weddings, events, real estate, fashion and music. Every frame, made to be felt.</p>
-        <a class="ft-cta" href="#contact-us" data-contact>Let&rsquo;s work together <span aria-hidden="true">&#8599;</span></a>
+        <a class="ft-cta" href="#contact-us" data-contact>Let&rsquo;s work together <span aria-hidden="true">&#8599;&#xFE0E;</span></a>
       </div>
       <div class="ft-col" role="navigation" aria-label="Footer">
         <h4>Explore</h4>

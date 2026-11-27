@@ -57,7 +57,7 @@
     display:flex; align-items:center; justify-content:space-between;
     transition:background 0.3s ease, padding 0.3s ease;
   }
-  nav.scrolled{ background:rgba(5,5,5,0.92); padding:14px 40px; backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav.scrolled{ background:rgba(5,5,5,0.92); padding:14px 40px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
   .nav-logo{ height:30px; width:auto; display:block; }
   .nav-links{ display:flex; gap:40px; font-size:14px; font-weight:500; color:#D6D6D2; }
   .nav-links a{ color:#D6D6D2; text-shadow:0 1px 10px rgba(0,0,0,0.5); transition:color 0.2s ease; }
@@ -90,7 +90,7 @@
     nav{ gap:14px; }
     .nav-cta{ margin-left:auto; }
     .nav-toggle{ display:flex; }
-    .nav-menu{ display:block; position:absolute; top:100%; left:0; right:0; background:rgba(5,5,5,0.97); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+    .nav-menu{ display:block; position:absolute; top:100%; left:0; right:0; background:rgba(5,5,5,0.97); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
       visibility:hidden; opacity:0; transform:translateY(-8px); transition:opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s; }
     nav.open{ background:rgba(5,5,5,0.97); }
     nav.open .nav-menu{ visibility:visible; opacity:1; transform:none; transition:opacity 0.25s ease, transform 0.25s ease; }
@@ -142,7 +142,7 @@
     nav{ padding:18px 22px; }
     section{ padding:56px 0; }
   }
-  nav{ background:rgba(5,5,5,0.9); backdrop-filter:blur(8px); padding-top:16px; padding-bottom:16px; }
+  nav{ background:rgba(5,5,5,0.9); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); padding-top:16px; padding-bottom:16px; }
   nav.scrolled{ background:rgba(5,5,5,0.94); }
   .nav-logo-link{ display:block; line-height:0; }
   .nav-links a[aria-current="page"]{ color:var(--white); }
@@ -348,7 +348,7 @@
     <a href="index.html">Home</a>
     <a href="events.html">Events &amp; Classes</a>
   </div>
-  <a href="#contact-us" class="nav-cta">Let's Work Together <span class="arrow">↗</span></a>
+  <a href="#contact-us" class="nav-cta">Let's Work Together <span class="arrow">↗&#xFE0E;</span></a>
   <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
   <div class="nav-menu" id="navMenu">
     <a href="portfolio.html">Our Portfolio</a>
@@ -368,31 +368,31 @@
       <div class="ev-sec-head rv"><h2 id="wsH">What we capture</h2></div>
       <article class="ev-row rv">
         <div class="ev-media"><button class="ev-frame ev-frame--wide ev-open" type="button" data-src="public/work/wedding.mp4" data-cat="Weddings &amp; Celebrations" data-title="Love, in motion" data-wide="1" aria-label="Play Love, in motion">
-          <video muted loop playsinline preload="none" poster="public/work/wedding.jpg" aria-hidden="true"><source src="public/work/wedding-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+          <video muted loop playsinline preload="none" poster="public/work/wedding.jpg" aria-hidden="true"><source src="public/work/wedding-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
         <div class="ev-text"><span class="cat">Weddings &amp; Celebrations</span><h3>Love, in motion</h3><p class="ev-line">Some nights only happen once. We make sure they never end.</p><p class="ev-credit">Dami + Nenzar</p><p class="desc">The first dance, the laughter, the aso-oke in full colour and a room that will not stop cheering. We follow the whole celebration so you can live it again, frame by frame, long after the music fades.</p>
           <a class="ev-btn btn-wa" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20you%20to%20film%20a%20wedding%20or%20celebration." target="_blank" rel="noopener"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15.04l-.3-.18-3.1.82.83-3.02-.2-.31A8.1 8.1 0 0 1 12.04 3.8zM8.6 7.4c-.2 0-.5.07-.75.35-.26.28-1 .98-1 2.4s1.03 2.78 1.17 2.97c.15.2 2 3.2 4.95 4.36 2.45.96 2.95.77 3.48.72.53-.05 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34-.3-.15-1.72-.85-1.98-.95-.27-.1-.47-.15-.66.15-.2.3-.76.95-.93 1.14-.17.2-.34.22-.63.07-.3-.15-1.24-.46-2.37-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.9-2.18-.24-.57-.48-.5-.66-.5z"/></svg></span><span class="bt"><small>WhatsApp</small>Film my celebration</span></a></div>
       </article>
       <article class="ev-row ev-row--flip rv">
         <div class="ev-media"><button class="ev-frame ev-frame--tall ev-open" type="button" data-src="public/work/showreel.mp4" data-cat="Events &amp; Nightlife" data-title="The night, remembered" aria-label="Play The night, remembered">
-          <video muted loop playsinline preload="none" poster="public/work/showreel.jpg" aria-hidden="true"><source src="public/work/showreel-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+          <video muted loop playsinline preload="none" poster="public/work/showreel.jpg" aria-hidden="true"><source src="public/work/showreel-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
         <div class="ev-text"><span class="cat">Events &amp; Nightlife</span><h3>The night, remembered</h3><p class="ev-line">Music, lights and the faces in between.</p><p class="desc">Concerts, launch parties, city mornings and nights that run into sunrise, cut into a pulse you can feel. Wherever a crowd gathers, we keep the energy alive on screen.</p>
           <a class="ev-btn btn-wa" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20you%20to%20film%20an%20event." target="_blank" rel="noopener"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15.04l-.3-.18-3.1.82.83-3.02-.2-.31A8.1 8.1 0 0 1 12.04 3.8zM8.6 7.4c-.2 0-.5.07-.75.35-.26.28-1 .98-1 2.4s1.03 2.78 1.17 2.97c.15.2 2 3.2 4.95 4.36 2.45.96 2.95.77 3.48.72.53-.05 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34-.3-.15-1.72-.85-1.98-.95-.27-.1-.47-.15-.66.15-.2.3-.76.95-.93 1.14-.17.2-.34.22-.63.07-.3-.15-1.24-.46-2.37-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.9-2.18-.24-.57-.48-.5-.66-.5z"/></svg></span><span class="bt"><small>WhatsApp</small>Capture my event</span></a></div>
       </article>
       <article class="ev-row rv">
         <div class="ev-media"><button class="ev-frame ev-frame--tall ev-open" type="button" data-src="public/work/real-estate.mp4" data-cat="Real Estate &amp; Property" data-title="Where a home begins" aria-label="Play Where a home begins">
-          <video muted loop playsinline preload="none" poster="public/work/real-estate.jpg" aria-hidden="true"><source src="public/work/real-estate-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+          <video muted loop playsinline preload="none" poster="public/work/real-estate.jpg" aria-hidden="true"><source src="public/work/real-estate-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
         <div class="ev-text"><span class="cat">Real Estate &amp; Property</span><h3>Where a home begins</h3><p class="ev-line">From the sky, land becomes a promise.</p><p class="desc">Sweeping aerials, steady motion and a story that lets buyers see the future before the first brick is laid. Your property, shown the way it deserves to be seen.</p>
           <a class="ev-btn btn-wa" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20you%20to%20film%20a%20real%20estate%20or%20property%20video." target="_blank" rel="noopener"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15.04l-.3-.18-3.1.82.83-3.02-.2-.31A8.1 8.1 0 0 1 12.04 3.8zM8.6 7.4c-.2 0-.5.07-.75.35-.26.28-1 .98-1 2.4s1.03 2.78 1.17 2.97c.15.2 2 3.2 4.95 4.36 2.45.96 2.95.77 3.48.72.53-.05 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34-.3-.15-1.72-.85-1.98-.95-.27-.1-.47-.15-.66.15-.2.3-.76.95-.93 1.14-.17.2-.34.22-.63.07-.3-.15-1.24-.46-2.37-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.9-2.18-.24-.57-.48-.5-.66-.5z"/></svg></span><span class="bt"><small>WhatsApp</small>Show my property</span></a></div>
       </article>
       <article class="ev-row ev-row--flip rv">
         <div class="ev-media"><button class="ev-frame ev-frame--tall ev-open" type="button" data-src="public/work/fashion.mp4" data-cat="Fashion &amp; Editorial" data-title="Style, set in motion" aria-label="Play Style, set in motion">
-          <video muted loop playsinline preload="none" poster="public/work/fashion.jpg" aria-hidden="true"><source src="public/work/fashion-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+          <video muted loop playsinline preload="none" poster="public/work/fashion.jpg" aria-hidden="true"><source src="public/work/fashion-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
         <div class="ev-text"><span class="cat">Fashion &amp; Editorial</span><h3>Style, set in motion</h3><p class="ev-line">Every outfit is a character. Every frame, a page.</p><p class="desc">Black fabric, a flash of orange and a basketball against the green. Fashion films that carry the mood of your collection and make people stop scrolling.</p>
           <a class="ev-btn btn-wa" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20you%20to%20film%20a%20fashion%20or%20collection%20video." target="_blank" rel="noopener"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15.04l-.3-.18-3.1.82.83-3.02-.2-.31A8.1 8.1 0 0 1 12.04 3.8zM8.6 7.4c-.2 0-.5.07-.75.35-.26.28-1 .98-1 2.4s1.03 2.78 1.17 2.97c.15.2 2 3.2 4.95 4.36 2.45.96 2.95.77 3.48.72.53-.05 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34-.3-.15-1.72-.85-1.98-.95-.27-.1-.47-.15-.66.15-.2.3-.76.95-.93 1.14-.17.2-.34.22-.63.07-.3-.15-1.24-.46-2.37-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.9-2.18-.24-.57-.48-.5-.66-.5z"/></svg></span><span class="bt"><small>WhatsApp</small>Film my collection</span></a></div>
       </article>
       <article class="ev-row rv">
         <div class="ev-media"><button class="ev-frame ev-frame--tall ev-open" type="button" data-src="public/work/ceremony.mp4" data-cat="Wedding Ceremonies" data-title="Vows under open sky" aria-label="Play Vows under open sky">
-          <video muted loop playsinline preload="none" poster="public/work/ceremony.jpg" aria-hidden="true"><source src="public/work/ceremony-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+          <video muted loop playsinline preload="none" poster="public/work/ceremony.jpg" aria-hidden="true"><source src="public/work/ceremony-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
         <div class="ev-text"><span class="cat">Wedding Ceremonies</span><h3>Vows under open sky</h3><p class="ev-line">Some promises are small enough to whisper and big enough to last.</p><p class="desc">A garden ceremony told the way it was felt: the shaky laugh before the vows, the elders watching, a kiss under the trees and a pen that makes it official. Every guest, every glance, kept for good.</p>
           <a class="ev-btn btn-wa" href="https://wa.me/2349047428114?text=Hello%20SOFT%20International%20Studios%2C%20I%20would%20like%20you%20to%20film%20my%20wedding%20ceremony." target="_blank" rel="noopener"><span class="bi"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.25-1.38A9.9 9.9 0 1 0 12.04 2zm0 1.8a8.1 8.1 0 1 1-4.2 15.04l-.3-.18-3.1.82.83-3.02-.2-.31A8.1 8.1 0 0 1 12.04 3.8zM8.6 7.4c-.2 0-.5.07-.75.35-.26.28-1 .98-1 2.4s1.03 2.78 1.17 2.97c.15.2 2 3.2 4.95 4.36 2.45.96 2.95.77 3.48.72.53-.05 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.34-.3-.15-1.72-.85-1.98-.95-.27-.1-.47-.15-.66.15-.2.3-.76.95-.93 1.14-.17.2-.34.22-.63.07-.3-.15-1.24-.46-2.37-1.46-.87-.78-1.46-1.74-1.63-2.04-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.66-1.6-.9-2.18-.24-.57-.48-.5-.66-.5z"/></svg></span><span class="bt"><small>WhatsApp</small>Film my ceremony</span></a>
       </article>
@@ -425,7 +425,7 @@
       <div class="ft-brand">
         <img src="public/soft-logo.png" alt="SOFT International Studios">
         <p>Cinematic video production from Abuja, Nigeria. Weddings, events, real estate, fashion and music. Every frame, made to be felt.</p>
-        <a class="ft-cta" href="#contact-us" data-contact>Let&rsquo;s work together <span aria-hidden="true">&#8599;</span></a>
+        <a class="ft-cta" href="#contact-us" data-contact>Let&rsquo;s work together <span aria-hidden="true">&#8599;&#xFE0E;</span></a>
       </div>
       <div class="ft-col" role="navigation" aria-label="Footer">
         <h4>Explore</h4>

@@ -57,7 +57,7 @@
     display:flex; align-items:center; justify-content:space-between;
     transition:background 0.3s ease, padding 0.3s ease;
   }
-  nav.scrolled{ background:rgba(5,5,5,0.92); padding:14px 40px; backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav.scrolled{ background:rgba(5,5,5,0.92); padding:14px 40px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
   .nav-logo{ height:30px; width:auto; display:block; }
   .nav-links{ display:flex; gap:40px; font-size:14px; font-weight:500; color:#D6D6D2; }
   .nav-links a{ color:#D6D6D2; text-shadow:0 1px 10px rgba(0,0,0,0.5); transition:color 0.2s ease; }
@@ -90,7 +90,7 @@
     nav{ gap:14px; }
     .nav-cta{ margin-left:auto; }
     .nav-toggle{ display:flex; }
-    .nav-menu{ display:block; position:absolute; top:100%; left:0; right:0; background:rgba(5,5,5,0.97); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+    .nav-menu{ display:block; position:absolute; top:100%; left:0; right:0; background:rgba(5,5,5,0.97); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
       visibility:hidden; opacity:0; transform:translateY(-8px); transition:opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s; }
     nav.open{ background:rgba(5,5,5,0.97); }
     nav.open .nav-menu{ visibility:visible; opacity:1; transform:none; transition:opacity 0.25s ease, transform 0.25s ease; }
@@ -185,7 +185,7 @@
   }
 
   /* ---- PORTFOLIO PAGE ---- */
-  nav{ background:rgba(5,5,5,0.9); backdrop-filter:blur(8px); padding-top:16px; padding-bottom:16px; }
+  nav{ background:rgba(5,5,5,0.9); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); padding-top:16px; padding-bottom:16px; }
   nav.scrolled{ background:rgba(5,5,5,0.94); }
   .pf-bg{ position:fixed; inset:0; z-index:-3; background:#e9e8e4 url('public/portfolio-cover.jpg') 50% 50%/cover no-repeat; }
   .nav-logo-link{ display:block; line-height:0; }
@@ -357,7 +357,7 @@
     <a href="work.html">Work With Us</a>
     <a href="events.html">Events &amp; Classes</a>
   </div>
-  <a href="#contact-us" class="nav-cta">Let's Work Together <span class="arrow">↗</span></a>
+  <a href="#contact-us" class="nav-cta">Let's Work Together <span class="arrow">↗&#xFE0E;</span></a>
   <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
   <div class="nav-menu" id="navMenu">
     <a href="index.html">Home</a>
@@ -386,7 +386,7 @@
         <div class="pf-media">
           <button class="pf-open pf-frame pf-frame--wide" type="button" data-src="public/commercial.mp4" data-cat="BTS Music Video" data-title="Cornerstone" data-wide="1" aria-label="Play Cornerstone, BTS Music Video">
             <video muted loop playsinline preload="none" poster="public/commercial-poster.jpg" aria-hidden="true"><source src="public/commercial-preview.mp4" type="video/mp4"></video>
-            <span class="pf-play" aria-hidden="true">&#9654;</span>
+            <span class="pf-play" aria-hidden="true">&#9654;&#xFE0E;</span>
           </button>
         </div>
         <div class="pf-text">
@@ -394,14 +394,14 @@
           <h2>Cornerstone</h2>
           <p class="meta">Kabusa Oriental Choir &middot; 1:35</p>
           <p class="desc">A behind-the-scenes music video for the Kabusa Oriental Choir, shot and directed by SOFT International Studios. Strong lighting and deliberate movement, so the music and the message land together.</p>
-          <button class="pf-btn pf-open" type="button" data-src="public/commercial.mp4" data-cat="BTS Music Video" data-title="Cornerstone" data-wide="1">Watch the film <span aria-hidden="true">&#9654;</span></button>
+          <button class="pf-btn pf-open" type="button" data-src="public/commercial.mp4" data-cat="BTS Music Video" data-title="Cornerstone" data-wide="1">Watch the film <span aria-hidden="true">&#9654;&#xFE0E;</span></button>
         </div>
       </article>
       <article class="pf-row pf-row--reel pf-row--flip rv">
         <div class="pf-media">
           <button class="pf-open pf-frame" type="button" data-src="public/reels/music-video.mp4" data-cat="Music Video" data-title="On a Bando" aria-label="Play On a Bando, Music Video">
             <video muted loop playsinline preload="none" poster="public/reels/music-video.jpg" aria-hidden="true"><source src="public/reels/music-video-preview.mp4" type="video/mp4"></video>
-            <span class="pf-play" aria-hidden="true">&#9654;</span>
+            <span class="pf-play" aria-hidden="true">&#9654;&#xFE0E;</span>
           </button>
         </div>
         <div class="pf-text">
@@ -409,14 +409,14 @@
           <h2>On a Bando</h2>
           <p class="meta">1:00</p>
           <p class="desc">A music video cut for “On a Bando”. Close, quick and full of energy, shot and edited to move with the track.</p>
-          <button class="pf-btn pf-open" type="button" data-src="public/reels/music-video.mp4" data-cat="Music Video" data-title="On a Bando">Watch the film <span aria-hidden="true">&#9654;</span></button>
+          <button class="pf-btn pf-open" type="button" data-src="public/reels/music-video.mp4" data-cat="Music Video" data-title="On a Bando">Watch the film <span aria-hidden="true">&#9654;&#xFE0E;</span></button>
         </div>
       </article>
       <article class="pf-row pf-row--reel rv">
         <div class="pf-media">
           <button class="pf-open pf-frame" type="button" data-src="public/reels/drone.mp4" data-cat="Drone" data-title="Good Morning Abuja" aria-label="Play Good Morning Abuja, Drone">
             <video muted loop playsinline preload="none" poster="public/reels/drone.jpg" aria-hidden="true"><source src="public/reels/drone-preview.mp4" type="video/mp4"></video>
-            <span class="pf-play" aria-hidden="true">&#9654;</span>
+            <span class="pf-play" aria-hidden="true">&#9654;&#xFE0E;</span>
           </button>
         </div>
         <div class="pf-text">
@@ -424,14 +424,14 @@
           <h2>Good Morning Abuja</h2>
           <p class="meta">0:58</p>
           <p class="desc">Abuja seen from above. Smooth aerial shots that open the day over the city.</p>
-          <button class="pf-btn pf-open" type="button" data-src="public/reels/drone.mp4" data-cat="Drone" data-title="Good Morning Abuja">Watch the film <span aria-hidden="true">&#9654;</span></button>
+          <button class="pf-btn pf-open" type="button" data-src="public/reels/drone.mp4" data-cat="Drone" data-title="Good Morning Abuja">Watch the film <span aria-hidden="true">&#9654;&#xFE0E;</span></button>
         </div>
       </article>
       <article class="pf-row pf-row--reel pf-row--flip rv">
         <div class="pf-media">
           <button class="pf-open pf-frame" type="button" data-src="public/reels/behind-the-scenes.mp4" data-cat="Behind The Scenes" data-title="Kabusa Oriental Choir" aria-label="Play Kabusa Oriental Choir, Behind The Scenes">
             <video muted loop playsinline preload="none" poster="public/reels/behind-the-scenes.jpg" aria-hidden="true"><source src="public/reels/behind-the-scenes-preview.mp4" type="video/mp4"></video>
-            <span class="pf-play" aria-hidden="true">&#9654;</span>
+            <span class="pf-play" aria-hidden="true">&#9654;&#xFE0E;</span>
           </button>
         </div>
         <div class="pf-text">
@@ -439,14 +439,14 @@
           <h2>Kabusa Oriental Choir</h2>
           <p class="meta">0:40</p>
           <p class="desc">A look behind the camera on the Kabusa Oriental Choir shoot: the crew, the set and the work that goes into the final film.</p>
-          <button class="pf-btn pf-open" type="button" data-src="public/reels/behind-the-scenes.mp4" data-cat="Behind The Scenes" data-title="Kabusa Oriental Choir">Watch the film <span aria-hidden="true">&#9654;</span></button>
+          <button class="pf-btn pf-open" type="button" data-src="public/reels/behind-the-scenes.mp4" data-cat="Behind The Scenes" data-title="Kabusa Oriental Choir">Watch the film <span aria-hidden="true">&#9654;&#xFE0E;</span></button>
         </div>
       </article>
       <article class="pf-row pf-row--reel rv">
         <div class="pf-media">
           <button class="pf-open pf-frame" type="button" data-src="public/reels/atlas.mp4" data-cat="Behind The Scenes" data-title="ATLAS, Episode One" aria-label="Play ATLAS Episode One, Fashion Behind The Scenes">
             <video muted loop playsinline preload="none" poster="public/reels/atlas.jpg" aria-hidden="true"><source src="public/reels/atlas-preview.mp4" type="video/mp4"></video>
-            <span class="pf-play" aria-hidden="true">&#9654;</span>
+            <span class="pf-play" aria-hidden="true">&#9654;&#xFE0E;</span>
           </button>
         </div>
         <div class="pf-text">
@@ -454,14 +454,14 @@
           <h2>ATLAS &mdash; Episode One</h2>
           <p class="meta">Fashion Behind the Scenes &middot; 0:55</p>
           <p class="desc">A look behind the lens of a fashion shoot: gimbals moving, cinema lenses locked on, stylists fixing every fold and models finding their light in the green. The camera is hidden, the craft is not.</p>
-          <button class="pf-btn pf-open" type="button" data-src="public/reels/atlas.mp4" data-cat="Behind The Scenes" data-title="ATLAS, Episode One">Watch the film <span aria-hidden="true">&#9654;</span></button>
+          <button class="pf-btn pf-open" type="button" data-src="public/reels/atlas.mp4" data-cat="Behind The Scenes" data-title="ATLAS, Episode One">Watch the film <span aria-hidden="true">&#9654;&#xFE0E;</span></button>
         </div>
       </article>
       <article class="pf-row pf-row--reel pf-row--flip rv">
         <div class="pf-media">
           <button class="pf-open pf-frame" type="button" data-src="public/reels/event.mp4" data-cat="Event" data-title="May 2025 Highlights" aria-label="Play May 2025 Highlights, Event">
             <video muted loop playsinline preload="none" poster="public/reels/event.jpg" aria-hidden="true"><source src="public/reels/event-preview.mp4" type="video/mp4"></video>
-            <span class="pf-play" aria-hidden="true">&#9654;</span>
+            <span class="pf-play" aria-hidden="true">&#9654;&#xFE0E;</span>
           </button>
         </div>
         <div class="pf-text">
@@ -469,7 +469,7 @@
           <h2>May 2025 Highlights</h2>
           <p class="meta">0:30</p>
           <p class="desc">Highlights from a May 2025 event. Fast cuts and low light, edited to keep the energy of the night.</p>
-          <button class="pf-btn pf-open" type="button" data-src="public/reels/event.mp4" data-cat="Event" data-title="May 2025 Highlights">Watch the film <span aria-hidden="true">&#9654;</span></button>
+          <button class="pf-btn pf-open" type="button" data-src="public/reels/event.mp4" data-cat="Event" data-title="May 2025 Highlights">Watch the film <span aria-hidden="true">&#9654;&#xFE0E;</span></button>
         </div>
       </article>
     </div>
@@ -508,7 +508,7 @@
   <div class="wrap pf-end-inner">
     <h2>Have a story<br>worth telling<span class="q">?</span></h2>
     <div class="pf-end-btns">
-      <a class="pf-btn" href="#contact-us" data-contact>Book your shoot <span aria-hidden="true">&#8599;</span></a>
+      <a class="pf-btn" href="#contact-us" data-contact>Book your shoot <span aria-hidden="true">&#8599;&#xFE0E;</span></a>
       <a class="pf-back" href="index.html">&larr; Back to home</a>
     </div>
   </div>
@@ -529,7 +529,7 @@
       <div class="ft-brand">
         <img src="public/soft-logo.png" alt="SOFT International Studios">
         <p>Cinematic video production from Abuja, Nigeria. Weddings, events, real estate, fashion and music. Every frame, made to be felt.</p>
-        <a class="ft-cta" href="#contact-us" data-contact>Let&rsquo;s work together <span aria-hidden="true">&#8599;</span></a>
+        <a class="ft-cta" href="#contact-us" data-contact>Let&rsquo;s work together <span aria-hidden="true">&#8599;&#xFE0E;</span></a>
       </div>
       <div class="ft-col" role="navigation" aria-label="Footer">
         <h4>Explore</h4>

@@ -57,7 +57,7 @@
     display:flex; align-items:center; justify-content:space-between;
     transition:background 0.3s ease, padding 0.3s ease;
   }
-  nav.scrolled{ background:rgba(5,5,5,0.92); padding:14px 40px; backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav.scrolled{ background:rgba(5,5,5,0.92); padding:14px 40px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
   .nav-logo{ height:30px; width:auto; display:block; }
   .nav-links{ display:flex; gap:40px; font-size:14px; font-weight:500; color:#D6D6D2; }
   .nav-links a{ color:#D6D6D2; text-shadow:0 1px 10px rgba(0,0,0,0.5); transition:color 0.2s ease; }
@@ -90,7 +90,7 @@
     nav{ gap:14px; }
     .nav-cta{ margin-left:auto; }
     .nav-toggle{ display:flex; }
-    .nav-menu{ display:block; position:absolute; top:100%; left:0; right:0; background:rgba(5,5,5,0.97); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+    .nav-menu{ display:block; position:absolute; top:100%; left:0; right:0; background:rgba(5,5,5,0.97); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
       visibility:hidden; opacity:0; transform:translateY(-8px); transition:opacity 0.25s ease, transform 0.25s ease, visibility 0s linear 0.25s; }
     nav.open{ background:rgba(5,5,5,0.97); }
     nav.open .nav-menu{ visibility:visible; opacity:1; transform:none; transition:opacity 0.25s ease, transform 0.25s ease; }
@@ -142,7 +142,7 @@
     nav{ padding:18px 22px; }
     section{ padding:56px 0; }
   }
-  nav{ background:rgba(5,5,5,0.9); backdrop-filter:blur(8px); padding-top:16px; padding-bottom:16px; }
+  nav{ background:rgba(5,5,5,0.9); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); padding-top:16px; padding-bottom:16px; }
   nav.scrolled{ background:rgba(5,5,5,0.94); }
   .nav-logo-link{ display:block; line-height:0; }
   .nav-links a[aria-current="page"]{ color:var(--white); }
@@ -343,7 +343,7 @@
     <a href="work.html">Work With Us</a>
     <a href="index.html">Home</a>
   </div>
-  <a href="#contact-us" class="nav-cta">Let's Work Together <span class="arrow">↗</span></a>
+  <a href="#contact-us" class="nav-cta">Let's Work Together <span class="arrow">↗&#xFE0E;</span></a>
   <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
   <div class="nav-menu" id="navMenu">
     <a href="portfolio.html">Our Portfolio</a>
@@ -365,22 +365,22 @@
         <button class="ev-fbtn ev-open" type="button" data-src="public/events/flow-and-frame.mp4" data-cat="Intro &middot; 0:31" data-title="Flow &amp; Frame" aria-label="Play Flow &amp; Frame">
           <span class="ev-fbg" style="background-image:url('public/events/flow-and-frame.jpg')" aria-hidden="true"></span>
           <video muted loop playsinline preload="none" poster="public/events/flow-and-frame.jpg" aria-hidden="true"><source src="public/events/flow-and-frame-preview.mp4" type="video/mp4"></video>
-          <span class="ev-play" aria-hidden="true">&#9654;</span>
+          <span class="ev-play" aria-hidden="true">&#9654;&#xFE0E;</span>
         </button>
         <div class="ev-ftext"><span class="cat">Intro &middot; 0:31</span><h3>Flow &amp; Frame</h3><p class="desc">Same phone. Same camera. Different results. Flow &amp; Frame is for creators who shoot every day but have not yet started to create. The best camera is not what matters. How you shoot is, and there is no more trial and error.</p>
-          <button class="ev-watch ev-open" type="button" data-src="public/events/flow-and-frame.mp4" data-cat="Intro &middot; 0:31" data-title="Flow &amp; Frame">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/flow-and-frame.mp4" data-cat="Intro &middot; 0:31" data-title="Flow &amp; Frame">Watch it <span aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
       </article>
       <article class="ev-row ev-row--flip rv">
         <div class="ev-media"><button class="ev-frame ev-frame--wide ev-open" type="button" data-src="public/events/sessions-welcome.mp4" data-cat="Intro &middot; 0:24" data-title="Create. Fanit. Earn" data-wide="1" aria-label="Play Create. Fanit. Earn">
-          <video muted loop playsinline preload="none" poster="public/events/sessions-welcome.jpg" aria-hidden="true"><source src="public/events/sessions-welcome-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+          <video muted loop playsinline preload="none" poster="public/events/sessions-welcome.jpg" aria-hidden="true"><source src="public/events/sessions-welcome-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
         <div class="ev-text"><span class="cat">Intro &middot; 0:24</span><h3>Create. Fanit. Earn</h3><p class="desc">Welcome to Sessions, where creators and fans connect and earn. A first look at the kind of session SOFT is building for creators who want their content to work for them.</p>
-          <button class="ev-watch ev-open" type="button" data-src="public/events/sessions-welcome.mp4" data-cat="Intro &middot; 0:24" data-title="Create. Fanit. Earn" data-wide="1">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/sessions-welcome.mp4" data-cat="Intro &middot; 0:24" data-title="Create. Fanit. Earn" data-wide="1">Watch it <span aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
       </article>
       <article class="ev-row rv">
         <div class="ev-media"><button class="ev-frame ev-frame--wide ev-open" type="button" data-src="public/events/sessions-reached-out.mp4" data-cat="Intro &middot; 0:28" data-title="Sessions Reached Out" data-wide="1" aria-label="Play Sessions Reached Out">
-          <video muted loop playsinline preload="none" poster="public/events/sessions-reached-out.jpg" aria-hidden="true"><source src="public/events/sessions-reached-out-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+          <video muted loop playsinline preload="none" poster="public/events/sessions-reached-out.jpg" aria-hidden="true"><source src="public/events/sessions-reached-out-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
         <div class="ev-text"><span class="cat">Intro &middot; 0:28</span><h3>Sessions Reached Out</h3><p class="desc">The story of how Sessions reached out, told straight to camera with the welcome box in hand. Real talk on how creators get noticed and rewarded.</p>
-          <button class="ev-watch ev-open" type="button" data-src="public/events/sessions-reached-out.mp4" data-cat="Intro &middot; 0:28" data-title="Sessions Reached Out" data-wide="1">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/sessions-reached-out.mp4" data-cat="Intro &middot; 0:28" data-title="Sessions Reached Out" data-wide="1">Watch it <span aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
       </article>
       <div class="ev-next rv"><i></i><i></i><i></i><i></i>
         <span class="ev-rec">Classes</span>
@@ -404,24 +404,24 @@
         <button class="ev-fbtn ev-open" type="button" data-src="public/events/noctics-invite.mp4" data-cat="NOCTICS &middot; 0:45" data-title="The Night Takes Shape" aria-label="Play The Night Takes Shape">
           <span class="ev-fbg" style="background-image:url('public/events/noctics-invite.jpg')" aria-hidden="true"></span>
           <video muted loop playsinline preload="none" poster="public/events/noctics-invite.jpg" aria-hidden="true"><source src="public/events/noctics-invite-preview.mp4" type="video/mp4"></video>
-          <span class="ev-play" aria-hidden="true">&#9654;</span>
+          <span class="ev-play" aria-hidden="true">&#9654;&#xFE0E;</span>
         </button>
         <div class="ev-ftext"><span class="cat">NOCTICS &middot; 0:45</span><h3>The Night Takes Shape</h3><p class="desc">Soft opens the doors with a look around the venue, Clinton Court Estate, and the plan for the night: games, breakout moments and a room full of creatives. A space made for conversation, cinematography and good company.</p>
-          <button class="ev-watch ev-open" type="button" data-src="public/events/noctics-invite.mp4" data-cat="NOCTICS &middot; 0:45" data-title="The Night Takes Shape">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/noctics-invite.mp4" data-cat="NOCTICS &middot; 0:45" data-title="The Night Takes Shape">Watch it <span aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
       </article>
       <article class="ev-row ev-row--flip rv">
         <div class="ev-media"><button class="ev-frame ev-frame--wide ev-frame--fit ev-open" type="button" data-src="public/events/noctics-here.mp4" data-cat="NOCTICS &middot; 0:39" data-title="The Room Comes Alive" data-wide="1" aria-label="Play The Room Comes Alive">
           <span class="ev-fbg" style="background-image:url('public/events/noctics-here.jpg')" aria-hidden="true"></span>
-          <video muted loop playsinline preload="none" poster="public/events/noctics-here.jpg" aria-hidden="true"><source src="public/events/noctics-here-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+          <video muted loop playsinline preload="none" poster="public/events/noctics-here.jpg" aria-hidden="true"><source src="public/events/noctics-here-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
         <div class="ev-text"><span class="cat">NOCTICS &middot; 0:39</span><h3>The Room Comes Alive</h3><p class="desc">Guests walk in, the room fills up, and the dancing and the energy take over. This is NOCTICS the way it was meant to feel.</p>
-          <button class="ev-watch ev-open" type="button" data-src="public/events/noctics-here.mp4" data-cat="NOCTICS &middot; 0:39" data-title="The Room Comes Alive" data-wide="1">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/noctics-here.mp4" data-cat="NOCTICS &middot; 0:39" data-title="The Room Comes Alive" data-wide="1">Watch it <span aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
       </article>
       <article class="ev-row rv">
         <div class="ev-media"><button class="ev-frame ev-frame--wide ev-frame--fit ev-open" type="button" data-src="public/events/noctics-thanks.mp4" data-cat="NOCTICS &middot; 0:44" data-title="Still Glowing" aria-label="Play Still Glowing">
           <span class="ev-fbg" style="background-image:url('public/events/noctics-thanks.jpg')" aria-hidden="true"></span>
-          <video muted loop playsinline preload="none" poster="public/events/noctics-thanks.jpg" aria-hidden="true"><source src="public/events/noctics-thanks-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;</span></button></div>
+          <video muted loop playsinline preload="none" poster="public/events/noctics-thanks.jpg" aria-hidden="true"><source src="public/events/noctics-thanks-preview.mp4" type="video/mp4"></video><span class="ev-play" aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
         <div class="ev-text"><span class="cat">NOCTICS &middot; 0:44</span><h3>Still Glowing</h3><p class="desc">Soft sits down to thank the sponsors and everyone who showed up, and shares moments from the night. The first NOCTICS was a success, and 2.0 is coming very soon.</p>
-          <button class="ev-watch ev-open" type="button" data-src="public/events/noctics-thanks.mp4" data-cat="NOCTICS &middot; 0:44" data-title="Still Glowing">Watch it <span aria-hidden="true">&#9654;</span></button></div>
+          <button class="ev-watch ev-open" type="button" data-src="public/events/noctics-thanks.mp4" data-cat="NOCTICS &middot; 0:44" data-title="Still Glowing">Watch it <span aria-hidden="true">&#9654;&#xFE0E;</span></button></div>
       </article>
       <div class="ev-next rv"><i></i><i></i><i></i><i></i>
         <span class="ev-rec">NOCTICS 2.0 loading</span>
@@ -452,7 +452,7 @@
       <div class="ft-brand">
         <img src="public/soft-logo.png" alt="SOFT International Studios">
         <p>Cinematic video production from Abuja, Nigeria. Weddings, events, real estate, fashion and music. Every frame, made to be felt.</p>
-        <a class="ft-cta" href="#contact-us" data-contact>Let&rsquo;s work together <span aria-hidden="true">&#8599;</span></a>
+        <a class="ft-cta" href="#contact-us" data-contact>Let&rsquo;s work together <span aria-hidden="true">&#8599;&#xFE0E;</span></a>
       </div>
       <div class="ft-col" role="navigation" aria-label="Footer">
         <h4>Explore</h4>
