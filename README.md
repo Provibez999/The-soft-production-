@@ -1,8 +1,19 @@
 # SOFT International Studios — website
 
-Single-page site for SOFT International Studios (cinematography and video production, Abuja).
+Cinematic video production, Abuja, Nigeria. A static site: no build step, just open the files.
 
-- `index.html` — the whole page (HTML, CSS, JS)
-- `assets/` — web-sized videos and images used by the page (previews, not the original footage)
+## Pages
+- `index.html` — home (opener, featured film, moving reels, About, Contact us, footer)
+- `portfolio.html` — the films, SOFT Gallery
+- `about.html` — about the studio and Meet the Team
+- `events.html` — Events & Classes (NOCTICS and the classes)
+- `work.html` — Work With Us (what we capture)
 
-Open `index.html` in Chrome or Safari to view it.
+## Media
+Everything lives in `public/` (videos, previews, posters, photos, logo).
+
+## Contact
+WhatsApp 09047428114 · Instagram @deemrsoft · TikTok (links are in each page's footer and the "Let's Work Together" popup).
+
+## Publishing
+GitHub: Settings → Pages → Deploy from a branch → `main` / root.
